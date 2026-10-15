@@ -4,7 +4,7 @@ const Instagram = () => {
   return (
      <section
       id="instagram"
-      className="z-40 relative py-24 overflow-hidden bg-gray-50"
+      className="z-40 relative py-16 lg:py-24 overflow-hidden bg-gray-50"
     >
       <div className="custom-container relative z-40">
 

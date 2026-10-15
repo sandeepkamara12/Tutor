@@ -86,8 +86,8 @@ export default function Testimonials() {
     : undefined;
 
   return (
-    <section id="testimonials" className="bg-gray-50">
-      <div className="custom-container relative z-40 py-24 flex justify-center flex-col overflow-x-clip">
+    <section id="testimonials">
+      <div className="custom-container relative z-40 py-16 lg:py-24 flex justify-center flex-col overflow-x-clip">
         {/* heading */}
         <div className="flex flex-col lg:w-1/2 mx-auto gap-6 items-center text-center mb-10">
           <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">

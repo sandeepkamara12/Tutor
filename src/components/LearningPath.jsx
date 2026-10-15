@@ -96,7 +96,7 @@ const LearningPath = () => {
             id="learning-path"
             className="w-full flex flex-col relative w-full overflow-clip bg-gray-50"
         >
-            <div className="custom-container flex flex-col lg:flex-row relative z-40 h-full items-center py-24">
+            <div className="custom-container flex flex-col lg:flex-row relative z-40 h-full items-center py-16 lg:py-24">
 
                 <div
                     className="max-sm:sticky max-sm:top-20 max-sm:z-30 max-sm:bg-gray-50 max-sm:py-4 flex flex-col items-center lg:items-start gap-3 lg:gap-6 text-center lg:text-start w-full lg:w-2/5 lg:pe-6 justify-center"
