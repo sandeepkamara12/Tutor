@@ -1,0 +1,194 @@
+@import "tailwindcss";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+/* ========================================
+   1. Custom Tailwind Theme
+======================================== */
+
+@theme {
+  --color-russian-blue: #2f64d1;
+  --color-russian-dark-blue: #1b356b;
+  --color-russian-red: #ee2010;
+
+  --height-testimonial: 50vh;
+
+  --breakpoint-xxs: 575px;
+  --breakpoint-sd: 420px;
+
+  --text-15: 15px;
+
+  --font-body: "DM Sans", sans-serif;
+  --font-heading: "Berkshire Swash", serif;
+}
+
+/* ========================================
+   2. Base Styles
+======================================== */
+
+@layer base {
+  .custom-container {
+    @apply container mx-auto px-4 xl:max-w-7xl;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading text-russian-dark-blue;
+  }
+
+  body {
+    @apply text-15 leading-relaxed font-body;
+  }
+
+  .heading {
+    @apply text-3xl leading-10 md:text-[40px] md:leading-none;
+  }
+
+  p {
+    @apply text-gray-600;
+  }
+
+  .menu-item {
+    @apply font-medium text-15 text-russian-dark-blue hover:text-russian-red focus:text-russian-blue;
+  }
+
+  #site-header.header-scrolled {
+    @apply bg-white/90 backdrop-blur-sm shadow-md py-2;
+  }
+
+  body * {
+    scroll-margin-top: 88px;
+  }
+
+  .screen {
+    @apply lg:h-[calc(100vh-68px)];
+  }
+
+  .min-screen {
+    @apply lg:min-h-[calc(100vh-68px)];
+  }
+}
+
+/* ========================================
+   3. Component Styles
+======================================== */
+
+@layer components {
+  .button {
+    @apply py-3 px-4 inline-block gap-x-2 border-none text-sm font-medium rounded text-white overflow-hidden focus:outline-hidden lowercase first-letter:capitalize relative z-50 cursor-pointer transition-all shadow-[7px_7px_14px_-7px_#1b356b];
+  }
+
+  .button-russian-blue {
+    @apply bg-russian-dark-blue hover:bg-russian-red focus:bg-russian-red;
+    @apply before:content-[''] before:h-full before:absolute before:left-0 before:top-0 before:z-10 before:w-0 before:transition-all hover:before:w-full before:bg-russian-red;
+  }
+
+  .button-russian-red {
+    @apply bg-russian-red;
+  }
+
+  .button span {
+    @apply z-50 relative;
+  }
+
+  /* Disabled button */
+  .button:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  .button-russian-blue:disabled {
+    @apply bg-russian-dark-blue;
+  }
+
+  .button-russian-blue:disabled::before {
+    width: 0;
+  }
+}
+
+@variant md {
+  #testimonial .active .testi-content.pop-right {
+    @apply left-full right-auto;
+  }
+
+  #testimonial .active .testi-content.pop-left {
+    @apply right-full left-auto;
+  }
+}
+
+/* ========================================
+   4. General Custom CSS
+======================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.bubble {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  position: absolute;
+}
+
+.tl-b {
+  top: -50px;
+  left: 200px;
+  box-shadow: 0 0 100px 100px #ee2010b3;
+}
+
+.tr-b {
+  top: -100px;
+  right: -100px;
+  box-shadow: 0 0 300px 500px #2f64d1b3;
+}
+
+.bl-b {
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 0 200px 350px #2f64d1b3;
+}
+
+.br-b {
+  bottom: -100px;
+  right: 0;
+  left: 400px;
+  margin: auto;
+  box-shadow: 0 0 300px 400px #ee2010b3;
+}
+
+.inner-banner {
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.hero-text-box {
+  top: -60px;
+  animation: 1s linear 0s infinite alternate-reverse none running about-anim;
+}
+
+.testimonial-wrapper {
+  min-height: var(--height-testimonial);
+  max-width: 100%;
+  width: 48rem;
+  margin-inline: auto;
+}
+
+@keyframes about-anim {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+/* ========================================
+   5. Testimonial Styles
+======================================== */
+.testi-content {
+  @apply w-full w-auto md:opacity-0 md:flex md:h-1/2 md:top-0 md:absolute md:z-40 md:translate-x-[-20px] md:transition-[opacity,transform] md:duration-[600ms] md:ease-[ease]
+}
