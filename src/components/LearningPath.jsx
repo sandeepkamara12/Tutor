@@ -141,7 +141,7 @@ const LearningPath = () => {
                 <div
                     ref={panelRef}
                     style={{ "--panel-min": `${panelMin}px` }}
-                    className="max-sm:min-h-(--panel-min) max-sm:sticky max-sm:top-16 max-sm:z-30 max-sm:bg-gray-50 py-4 flex flex-col items-center lg:items-start gap-3 lg:gap-6 text-center lg:text-start w-full lg:w-2/5 lg:pe-6 justify-center"
+                    className="max-sm:min-h-(--panel-min) max-sm:sticky max-sm:top-16 max-sm:z-30 max-sm:bg-gray-50 py-4 sm:py-0  flex flex-col items-center lg:items-start gap-3 lg:gap-6 text-center lg:text-start w-full lg:w-2/5 lg:pe-6 justify-center"
                 >
                     <p
                         id="active-num"

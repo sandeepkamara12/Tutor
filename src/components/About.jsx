@@ -15,7 +15,7 @@ const About = () => {
               <img
                 src="./owner.png"
                 alt="Your Russian teacher"
-                className="block mx-auto h-[600px]"
+                className="block mx-auto h-125 lg:h-150"
               />
 
               <div className="absolute bottom-[52%] left-6 bg-white shadow py-2 px-3 border-x-2 border-russian-red">
