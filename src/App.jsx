@@ -25,7 +25,7 @@ function App() {
       <Lessons />
       <Achievements />
       <About />
-      <Youtube /> 
+      <Youtube />
       <Testimonials />
       <Instagram />
       <Contact />

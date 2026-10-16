@@ -54,6 +54,9 @@
   .menu-item {
     @apply font-medium text-15 text-russian-dark-blue hover:text-russian-red focus:text-russian-blue;
   }
+  .menu-item.active {
+    @apply text-russian-red;
+  }
 
   #site-header.header-scrolled {
     @apply bg-white/90 backdrop-blur-sm shadow-md py-2;

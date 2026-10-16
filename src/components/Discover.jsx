@@ -86,7 +86,10 @@ const Discover = () => {
                 id="discover"
             >
                 <div className="flex flex-col items-center lg:w-1/2 mx-auto gap-6 text-center">
-                    <ContentArea subTitle="Your Russian journey" title="What you will discover?" description="Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles, and conversations you never thought you'd have. This is where that journey begins." />
+                    <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Your Russian journey</p>
+                    <h1 className="heading">What you will <span className="text-russian-red">discover?</span></h1>
+                    <p>Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles, and conversations you never thought you'd have. This is where that journey begins.</p>
+                    {/* <ContentArea subTitle="Your Russian journey" title="What you will discover?" description="Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles, and conversations you never thought you'd have. This is where that journey begins." /> */}
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 my-10 lg:w-3/4 mx-auto">
                     {reasons.map((item) => (

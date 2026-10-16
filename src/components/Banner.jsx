@@ -3,7 +3,7 @@ import Button from './ui/Button'
 
 const Banner = () => {
   return (
-     <section className="banner relative w-full lg:h-screen overflow-hidden">
+     <section className="banner relative w-full lg:h-screen overflow-hidden" id="banner">
       <div className="tl-b bubble bg-russian-red/70"></div>
       <div className="br-b bubble bg-russian-red/70"></div>
       <div className="tr-b bubble bg-russian-blue/70"></div>

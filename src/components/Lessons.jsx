@@ -145,7 +145,7 @@ const Lessons = () => {
                             {lessons.map((lesson) => (
                                 <article
                                     key={lesson.id}
-                                    className="bg-white border border-gray-200 rounded flex flex-col overflow-hidden"
+                                    className="bg-white border border-gray-200 rounded flex flex-col overflow-hidden group"
                                 >
                                     {/* Preview */}
                                     <div className="relative h-36 flex items-center justify-center font-bold text-4xl text-white bg-russian-dark-blue">
@@ -170,8 +170,8 @@ const Lessons = () => {
                                     </div>
 
                                     {/* Lesson details */}
-                                    <div className="bg-white p-4 flex flex-col relative gap-1">
-                                        <p className="font-bold text-base text-russian-dark-blue lowercase first-letter:capitalize">
+                                    <div className="bg-white p-4 flex flex-col relative gap-1 items-start">
+                                        <p className="font-bold text-base text-russian-dark-blue lowercase first-letter:capitalize group-hover:text-russian-red cursor-pointer">
                                             {lesson.title}
                                         </p>
 

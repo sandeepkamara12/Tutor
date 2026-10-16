@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import ContentArea from "./common/ContentArea"
 import Button from "./ui/Button";
 
@@ -91,6 +91,46 @@ const LearningPath = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const activeStep = steps[activeIndex];
 
+    // ---- mobile (below 640px): the top panel follows the scroll instead of the click ----
+    const panelRef = useRef(null); // the sticky panel
+    const mobileSteps = useRef([]); // one element per step in the mobile list
+    const [panelMin, setPanelMin] = useState(0); // tallest the panel has been, so it never changes height while scrolling
+
+    useLayoutEffect(() => {
+        if (!panelRef.current || !window.matchMedia("(max-width: 639px)").matches) return;
+        const h = panelRef.current.offsetHeight;
+        setPanelMin((m) => (h > m ? h : m));
+    }, [activeIndex]);
+
+    useEffect(() => {
+        const mobile = window.matchMedia("(max-width: 639px)");
+        let frame = 0;
+
+        const update = () => {
+            frame = 0;
+            if (!mobile.matches || !panelRef.current) return;
+            // the line just below the sticky panel (header 64px + panel height)
+            const line = panelRef.current.getBoundingClientRect().bottom;
+            let current = 0; // 0 = intro text, before the first step reaches the line
+            mobileSteps.current.forEach((el, i) => {
+                if (el && el.getBoundingClientRect().top <= line + 1) current = i + 1;
+            });
+            setActiveIndex(current);
+        };
+        const onScroll = () => {
+            if (!frame) frame = requestAnimationFrame(update);
+        };
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+        update();
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            window.removeEventListener("resize", onScroll);
+            if (frame) cancelAnimationFrame(frame);
+        };
+    }, []);
+
     return (
         <section
             id="learning-path"
@@ -99,7 +139,9 @@ const LearningPath = () => {
             <div className="custom-container flex flex-col lg:flex-row relative z-40 h-full items-center py-16 lg:py-24">
 
                 <div
-                    className="max-sm:sticky max-sm:top-20 max-sm:z-30 max-sm:bg-gray-50 flex flex-col items-center lg:items-start gap-3 lg:gap-6 text-center lg:text-start w-full lg:w-2/5 lg:pe-6 justify-center"
+                    ref={panelRef}
+                    style={{ "--panel-min": `${panelMin}px` }}
+                    className="max-sm:min-h-(--panel-min) max-sm:sticky max-sm:top-16 max-sm:z-30 max-sm:bg-gray-50 py-4 flex flex-col items-center lg:items-start gap-3 lg:gap-6 text-center lg:text-start w-full lg:w-2/5 lg:pe-6 justify-center"
                 >
                     <p
                         id="active-num"
@@ -120,19 +162,19 @@ const LearningPath = () => {
                     </div>
                 </div>
                 <div className="w-full lg:w-3/5 lg:ps-6 pt-10 lg:pt-0" id="timeline-scroll">
-                    {/* below sm (640px): everything centred, each content followed by a circle and a vertical bar */}
+                    {/* below sm (640px): everything centred, each content followed by a circle and a vertical bar.
+                    No click here: the sticky panel above changes while you scroll */}
                     <div className="flex flex-col items-center sm:hidden">
                         {steps.slice(1).map((step, index, list) => {
                             const stepIndex = index + 1;
                             const isActive = activeIndex === stepIndex;
                             return (
-                                <div key={step.tag + stepIndex} className="group flex flex-col items-center text-center">
-                                    <button
-                                        type="button"
-                                        onClick={() => setActiveIndex(stepIndex)}
-                                        aria-pressed={isActive}
-                                        className="cursor-pointer py-1.5 text-center"
-                                    >
+                                <div
+                                    key={step.tag + stepIndex}
+                                    ref={(el) => (mobileSteps.current[index] = el)}
+                                    className="group flex flex-col items-center text-center"
+                                >
+                                    <div className="py-1.5 text-center">
                                         <p className="text-lg font-bold text-russian-red">
                                             {String(stepIndex).padStart(2, "0")}
                                         </p>
@@ -140,19 +182,16 @@ const LearningPath = () => {
                                             {step.tag}
                                         </p>
                                         <p className="mt-1">{step.points.join(", ")}</p>
-                                    </button>
+                                    </div>
 
                                     {index !== list.length - 1 && (
                                         <>
-                                            <button
-                                                type="button"
-                                                onClick={() => setActiveIndex(stepIndex)}
-                                                aria-label={`Show step ${stepIndex}`}
-                                                aria-pressed={isActive}
+                                            <span
+                                                aria-hidden="true"
                                                 className="relative z-20 mt-2 flex size-4 items-center justify-center rounded-full bg-russian-dark-blue"
                                             >
                                                 <span className={`size-2 group-hover:bg-russian-red transition-all duration-500 rounded-full ${isActive ? "bg-russian-red" : "bg-white"}`} />
-                                            </button>
+                                            </span>
                                             <div className="h-12 border-l-2 border-dashed border-russian-red" />
                                         </>
                                     )}

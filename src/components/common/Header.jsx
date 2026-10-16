@@ -1,21 +1,85 @@
 
 import { useEffect, useState } from "react";
 import Button from "../ui/Button";
+import { useLocation } from "react-router-dom";
+
+const menuItems = [
+  { name: "Discover", href: "#discover" },
+  { name: "Learning Path", href: "#learning-path" },
+  { name: "Lessons", href: "#featured-lessons" },
+  { name: "Achievements", href: "#progress_achievements" },
+  { name: "About", href: "#about" },
+  { name: "Testimonials", href: "#testimonials" },
+  { name: "Contact", href: "#contact" },
+];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const menuItems = [
-    { name: "Discover", href: "#discover" },
-    { name: "Learning Path", href: "#learning-path" },
-    { name: "Lessons", href: "#featured-lessons" },
-    { name: "Achievements", href: "#progress_achievements" },
-    { name: "About", href: "#about" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact", href: "#contact" },
-  ];
+  const [activeHash, setActiveHash] = useState(
+    window.location.hash || "#discover"
+  );
 
+  // Detect the active section while scrolling
+  useEffect(() => {
+    let animationFrameId;
+
+    const updateActiveSection = () => {
+      cancelAnimationFrame(animationFrameId);
+
+      animationFrameId = requestAnimationFrame(() => {
+        const header = document.getElementById("site-header");
+        const headerHeight = header?.offsetHeight ?? 0;
+
+        // Adjust this value if you want the active item to change earlier.
+        const scrollPosition = window.scrollY + headerHeight;
+
+        let currentHash = "#discover";
+
+        menuItems.forEach(({ href }) => {
+          const section = document.querySelector(href);
+
+          if (section && section.offsetTop <= scrollPosition) {
+            currentHash = href;
+          }
+        });
+
+        // At the bottom of the page, activate the last section.
+        const isAtBottom =
+          window.innerHeight + window.scrollY >=
+          document.documentElement.scrollHeight - 2;
+
+        if (isAtBottom) {
+          const lastExistingItem = [...menuItems]
+            .reverse()
+            .find(({ href }) => document.querySelector(href));
+
+          if (lastExistingItem) {
+            currentHash = lastExistingItem.href;
+          }
+        }
+
+        setActiveHash(currentHash);
+      });
+    };
+
+    updateActiveSection();
+
+    window.addEventListener("scroll", updateActiveSection, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
+
+ 
   // Handle header scroll effect
   useEffect(() => {
     const SCROLL_THRESHOLD = 50;
@@ -68,9 +132,8 @@ const Header = () => {
     <header
       id="site-header"
       data-open={isOpen}
-      className={`group fixed z-50 w-full py-3 transition-all duration-300 ${
-        isScrolled ? "header-scrolled" : ""
-      } data-[open=true]:bg-white data-[open=true]:shadow-lg`}
+      className={`group fixed z-50 w-full py-0 lg:py-3 transition-all duration-300 ${isScrolled ? "header-scrolled" : ""
+        } data-[open=true]:bg-white data-[open=true]:shadow-lg`}
     >
       <nav className="custom-container lg:flex lg:items-center lg:justify-between">
         <div className="flex items-center justify-between">
@@ -130,18 +193,23 @@ const Header = () => {
         >
           <div className="min-h-0 overflow-hidden max-lg:invisible max-lg:group-data-[open=true]:visible max-lg:transition-[visibility] max-lg:duration-300 lg:overflow-visible lg:flex lg:grow lg:justify-between lg:items-center">
             <div className="flex flex-col gap-6 pt-5 pb-4 lg:flex-row lg:items-center lg:py-0 lg:ps-10">
-              {menuItems.map((item) => (
-                <a
-                  key={item.href}
-                  className="menu-item"
-                  href={item.href}
-                  onClick={handleMenuClick}
-                >
-                  {item.name}
-                </a>
-              ))}
+             {menuItems.map((item) => (
+  <a
+    key={item.href}
+    href={item.href}
+    className={`menu-item ${
+      activeHash === item.href ? "active" : ""
+    }`}
+    aria-current={activeHash === item.href ? "location" : undefined}
+    onClick={() => {
+      setActiveHash(item.href);
+      setIsOpen(false);
+    }}
+  >
+    {item.name}
+  </a>
+))}
             </div>
-
             <Button
               color="blue"
               label="Get free material"
