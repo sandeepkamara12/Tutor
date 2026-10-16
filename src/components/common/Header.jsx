@@ -29,11 +29,14 @@ const Header = () => {
       cancelAnimationFrame(animationFrameId);
 
       animationFrameId = requestAnimationFrame(() => {
-        const header = document.getElementById("site-header");
+        const header = document.querySelector("#site-header .inner-header");
+        // console.log(header?.offsetHeight, 'ji')
         const headerHeight = header?.offsetHeight ?? 0;
-
+        console.log(headerHeight, 'hi')
+        
         // Adjust this value if you want the active item to change earlier.
         const scrollPosition = window.scrollY + headerHeight;
+        console.log(scrollPosition, 'bi', window.scrollY, headerHeight)
 
         let currentHash = "#discover";
 
@@ -132,11 +135,11 @@ const Header = () => {
     <header
       id="site-header"
       data-open={isOpen}
-      className={`group fixed z-50 w-full py-0 lg:py-3 transition-all duration-300 ${isScrolled ? "header-scrolled" : ""
+      className={`group fixed z-50 w-full py-0 transition-all duration-300 ${isScrolled ? "header-scrolled" : ""
         } data-[open=true]:bg-white data-[open=true]:shadow-lg`}
     >
       <nav className="custom-container lg:flex lg:items-center lg:justify-between">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between inner-header lg:py-3">
           <a
             className="flex-none focus:outline-hidden focus:opacity-80 inline-block"
             href="#"
