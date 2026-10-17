@@ -33,7 +33,7 @@ const Header = () => {
         // console.log(header?.offsetHeight, 'ji')
         const headerHeight = header?.offsetHeight ?? 0;
         console.log(headerHeight, 'hi')
-        
+
         // Adjust this value if you want the active item to change earlier.
         const scrollPosition = window.scrollY + headerHeight;
         console.log(scrollPosition, 'bi', window.scrollY, headerHeight)
@@ -82,7 +82,7 @@ const Header = () => {
     };
   }, []);
 
- 
+
   // Handle header scroll effect
   useEffect(() => {
     const SCROLL_THRESHOLD = 50;
@@ -138,8 +138,17 @@ const Header = () => {
       className={`group fixed z-50 w-full py-0 transition-all duration-300 ${isScrolled ? "header-scrolled" : ""
         } data-[open=true]:bg-white data-[open=true]:shadow-lg`}
     >
-      <nav className="custom-container lg:flex lg:items-center lg:justify-between">
-        <div className="flex items-center justify-between inner-header lg:py-3">
+      <div
+        className={`fixed inset-x-0 h-[calc(100vh-64px)] z-10 bg-black/50 top-16 transition-opacity duration-300 lg:hidden ${isOpen
+            ? "visible opacity-100"
+            : "invisible opacity-0 pointer-events-none"
+          }`}
+        onClick={() => setIsOpen(false)}
+        aria-hidden="true"
+      />
+
+      <nav className="custom-container relative z-20 lg:flex lg:items-center lg:justify-between">
+        <div className="flex items-center justify-between inner-header lg:py-3 relative z-50">
           <a
             className="flex-none focus:outline-hidden focus:opacity-80 inline-block"
             href="#"
@@ -194,29 +203,37 @@ const Header = () => {
           id="primary-nav"
           className="grid grid-rows-[0fr] group-data-[open=true]:grid-rows-[1fr] transition-all duration-300 basis-full grow lg:flex lg:justify-between"
         >
-          <div className="min-h-0 overflow-hidden max-lg:invisible max-lg:group-data-[open=true]:visible max-lg:transition-[visibility] max-lg:duration-300 lg:overflow-visible lg:flex lg:grow lg:justify-between lg:items-center">
+          <div className="fixed z-30 left-0 top-16 lg:top-0
+  h-screen w-56 lg:w-auto lg:h-auto
+  bg-white px-4 lg:px-0
+  min-h-0 overflow-hidden
+  max-lg:-translate-x-full
+  max-lg:group-data-[open=true]:translate-x-0
+  max-lg:transition-transform max-lg:duration-300
+  lg:relative lg:overflow-visible
+  lg:flex lg:grow lg:justify-between lg:items-center">
             <div className="flex flex-col gap-6 pt-5 pb-4 lg:flex-row lg:items-center lg:py-0 lg:ps-10">
-             {menuItems.map((item) => (
-  <a
-    key={item.href}
-    href={item.href}
-    className={`menu-item ${
-      activeHash === item.href ? "active" : ""
-    }`}
-    aria-current={activeHash === item.href ? "location" : undefined}
-    onClick={() => {
-      setActiveHash(item.href);
-      setIsOpen(false);
-    }}
-  >
-    {item.name}
-  </a>
-))}
+              {menuItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`menu-item ${activeHash === item.href ? "active" : ""
+                    }`}
+                  aria-current={activeHash === item.href ? "location" : undefined}
+                  onClick={() => {
+                    setActiveHash(item.href);
+                    setIsOpen(false);
+                  }}
+                >
+                  {item.name}
+                </a>
+              ))}
             </div>
             <Button
               color="blue"
               label="Get free material"
               href="#"
+              classes="w-full lg:w-auto"
             />
           </div>
         </div>
