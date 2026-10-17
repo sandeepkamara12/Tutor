@@ -19,14 +19,14 @@ const About = () => {
               />
 
               <div className="absolute bottom-[52%] left-6 bg-white shadow py-2 px-3 border-x-2 border-russian-red">
-                <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
+                <p className="lg:text-sm text-russian-dark-blue leading-tight font-medium"><span
                     className="text-russian-red font-bold"
                   >Free</span> First Lesson</p>
               </div>
 
               <div
                 className="absolute bottom-24 left-3 xxs:-left-6 bg-white shadow py-2 px-3 border-x-2 border-russian-red">
-                <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
+                <p className="lg:text-sm text-russian-dark-blue leading-tight font-medium"><span
                     className="text-russian-red font-bold"
                   >Hindi</span> to Russian</p>
               </div>
@@ -34,7 +34,7 @@ const About = () => {
               <div
                 className="absolute top-[360px] xxs:top-[20%] left-[100px] xxs:-left-28 bg-white shadow py-2 px-3 border-x-2 border-russian-red"
               >
-                <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
+                <p className="lg:text-sm text-russian-dark-blue leading-tight font-medium"><span
                     className="text-russian-red font-bold"
                   >1.2k+</span> Happy Learners</p>
               </div>
@@ -54,17 +54,17 @@ const About = () => {
               <div
                 className="flex flex-col border-b sm:border-r sm:border-b-0 border-dashed border-gray-300 pb-6 sm:pb-0 sm:pr-4 max-sm:[&:nth-child(2n)]:border-r-0 text-center sm:text-start"
               >
-                <p className="font-bold text-15 text-russian-dark-blue">Experience</p>
-                <p className="text-sm">5+ years teaching Russian <span
-                    className="font-bold text-xs text-russian-red block">TORFL
+                <p className="font-bold lg:text-15 text-russian-dark-blue">Experience</p>
+                <p className="lg:text-sm">5+ years teaching Russian <span
+                    className="font-bold lg:text-xs text-russian-red block">TORFL
                     Certified</span></p>
               </div>
 
               <div
                 className="flex flex-col border-b sm:border-r sm:border-b-0 border-dashed border-gray-300 pb-6 sm:pb-0 sm:pr-4 max-sm:[&:nth-child(2n)]:border-r-0 text-center sm:text-start"
               >
-                <p className="font-bold text-15 text-russian-dark-blue">Availability</p>
-                <p className="text-sm">Online classes <br /> <span className="font-bold text-xs text-russian-red block">Mon–Fri,
+                <p className="font-bold lg:text-15 text-russian-dark-blue">Availability</p>
+                <p className="lg:text-sm">Online classes <br /> <span className="font-bold lg:text-xs text-russian-red block">Mon–Fri,
                     10 AM-7
                     PM</span>
                 </p>
@@ -73,7 +73,7 @@ const About = () => {
               <div
                 className="flex flex-col border-b sm:border-none border-dashed border-gray-300 pb-6 sm:pb-0 sm:pr-4 text-center sm:text-start"
               >
-                <p className="font-bold text-15 text-russian-dark-blue mb-1">Rating</p>
+                <p className="font-bold lg:text-15 text-russian-dark-blue mb-1">Rating</p>
                 <div className="flex gap-3 justify-center sm:justify-start">
                   <p className="text-15 font-bold text-russian-red leading-[18px]">4.9</p>
                   <div>
@@ -84,7 +84,7 @@ const About = () => {
                       <i className="fa-solid fa-star"></i>
                       <i className="fa-solid fa-star"></i>
                     </div>
-                    <p className="text-xs text-gray-600">Based on 320 reviews</p>
+                    <p className="text-sm lg:text-xs text-gray-600">Based on 320 reviews</p>
                   </div>
                 </div>
               </div>

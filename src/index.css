@@ -40,7 +40,7 @@
   }
 
   body {
-    @apply text-15 leading-relaxed font-body;
+    @apply text-base lg:text-15 leading-relaxed font-body;
   }
 
   .heading {

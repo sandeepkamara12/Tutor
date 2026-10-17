@@ -92,11 +92,11 @@ const Achievements = () => {
                                             : ""
                                         }`}
                                 >
-                                    <p className="font-bold text-15 text-russian-dark-blue">
+                                    <p className="font-bold text-russian-dark-blue">
                                         {item.title}
                                     </p>
 
-                                    <p className="text-sm">{item.description}</p>
+                                    <p className="lg:text-sm">{item.description}</p>
                                 </div>
                             ))}
                         </div>
@@ -123,11 +123,11 @@ const Achievements = () => {
                                             : ""
                                         }`}
                                 >
-                                    <p className="font-bold text-xl text-russian-dark-blue">
+                                    <p className="font-bold lg:text-xl text-russian-dark-blue">
                                         {item.value}
                                     </p>
 
-                                    <p className="text-sm">{item.label}</p>
+                                    <p className="lg:text-sm">{item.label}</p>
                                 </div>
                             ))}
                         </div>
@@ -143,7 +143,7 @@ const Achievements = () => {
                     <div className="grid xxs:grid-cols-2 lg:grid-cols-4 gap-4">
                         {progressItems.map((item) => (
                             <div key={item.id}>
-                                <div className="flex justify-between text-sm font-semibold text-russian-dark-blue mb-1.5">
+                                <div className="flex justify-between lg:text-sm font-semibold text-russian-dark-blue mb-1.5">
                                     <span>
                                         {item.id}. {item.title}
                                     </span>

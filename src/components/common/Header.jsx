@@ -139,7 +139,7 @@ const Header = () => {
         } data-[open=true]:bg-white data-[open=true]:shadow-lg`}
     >
       <div
-        className={`fixed inset-x-0 h-[calc(100vh-64px)] z-10 bg-black/50 top-16 transition-opacity duration-300 lg:hidden ${isOpen
+        className={`fixed inset-x-0 h-[calc(100vh-64px)] z-10 bg-russian-dark-blue/60 top-16 transition-opacity duration-300 lg:hidden ${isOpen
             ? "visible opacity-100"
             : "invisible opacity-0 pointer-events-none"
           }`}

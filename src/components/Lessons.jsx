@@ -171,13 +171,13 @@ const Lessons = () => {
 
                                     {/* Lesson details */}
                                     <div className="bg-white p-4 flex flex-col relative gap-1 items-start">
-                                        <p className="font-bold text-base text-russian-dark-blue lowercase first-letter:capitalize group-hover:text-russian-red cursor-pointer">
+                                        <p className="font-bold text-lg text-russian-dark-blue lowercase first-letter:capitalize group-hover:text-russian-red cursor-pointer">
                                             {lesson.title}
                                         </p>
 
                                         <p>{lesson.description}</p>
 
-                                        <div className="w-full grid grid-cols-2 items-center justify-between gap-1 text-sm text-gray-500 pt-2">
+                                        <div className="w-full grid grid-cols-2 items-center justify-between gap-1 text-gray-500 pt-2">
                                             <span className="flex items-center gap-1">
                                                 <i className="fa-solid fa-graduation-cap"></i>
                                                 <span>{lesson.level}</span>
@@ -238,7 +238,7 @@ const Lessons = () => {
                         </div>
 
                         {/* Quiz content */}
-                        <div className="flex flex-col gap-2 text-center">
+                        <div className="flex flex-col gap-2">
                             {finished ? (
                                 <>
                                     <p className="text-4xl font-bold text-russian-red mb-2">
@@ -257,7 +257,7 @@ const Lessons = () => {
                                         Q: {current.q}
                                     </p>
 
-                                    <p className="text-sm text-gray-600 mb-3">
+                                    <p className="text-gray-600 mb-3">
                                         <span className="text-russian-dark-blue font-semibold">
                                             Hint:
                                         </span>{" "}
@@ -286,7 +286,7 @@ const Lessons = () => {
                                                 onClick={() => handleAnswer(index)}
                                                 disabled={answered}
                                                 aria-pressed={isSelected}
-                                                className={`w-full py-2 px-4 border rounded font-medium text-15 text-start transition-colors duration-150 flex items-center justify-between gap-3 ${optionStyle} ${answered ? "cursor-default" : "cursor-pointer"
+                                                className={`w-full py-2 px-4 border rounded font-medium lg:text-15 text-start transition-colors duration-150 flex items-center justify-between gap-3 ${optionStyle} ${answered ? "cursor-default" : "cursor-pointer"
                                                     }`}
                                             >
                                                 <span>{option}</span>
