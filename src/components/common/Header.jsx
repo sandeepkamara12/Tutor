@@ -156,7 +156,7 @@ const Header = () => {
             type="button"
             id="nav-toggle"
             onClick={() => setIsOpen((prev) => !prev)}
-            className="lg:hidden size-9 flex justify-center items-center rounded-lg bg-white border border-gray-200 text-russian-dark-blue shadow-2xs hover:bg-gray-50 focus:outline-hidden"
+            className="lg:hidden size-9 flex justify-center items-center rounded-lg bg-russian-dark-blue border border-russian-dark-blue text-white shadow-2xs hover:bg-gray-50 focus:outline-hidden"
             aria-expanded={isOpen}
             aria-controls="primary-nav"
             aria-label={isOpen ? "Close navigation" : "Open navigation"}
