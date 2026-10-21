@@ -145,10 +145,10 @@ const Lessons = () => {
                             {lessons.map((lesson) => (
                                 <article
                                     key={lesson.id}
-                                    className="bg-white border border-gray-200 rounded flex flex-col overflow-hidden group"
+                                    className="bg-white border border-gray-200 rounded-md flex flex-col overflow-hidden group"
                                 >
                                     {/* Preview */}
-                                    <div className="relative h-36 flex items-center justify-center font-bold text-4xl text-white bg-russian-dark-blue">
+                                    <div className="relative h-56 flex items-center justify-center font-bold text-4xl text-white bg-russian-dark-blue">
                                         {lesson.preview}
 
                                         {lesson.badge && (

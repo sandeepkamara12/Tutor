@@ -205,7 +205,7 @@ const Header = () => {
         >
           <div className="fixed z-30 left-0 top-16 lg:top-0
   h-screen w-56 lg:w-auto lg:h-auto
-  bg-white px-4 lg:px-0
+  bg-white lg:bg-transparent px-4 lg:px-0
   min-h-0 overflow-hidden
   max-lg:-translate-x-full
   max-lg:group-data-[open=true]:translate-x-0
