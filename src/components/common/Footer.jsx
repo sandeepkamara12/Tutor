@@ -149,7 +149,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="py-3 border-t border-gray-300 text-center">
+            <div className="py-6 border-t border-gray-300 text-center">
                 <div className="custom-container flex flex-col md:flex-row items-center justify-between gap-2">
                     <p className="text-gray-600">© 2026 Russian in Hindi. All rights reserved.</p>
                     <ul className="flex flex-wrap justify-center gap-6 text-sm">
