@@ -173,10 +173,7 @@ html {
 }
 
 .testimonial-wrapper {
-  min-height: var(--height-testimonial);
-  max-width: 100%;
-  /* width: 48rem; */
-  margin-inline: auto;
+  @apply md:min-h-testimonial max-w-full mx-auto;
 }
 
 @keyframes about-anim {
