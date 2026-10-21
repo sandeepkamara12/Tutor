@@ -32,7 +32,7 @@ const About = () => {
               </div>
 
               <div
-                className="absolute bottom-30 xxs:top-[20%] left-0 xxs:-left-28 bg-white shadow py-2 px-3 border-x-2 border-russian-red"
+                className="absolute bottom-30 xxs:bottom-auto xxs:top-[20%] left-0 xxs:-left-28 bg-white shadow py-2 px-3 border-x-2 border-russian-red"
               >
                 <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
                     className="text-russian-red font-bold"
