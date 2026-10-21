@@ -140,16 +140,9 @@ const Footer = () => {
                                 <div className="flex gap-2">
                                     <span
                                         className="size-6 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 text-xs"><i
-                                            className="fa-solid fa-location-dot"
-                                        ></i></span>
-                                    <p className="text-gray-600">123 Tech Avenue, San Francisco, USA</p>
-                                </div>
-                                <div className="flex gap-2">
-                                    <span
-                                        className="size-6 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 text-xs"><i
                                             className="fa-solid fa-clock"
                                         ></i></span>
-                                    <p className="text-gray-600">Online classes · Mon–Fri<br />10 AM – 7 PM IST</p>
+                                    <p className="text-gray-600">Online classes <span class="block">Mon–Fri<br />10 AM – 7 PM IST</span></p>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +150,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="py-3 border-t border-gray-300 text-center">
-                <div className="custom-container flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="custom-container flex flex-col md:flex-row items-center justify-between gap-2">
                     <p className="text-gray-600">© 2026 Russian in Hindi. All rights reserved.</p>
                     <ul className="flex flex-wrap justify-center gap-6 text-sm">
                         <li><a
@@ -171,7 +164,7 @@ const Footer = () => {
                     </ul>
                     <a
                         href="#"
-                        className="size-6 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 text-xs hover:bg-russian-red hover:text-white transition-all"
+                        className="fixed md:relative right-4 md:right-auto bottom-0 md:bottom-auto size-6 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 text-xs hover:bg-russian-red hover:text-white transition-all"
                     ><i className="fa-solid fa-arrow-up"></i></a>
                 </div>
             </div>
