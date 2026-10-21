@@ -67,7 +67,7 @@ const Youtube = () => {
                                     aria-label="Play video"
                                     className="absolute inset-0 flex items-center justify-center cursor-pointer group"
                                 >
-                                    <span className="size-20 rounded-full bg-russian-red text-white text-2xl flex items-center justify-center shadow-lg transition-all group-hover:scale-110">
+                                    <span className="size-16 rounded-full bg-russian-red text-white text-2xl flex items-center justify-center shadow-lg transition-all group-hover:scale-110">
                                         <i className="fa-solid fa-play ml-1"></i>
                                     </span>
                                 </button>

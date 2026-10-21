@@ -74,7 +74,7 @@ const Achievements = () => {
                     <div className="flex flex-col gap-6">
                         <div className="flex items-center lg:gap-3 justify-center lg:justify-start flex-col lg:flex-row">
                             <p className="font-bold text-lg text-russian-dark-blue">Achievement Badges</p>
-                            <span className="text-xs font-medium text-gray-500">6 of 6 earned</span>
+                            <span className="text-sm font-medium text-gray-500">6 of 6 earned</span>
                         </div>
 
                         <div className="grid grid-cols-1 sd:grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center sd:max-sm:[&>*:nth-child(odd)]:text-end sd:max-sm:[&>*:nth-child(even)]:text-start lg:text-start">
@@ -106,7 +106,10 @@ const Achievements = () => {
 
                 <div className="flex flex-col gap-6 mt-10">
                     <div className="flex flex-col gap-6">
-                        <p className="font-bold text-lg text-russian-dark-blue text-center lg:text-start">Your Activities</p>
+                         <div className="flex items-center lg:gap-3 justify-center lg:justify-start flex-col lg:flex-row">
+                            <p className="font-bold text-lg text-russian-dark-blue">Your Activities</p>
+                            <span className="text-sm font-medium text-gray-500">Last 30 days</span>
+                        </div>
 
                         <div className="grid grid-cols-1 sd:grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center sd:max-sm:[&>*:nth-child(odd)]:text-end sd:max-sm:[&>*:nth-child(even)]:text-start lg:text-start">
                             {stats.map((item, index) => (
@@ -137,7 +140,7 @@ const Achievements = () => {
                 <div className="flex flex-col gap-4 mt-10">
                     <div className="flex items-center gap-3">
                         <p className="font-bold text-lg text-russian-dark-blue">Your Progress</p>
-                        <span className="text-xs font-bold text-russian-red">Level 1</span>
+                        <span className="text-sm font-bold text-russian-red">Level 1</span>
                     </div>
 
                     <div className="grid xxs:grid-cols-2 lg:grid-cols-4 gap-4">
