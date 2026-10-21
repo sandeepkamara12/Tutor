@@ -18,23 +18,23 @@ const About = () => {
                 className="block mx-auto h-125 lg:h-150"
               />
 
-              <div className="absolute bottom-[52%] left-6 bg-white shadow py-2 px-3 border-x-2 border-russian-red">
-                <p className="lg:text-sm text-russian-dark-blue leading-tight font-medium"><span
+              <div className="absolute bottom-50 xxs:bottom-[52%] left-0 xxs:left-6 bg-white shadow py-2 px-3 border-x-2 border-russian-red">
+                <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
                     className="text-russian-red font-bold"
                   >Free</span> First Lesson</p>
               </div>
 
               <div
-                className="absolute bottom-24 left-3 xxs:-left-6 bg-white shadow py-2 px-3 border-x-2 border-russian-red">
-                <p className="lg:text-sm text-russian-dark-blue leading-tight font-medium"><span
+                className="absolute bottom-40 xxs:bottom-24 left-0 xxs:-left-6 bg-white shadow py-2 px-3 border-x-2 border-russian-red">
+                <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
                     className="text-russian-red font-bold"
                   >Hindi</span> to Russian</p>
               </div>
 
               <div
-                className="absolute top-[360px] xxs:top-[20%] left-[100px] xxs:-left-28 bg-white shadow py-2 px-3 border-x-2 border-russian-red"
+                className="absolute bottom-30 xxs:top-[20%] left-0 xxs:-left-28 bg-white shadow py-2 px-3 border-x-2 border-russian-red"
               >
-                <p className="lg:text-sm text-russian-dark-blue leading-tight font-medium"><span
+                <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
                     className="text-russian-red font-bold"
                   >1.2k+</span> Happy Learners</p>
               </div>
