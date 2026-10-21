@@ -164,7 +164,7 @@ const Footer = () => {
                     </ul>
                     <a
                         href="#"
-                        className="fixed md:relative right-4 md:right-auto bottom-0 md:bottom-auto size-6 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 text-xs hover:bg-russian-red hover:text-white transition-all"
+                        className="fixed md:relative right-4 md:right-auto bottom-4 md:bottom-auto size-8 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 text-xs hover:bg-russian-red hover:text-white transition-all"
                     ><i className="fa-solid fa-arrow-up"></i></a>
                 </div>
             </div>
