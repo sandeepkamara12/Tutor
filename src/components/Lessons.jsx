@@ -30,7 +30,7 @@ const Lessons = () => {
             duration: "15 min",
             learners: "540",
             rating: "4.9",
-            price: "Members",
+            price: "Free",
             instructor: "I",
             href: "#",
         },
@@ -200,7 +200,7 @@ const Lessons = () => {
                                     </div>
 
                                     {/* Footer */}
-                                    <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 text-sm text-russian-dark-blue">
+                                    <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 text-sm text-green-700">
                                         <span className="font-semibold">{lesson.price}</span>
 
                                         <Button
