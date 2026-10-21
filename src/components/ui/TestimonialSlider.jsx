@@ -342,8 +342,8 @@ export default function TestimonialSlider({
                 }}
                 {...cardProps}
               >
-                <div className={cx('bg-gray-400 rounded relative overflow-hidden z-50', classNames.image)}>
-                  <img src={t.img} alt={t.name} className="w-full h-full object-cover" />
+                <div className={cx('bg-russian-dark-blue/10 rounded relative overflow-hidden z-50 h-72 lg:h-auto', classNames.image)}>
+                  <img src={t.img} alt={t.name} className="w-full h-full object-contain lg:object-cover" />
                 </div>
 
                 <div
