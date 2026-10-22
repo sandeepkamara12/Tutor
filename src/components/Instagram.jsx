@@ -184,7 +184,7 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
         </div>
 
         {/* masonry: the browser fills the columns, every image is shown on every screen size */}
-        <div ref={gridRef} className="relative columns-2 md:columns-3 lg:columns-5 gap-2 md:gap-3 lg:gap-4">
+        <div ref={gridRef} className="relative columns-3 md:columns-3 lg:columns-5 gap-2 md:gap-3 lg:gap-4">
           {tiles.map((post, i) => (
             <a
               key={`${post.label}-${i}`}
