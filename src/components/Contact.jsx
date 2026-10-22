@@ -40,7 +40,7 @@ const empty = {
 };
 
 const inputClass =
-    'w-full rounded border border-gray-200 bg-white px-4 py-2.5 placeholder:text-gray-400 text-gray-600 focus:outline-hidden focus:border-russian-blue resize-none';
+    'w-full rounded border border-gray-200 bg-white min-h-11 px-4 py-2 placeholder:text-gray-400 text-gray-600 focus:outline-hidden focus:border-russian-blue resize-none';
 const labelClass = 'font-bold text-russian-dark-blue text-sm';
 
 function Field({ label, error, optional, children }) {

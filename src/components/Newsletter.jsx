@@ -14,13 +14,13 @@ const Newsletter = () => {
           <p>Get one new word, one grammar tip and one free practice quiz in your inbox every
             week. No spam, unsubscribe anytime.</p>
           <form
-            className="flex flex-col sd:flex-row gap-3 max-w-xl w-full mx-auto"
+            className="flex flex-wrap flex-col sd:flex-row gap-3 max-w-xl w-full mx-auto"
           >
             <input
               type="email"
               required
               placeholder="Enter your email"
-              className="flex-1 rounded p-3 bg-white text-black focus:outline-hidden focus:ring-2 focus:ring-russian-red border border-gray-200"
+              className='flex-1 rounded border border-gray-200 bg-white px-4 py-2 placeholder:text-gray-400 text-gray-600 focus:ring-2 focus:ring-russian-red focus:outline-hidden focus:border-russian-blue resize-none'
             />
             <button
               type="submit"
