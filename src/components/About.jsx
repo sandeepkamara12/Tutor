@@ -75,7 +75,7 @@ const About = () => {
               >
                 <p className="font-bold lg:text-15 text-russian-dark-blue mb-1">Rating</p>
                 <div className="flex gap-3 justify-center sm:justify-start">
-                  <p className="text-15 font-bold text-russian-red leading-[18px]">4.9</p>
+                  <p className="text-15 font-bold text-russian-red leading-4.5">4.9</p>
                   <div>
                     <div className="flex gap-0.5 text-yellow-400 text-[10px] mb-0.5">
                       <i className="fa-solid fa-star"></i>

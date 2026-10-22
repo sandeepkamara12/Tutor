@@ -77,28 +77,23 @@ const Achievements = () => {
                             <span className="text-sm font-medium text-gray-500">6 of 6 earned</span>
                         </div>
 
-                        <div className="grid grid-cols-1 sd:grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center sd:max-sm:[&>*:nth-child(odd)]:text-end sd:max-sm:[&>*:nth-child(even)]:text-start lg:text-start">
-                            {achievements.map((item, index) => (
-                                <div
-                                    key={item.id}
-                                    className={`flex flex-col ${index !== achievements.length - 1
-                                        ? "border-b pb-4 sd:border-b-0 sd:border-r border-dashed border-gray-300 sd:pr-4"
-                                        : "sd:pr-4"
-                                        } ${index === 1 || index === 3
-                                            ? "min-sd:max-sm:border-r-0"
-                                            : ""
-                                        } ${index === 2
-                                            ? "min-sm:max-lg:border-r-0"
-                                            : ""
-                                        }`}
-                                >
-                                    <p className="font-bold text-russian-dark-blue">
-                                        {item.title}
-                                    </p>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center lg:text-start max-sm:[&>*:nth-child(odd)]:text-end max-sm:[&>*:nth-child(even)]:text-start">
+                            {achievements.map((item, index) => {
+                                const total = achievements.length;
+                                const lastInRow = (columns) => (index + 1) % columns === 0 || index === total - 1;
 
-                                    <p className="lg:text-sm">{item.description}</p>
-                                </div>
-                            ))}
+                                return (
+                                    <div
+                                        key={item.id}
+                                        className={`flex flex-col border-r border-dashed border-gray-300 pr-4 ${lastInRow(2) ? "max-sm:border-r-0" : ""
+                                            } ${lastInRow(3) ? "sm:max-lg:border-r-0" : ""} ${lastInRow(6) ? "lg:border-r-0" : ""}`}
+                                    >
+                                        <p className="font-bold text-russian-dark-blue">{item.title}</p>
+
+                                        <p className="lg:text-sm">{item.description}</p>
+                                    </div>
+                                );
+                            })}
                         </div>
 
                     </div>
@@ -106,7 +101,7 @@ const Achievements = () => {
 
                 <div className="flex flex-col gap-6 mt-10">
                     <div className="flex flex-col gap-6">
-                         <div className="flex items-center lg:gap-3 justify-center lg:justify-start flex-col lg:flex-row">
+                        <div className="flex items-center lg:gap-3 justify-center lg:justify-start flex-col lg:flex-row">
                             <p className="font-bold text-lg text-russian-dark-blue">Your Activities</p>
                             <span className="text-sm font-medium text-gray-500">Last 30 days</span>
                         </div>
