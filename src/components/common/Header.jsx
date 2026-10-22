@@ -124,7 +124,7 @@ const Header = () => {
     <header
       id="site-header"
       data-open={isOpen}
-      className={`group fixed z-50 w-full py-0 transition-all duration-300 ${isScrolled ? "header-scrolled" : ""
+      className={`group fixed z-50 w-full py-3 lg:py-0 transition-all duration-300 ${isScrolled ? "header-scrolled" : ""
         } data-[open=true]:bg-white data-[open=true]:shadow-lg`}
     >
       <div
