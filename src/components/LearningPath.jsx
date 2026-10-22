@@ -136,12 +136,12 @@ const LearningPath = () => {
             id="learning-path"
             className="w-full flex flex-col relative overflow-clip bg-gray-50"
         >
-            <div className="custom-container flex flex-col lg:flex-row relative z-40 h-full items-center py-16 lg:py-24">
+            <div className="custom-container flex flex-col lg:flex-row relative z-40 h-full items-center lg:py-24">
 
                 <div
                     ref={panelRef}
                     style={{ "--panel-min": `${panelMin}px` }}
-                    className="max-sm:min-h-(--panel-min) max-sm:sticky max-sm:z-30 max-sm:bg-gray-500 pb-4 sm:pb-0 flex flex-col items-center lg:items-start gap-3 lg:gap-6 text-center lg:text-start w-full lg:w-2/5 lg:pe-6 justify-center"
+                    className="max-sm:min-h-(--panel-min) max-sm:sticky max-sm:top-16 max-sm:z-30 max-sm:bg-gray-500 pt-16 pb-4 sm:py-0 flex flex-col items-center lg:items-start gap-3 lg:gap-6 text-center lg:text-start w-full lg:w-2/5 lg:pe-6 justify-end"
                 >
                     <p
                         id="active-num"
