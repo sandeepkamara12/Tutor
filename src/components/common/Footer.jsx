@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Footer = () => {
     return (
         <footer
@@ -7,11 +5,6 @@ const Footer = () => {
             className="z-40 relative border-t-4 border-russian-red text-center sm:text-start bg-gray-50"
         >
             <div className="custom-container relative z-40 pt-16 pb-8">
-                {/* <img
-        src="./assets/img/cathedral-of-vasily-blessed.png"
-        alt="cathedral of vasily blessed"
-        className="grayscale absolute bottom-0 w-56 rotate-270"
-      /> */}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
                     <div className="flex flex-col gap-4 items-center sm:items-start">
@@ -116,8 +109,8 @@ const Footer = () => {
 
                     <div className="flex flex-col gap-4">
                         <p className="text-base font-bold text-russian-dark-blue">Get in touch</p>
-                        <div className="flex flex-col gap-6">
-                            <div className="flex flex-wrap flex-col gap-2 items-center sm:items-start">
+                        <div className="flex flex-col gap-6 max-w-2xl mx-auto">
+                            <div className="flex flex-wrap flex-col gap-2 text-start">
                                 <a
                                     href="mailto:hello@example.com"
                                     className="flex gap-2 group"
@@ -142,7 +135,7 @@ const Footer = () => {
                                         className="size-6 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 text-xs"><i
                                             className="fa-solid fa-clock"
                                         ></i></span>
-                                    <p className="text-gray-600">Online classes <span class="block">Mon–Fri<br />10 AM – 7 PM IST</span></p>
+                                    <p className="text-gray-600">Online classes <span class="block text-sm font-medium">Mon–Fri, 10AM – 7PM IST</span></p>
                                 </div>
                             </div>
                         </div>
