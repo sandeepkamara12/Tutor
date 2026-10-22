@@ -19,12 +19,12 @@ const Footer = () => {
     return (
         <footer
             id="site-footer"
-            className="z-40 relative border-t-4 border-russian-red text-center sm:text-start bg-gray-50"
+            className="z-40 relative border-t-4 border-russian-red bg-gray-50"
         >
             <div className="custom-container relative z-40 pt-16 pb-8">
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div className="grid sd:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
 
-                    <div className="flex flex-col gap-4 items-center sm:items-start">
+                    <div className="col-span-2 sm:col-span-3 lg:col-span-1 flex flex-col gap-4">
                         <a href="#">
                             <img
                                 className="w-16 h-auto"
@@ -35,7 +35,7 @@ const Footer = () => {
                         <p className="">Learn Russian in Hindi, step by step. Simple lessons, friendly teaching and daily practice to
                             help
                             you read, understand and speak Russian with confidence.</p>
-                        <div className="flex gap-3 justify-center sm:justify-start">
+                        <div className="flex gap-3">
                             <a
                                 href="#"
                                 aria-label="Instagram"
@@ -124,9 +124,9 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex flex-col gap-4">
+                    <div className="col-span-2 sm:col-span-1 flex flex-col gap-4">
                         <p className="text-base font-bold text-russian-dark-blue">Get in touch</p>
-                        <div className="flex flex-col gap-6 max-w-2xl md:max-w-none mx-auto sm:mx-0">
+                        <div className="flex flex-col gap-6">
                             <div className="flex flex-wrap flex-col gap-2 text-start">
                                 <a
                                     href="mailto:hello@example.com"

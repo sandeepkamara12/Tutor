@@ -1,5 +1,11 @@
 import { useState } from 'react';
 
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const INTERESTS = [
@@ -206,6 +212,7 @@ export default function ContactForm() {
                                 <input name="phone" type="tel" value={form.phone} onChange={change} placeholder="+xx-xxxx-xxx-xxx" autoComplete="tel" className={inputClass} />
                             </Field>
                             <Field label="Russian level" optional error={errors.level}>
+                                {/* <Select options={options} /> */}
                                 <select name="level" value={form.level} onChange={change} className={inputClass}>
                                     <option value="">Choose level</option>
                                     {LEVELS.map((o) => (
@@ -236,15 +243,15 @@ export default function ContactForm() {
                             </label>
                         </div>
 
-                        <label className="flex items-start gap-2 text-sm">
+                        <label className="flex items-start gap-2 text-sm text-gray-600">
                             <input type="checkbox" name="consent" checked={form.consent} onChange={change} className="mt-1" />
                             <span>
-                                I agree to the <a href="#" className="text-russian-blue underline">Privacy Policy</a> and that my details are used to reply to me.
+                                I agree to the <a href="#" className="text-russian-dark-blue hover:text-russian-red">Privacy Policy</a> and that my details are used to reply to me.
                             </span>
                         </label>
                         {errors.consent && <span className="text-sm text-russian-red -mt-2">{errors.consent}</span>}
 
-                        <label className="flex items-start gap-2 text-sm">
+                        <label className="flex items-start gap-2 text-sm text-gray-600">
                             <input type="checkbox" name="newsletter" checked={form.newsletter} onChange={change} className="mt-1" />
                             <span>Send me free Russian tips and study material by email.</span>
                         </label>
@@ -254,7 +261,7 @@ export default function ContactForm() {
                         </button>
 
                         {serverMessage && (
-                            <p role="status" className={status === 'success' ? 'text-russian-dark-blue font-medium text-sm' : 'text-russian-red'}>
+                            <p role="status" className={`font-medium text-sm ${status === 'success' ? 'text-green-700' : 'text-russian-red'}`}>
                                 {serverMessage}
                             </p>
                         )}
