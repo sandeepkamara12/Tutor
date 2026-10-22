@@ -74,7 +74,7 @@ const Achievements = () => {
                     <div className="flex flex-col gap-6">
                         <div className="flex items-center sm:gap-3 justify-center sm:justify-start flex-col sm:flex-row">
                             <p className="font-bold text-lg text-russian-dark-blue">Achievement Badges</p>
-                            <span className="text-sm font-medium text-gray-500">6 of 6 earned</span>
+                            <span className="text-sm font-bold text-green-700">6 of 6 earned</span>
                         </div>
 
                         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center sm:text-start max-sm:[&>*:nth-child(odd)]:text-end max-sm:[&>*:nth-child(even)]:text-start">
@@ -103,7 +103,7 @@ const Achievements = () => {
                     <div className="flex flex-col gap-6">
                         <div className="flex items-center sm:gap-3 justify-center sm:justify-start flex-col sm:flex-row">
                             <p className="font-bold text-lg text-russian-dark-blue">Your Activities</p>
-                            <span className="text-sm font-medium text-gray-500">Last 30 days</span>
+                            <span className="text-sm font-bold text-green-700">Last 30 days</span>
                         </div>
 
                         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center sm:text-start max-sm:[&>*:nth-child(odd)]:text-end max-sm:[&>*:nth-child(even)]:text-start">
@@ -131,7 +131,7 @@ const Achievements = () => {
                 <div className="flex flex-col gap-4 mt-10">
                     <div className="flex items-center sm:gap-3 justify-center sm:justify-start flex-col sm:flex-row">
                         <p className="font-bold text-lg text-russian-dark-blue">Your Progress</p>
-                        <span className="text-sm font-bold text-russian-red">Level 1</span>
+                        <span className="text-sm font-bold text-green-700">Level 1</span>
                     </div>
 
                     <div className="grid xxs:grid-cols-2 lg:grid-cols-4 gap-4">

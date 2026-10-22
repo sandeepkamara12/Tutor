@@ -55,7 +55,7 @@ const About = () => {
                 className="flex flex-col border-b sm:border-r sm:border-b-0 border-dashed border-gray-300 pb-6 sm:pb-0 sm:pr-4 max-sm:[&:nth-child(2n)]:border-r-0 text-center sm:text-start"
               >
                 <p className="font-bold lg:text-15 text-russian-dark-blue">Experience</p>
-                <p className="lg:text-sm">5+ years teaching Russian <span
+                <p className="lg:text-sm leading-5">5+ years teaching Russian <span
                     className="font-bold lg:text-xs text-russian-red block">TORFL
                     Certified</span></p>
               </div>
@@ -64,7 +64,7 @@ const About = () => {
                 className="flex flex-col border-b sm:border-r sm:border-b-0 border-dashed border-gray-300 pb-6 sm:pb-0 sm:pr-4 max-sm:[&:nth-child(2n)]:border-r-0 text-center sm:text-start"
               >
                 <p className="font-bold lg:text-15 text-russian-dark-blue">Availability</p>
-                <p className="lg:text-sm">Online classes <br /> <span className="font-bold lg:text-xs text-russian-red block">Mon–Fri,
+                <p className="lg:text-sm leading-5">Online classes <br /> <span className="font-bold lg:text-xs text-russian-red block">Mon–Fri,
                     10 AM-7
                     PM</span>
                 </p>
@@ -84,7 +84,7 @@ const About = () => {
                       <i className="fa-solid fa-star"></i>
                       <i className="fa-solid fa-star"></i>
                     </div>
-                    <p className="text-sm lg:text-xs text-gray-600">Based on 320 reviews</p>
+                    <p className="text-sm lg:text-xs leading-4! text-gray-600">Based on 320 reviews</p>
                   </div>
                 </div>
               </div>
