@@ -1,27 +1,89 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const SHOW_TOP_AFTER = 300; // px scrolled before the "back to top" arrow appears
+const getHeaderHeight = () => document.getElementById("site-header")?.offsetHeight ?? 0;
+
+// every block the "down" arrow can jump to, in page order
+const getTargets = () => [...document.querySelectorAll("section[id], footer[id]")];
+
+// the first section that starts below the fixed header
+const getNextTarget = () => {
+  const line = getHeaderHeight() + 8;
+  return getTargets().find((el) => el.getBoundingClientRect().top > line);
+};
+
+const smooth = () =>
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 
 const Footer = () => {
       const [showTop, setShowTop] = useState(false);
+      const [atEnd, setAtEnd] = useState(false); // nothing left to scroll to
+  const [scrolling, setScrolling] = useState(false); // page is moving right now
+  const stopTimer = useRef(null);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      setShowTop(window.scrollY > SHOW_TOP_AFTER);
+
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      setAtEnd(atBottom || !getNextTarget());
+    };
+
+    const onScroll = () => {
+      // disabled while the page is scrolling (by the mouse, touch or by our own click)
+      setScrolling(true);
+      clearTimeout(stopTimer.current);
+      stopTimer.current = setTimeout(() => setScrolling(false), 150);
+
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      clearTimeout(stopTimer.current);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
     // show the scroll-to-top button only after scrolling down a bit
-    useEffect(() => {
-        const SHOW_AFTER = 300; // px
-        const onScroll = () => setShowTop(window.scrollY > SHOW_AFTER);
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
+    // useEffect(() => {
+    //     const SHOW_AFTER = 300; // px
+    //     const onScroll = () => setShowTop(window.scrollY > SHOW_AFTER);
+    //     onScroll();
+    //     window.addEventListener("scroll", onScroll, { passive: true });
+    //     return () => window.removeEventListener("scroll", onScroll);
+    // }, []);
 
     const scrollToTop = (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
+
+      const scrollToNext = () => {
+    if (scrolling) return;
+    const next = getNextTarget();
+    if (!next) return;
+    const top = next.getBoundingClientRect().top + window.scrollY - getHeaderHeight();
+    window.scrollTo({ top: Math.max(top, 0), behavior: smooth() });
+  };
+
+   const base =
+    "fixed right-4 z-50 size-8 bg-russian-dark-blue flex items-center justify-center rounded-full text-white text-xs hover:bg-russian-red hover:text-white transition-all duration-300";
+
+
     return (
         <footer
             id="site-footer"
             className="z-40 relative border-t-4 border-russian-red bg-gray-50"
         >
-            <div className="custom-container relative z-40 pt-16 pb-8">
+            <div className="custom-container relative z-40 py-10">
                 <div className="grid sd:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
 
                     <div className="col-span-2 sm:col-span-3 lg:col-span-1 flex flex-col gap-4">
@@ -172,6 +234,22 @@ const Footer = () => {
                             className="text-gray-600 hover:text-russian-red transition-all"
                         >Terms of Use</a></li>
                     </ul>
+                    <button
+        type="button"
+        onClick={scrollToNext}
+        disabled={atEnd || scrolling}
+        aria-label="Scroll to next section"
+        tabIndex={atEnd ? -1 : 0}
+        className={`${base} ${showTop ? "bottom-14" : "bottom-4"} ${
+          atEnd
+            ? "opacity-0 translate-y-4 pointer-events-none"
+            : scrolling
+              ? "opacity-50 cursor-not-allowed"
+              : "opacity-100 translate-y-0 cursor-pointer"
+        }`}
+      >
+        <i className="fa-solid fa-arrow-down"></i>
+      </button>
                     <a
                         href="#"
                         onClick={scrollToTop}

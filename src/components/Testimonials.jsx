@@ -67,7 +67,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section id="testimonials">
-      <div className="custom-container relative z-40 py-16 lg:py-24 flex justify-center flex-col">
+      <div className="custom-container relative z-40 py-16 lg:py-20 flex justify-center flex-col">
         {/* heading */}
         <div className="flex flex-col lg:w-1/2 mx-auto gap-6 items-center text-center mb-10">
           <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">
@@ -80,11 +80,21 @@ export default function Testimonials() {
             Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch
             without subtitles, and conversations you never thought you'd have. This is where that journey begins.
           </p>
+        {/* buttons */}
+        <div className="flex flex-wrap flex-col sd:flex-row sd:items-center justify-center gap-2 sd:gap-4 w-full sd:w-auto">
+          <button className="button button-russian-blue">
+            <span>Start Learning Free</span>
+          </button>
+          <button className="button button-russian-red">
+            <span>See the Learning Path</span>
+          </button>
         </div>
+        </div>
+
 
         <TestimonialSlider
           items={testimonials}
-          slidesPerView={{ desktop: 7, tablet: 5, mobileLg: 2, mobile: 1 }}
+          slidesPerView={{ desktop: 9, tablet: 5, mobileLg: 2, mobile: 1 }}
           // expandContent={false}
           effect="slide"
           speed={450}
@@ -97,15 +107,6 @@ export default function Testimonials() {
           classNames={{ arrow: 'max-md:hidden' }}
         />
 
-        {/* buttons */}
-        <div className="flex flex-wrap flex-col sd:flex-row sd:items-center justify-center gap-2 sd:gap-4 w-full sd:w-auto">
-          <button className="button button-russian-blue">
-            <span>Start Learning Free</span>
-          </button>
-          <button className="button button-russian-red">
-            <span>See the Learning Path</span>
-          </button>
-        </div>
       </div>
     </section>
   );

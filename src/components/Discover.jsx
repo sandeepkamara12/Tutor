@@ -51,34 +51,34 @@ const Discover = () => {
             borderColor: "border-russian-dark-blue",
             badgeColor: "bg-russian-dark-blue",
         },
-        {
-            id: 7,
-            title: "Deeper Connections",
-            description:
-                "Talk to native speakers, make friends & explore heritage roots.",
-            borderColor: "border-russian-red",
-            badgeColor: "bg-russian-red",
-        },
-        {
-            id: 8,
-            title: "A Skill That Opens Doors",
-            description:
-                "Stand out at work, while traveling, or anywhere Russian is spoken.",
-            borderColor: "border-russian-dark-blue",
-            badgeColor: "bg-russian-dark-blue",
-        },
-        {
-            id: 9,
-            title: "Deeper Connections",
-            description:
-                "Talk to native speakers, make friends & explore heritage roots.",
-            borderColor: "border-russian-red",
-            badgeColor: "bg-russian-red",
-        },
+        // {
+        //     id: 7,
+        //     title: "Deeper Connections",
+        //     description:
+        //         "Talk to native speakers, make friends & explore heritage roots.",
+        //     borderColor: "border-russian-red",
+        //     badgeColor: "bg-russian-red",
+        // },
+        // {
+        //     id: 8,
+        //     title: "A Skill That Opens Doors",
+        //     description:
+        //         "Stand out at work, while traveling, or anywhere Russian is spoken.",
+        //     borderColor: "border-russian-dark-blue",
+        //     badgeColor: "bg-russian-dark-blue",
+        // },
+        // {
+        //     id: 9,
+        //     title: "Deeper Connections",
+        //     description:
+        //         "Talk to native speakers, make friends & explore heritage roots.",
+        //     borderColor: "border-russian-red",
+        //     badgeColor: "bg-russian-red",
+        // },
     ];
     return (
         <section
-            className="z-40 relative py-16 lg:py-24 flex xl:justify-center flex-col"
+            className="z-40 relative py-16 lg:py-20 flex xl:justify-center flex-col"
             id="discover"
         >
             <div

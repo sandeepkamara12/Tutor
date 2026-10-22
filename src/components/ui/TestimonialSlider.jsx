@@ -7,7 +7,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
  * See README.md for the full props list.
  */
 
-export const MAX_SLIDES_PER_VIEW = 7;
+export const MAX_SLIDES_PER_VIEW = 9;
 const DEFAULT_SLIDES = { desktop: 5, tablet: 5, mobileLg: 2, mobile: 1 };
 const DEFAULT_BREAKPOINTS = { mobileLg: 575, tablet: 768, desktop: 1024 }; // min-width in px
 const EASE = 'cubic-bezier(0.4, 0, 0.2, 1)';

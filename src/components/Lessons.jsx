@@ -121,7 +121,7 @@ const Lessons = () => {
 
     return (
         <section id="featured-lessons">
-            <div className="custom-container relative z-40 py-16 lg:py-24">
+            <div className="custom-container relative z-40 py-16 lg:py-20">
                 <div className="grid lg:grid-cols-[1fr_360px] gap-6 items-end">
                     <div>
                         <div className="flex flex-col items-center lg:items-start gap-6 text-center lg:text-start xl:w-2/3">

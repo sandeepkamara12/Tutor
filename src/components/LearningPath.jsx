@@ -136,7 +136,7 @@ const LearningPath = () => {
             id="learning-path"
             className="w-full flex flex-col relative overflow-clip bg-gray-50"
         >
-            <div className="custom-container flex flex-col lg:flex-row relative z-40 h-full items-center sm:py-16 lg:py-24">
+            <div className="custom-container flex flex-col lg:flex-row relative z-40 h-full items-center sm:py-16 lg:py-20">
 
                 <div
                     ref={panelRef}

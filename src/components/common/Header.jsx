@@ -8,12 +8,15 @@ const Header = () => {
   const clickLock = useRef(null); // while a clicked link is smooth-scrolling, the scroll spy waits
 
   const menuItems = [
+    { name: "Why", href: "#why" },
     { name: "Discover", href: "#discover" },
     { name: "Learning Path", href: "#learning-path" },
     { name: "Lessons", href: "#featured-lessons" },
     { name: "Achievements", href: "#progress_achievements" },
     { name: "About", href: "#about" },
+    { name: "Video", href: "#video" },
     { name: "Testimonials", href: "#testimonials" },
+    { name: "Instagram", href: "#instagram" },
     { name: "Contact", href: "#contact" },
   ];
 

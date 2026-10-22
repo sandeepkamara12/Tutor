@@ -53,9 +53,9 @@ const Achievements = () => {
     return (
         <section
             id="progress_achievements"
-            className="z-40 relative w-full relative overflow-hidden flex items-center bg-gray-50"
+            className="z-40 relative w-full overflow-hidden flex items-center bg-gray-50"
         >
-            <div className="custom-container relative z-40 py-16 lg:py-24">
+            <div className="custom-container relative z-40 py-16 lg:py-20">
 
                 <div className="flex flex-col items-center lg:items-start xl:w-2/5 gap-6 text-center lg:text-start">
                     <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Progress &

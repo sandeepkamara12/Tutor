@@ -114,7 +114,7 @@ export default function ContactForm() {
     return (
         <section
             id="contact"
-            className="z-40 relative py-16 lg:py-24 flex items-center flex-wrap"
+            className="z-40 relative py-16 lg:py-20 flex items-center flex-wrap"
         >
             <div className="custom-container relative z-40">
 

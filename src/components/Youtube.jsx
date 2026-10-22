@@ -14,7 +14,7 @@ const Youtube = () => {
     return (
         <section
             id="video"
-            className="z-40 relative py-16 lg:py-24 overflow-hidden flex items-center bg-gray-50"
+            className="z-40 relative py-16 lg:py-20 overflow-hidden flex items-center bg-gray-50"
         >
             <div className="custom-container relative z-40 flex flex-col lg:flex-row items-center lg:gap-16 xl:gap-24">
 
