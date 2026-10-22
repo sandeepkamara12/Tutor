@@ -14,7 +14,7 @@ const Newsletter = () => {
           <p>Get one new word, one grammar tip and one free practice quiz in your inbox every
             week. No spam, unsubscribe anytime.</p>
           <form
-            className="flex flex-col sm:flex-row gap-3 max-w-xl w-full mx-auto"
+            className="flex flex-col sd:flex-row gap-3 max-w-xl w-full mx-auto"
           >
             <input
               type="email"
