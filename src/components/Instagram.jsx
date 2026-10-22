@@ -8,7 +8,7 @@ const posts = [
   { img: './student-3.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 3' },
   { img: './student-4.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 4' },
   { img: './student-5.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 5' },
-  // { img: './student-1.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 6' },
+  { img: './student-1.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 6' },
   // { img: './student-2.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 7' },
   // { img: './student-3.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 8' },
   // { img: './student-4.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 9' },
@@ -20,12 +20,12 @@ const posts = [
 ];
 
 // tile shapes (full class names, so Tailwind can see them)
-const RATIOS = ['aspect-square', 'aspect-[4/5]', 'aspect-[7/10]', 'aspect-[9/16]'];
+const RATIOS = ['aspect-[9/16]'];
 // the tile colours behind the image while it loads
 const TINTS = ['bg-russian-blue/20', 'bg-russian-red/20', 'bg-russian-dark-blue/20'];
 
 // how many masonry columns there are at a given width (the same breakpoints as the classes below)
-const columnsFor = (width) => (width >= 1024 ? 5 : width >= 575 ? 3 : 2);
+const columnsFor = (width) => (width >= 768 ? 6 : width >= 575 ? 3 : 2);
 
 // Fisher-Yates shuffle (returns a new array)
 const shuffled = (list) => {
@@ -184,7 +184,7 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
         </div>
 
         {/* masonry: the browser fills the columns, every image is shown on every screen size */}
-        <div ref={gridRef} className="relative columns-2 xxs:columns-3 lg:columns-5 gap-2 xxs:gap-3 lg:gap-4">
+        <div ref={gridRef} className="relative columns-2 xxs:columns-3 md:columns-6 gap-2 xxs:gap-2 lg:gap-4">
           {tiles.map((post, i) => (
             <a
               key={`${post.label}-${i}`}
@@ -194,7 +194,7 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
               rel="noopener"
               aria-label={post.label}
               style={{ transitionDelay: show ? `${delays[i] ?? 0}ms` : '0ms' }}
-              className={`group relative block w-full ${post.ratio} ${post.tint} mb-2 md:mb-3 lg:mb-4 break-inside-avoid overflow-hidden rounded-xl transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none ${
+              className={`group relative block w-full ${post.ratio} ${post.tint} mb-2 md:mb-3 lg:mb-4 break-inside-avoid overflow-hidden rounded transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none ${
                 show ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
               }`}
             >
