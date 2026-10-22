@@ -20,7 +20,7 @@ const posts = [
 ];
 
 // tile shapes (full class names, so Tailwind can see them)
-const RATIOS = ['aspect-[9/16]'];
+const RATIOS = ['aspect-square'];
 // the tile colours behind the image while it loads
 const TINTS = ['bg-russian-blue/20', 'bg-russian-red/20', 'bg-russian-dark-blue/20'];
 
