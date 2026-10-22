@@ -25,7 +25,7 @@ const RATIOS = ['aspect-square'];
 const TINTS = ['bg-russian-blue/20', 'bg-russian-red/20', 'bg-russian-dark-blue/20'];
 
 // how many masonry columns there are at a given width (the same breakpoints as the classes below)
-const columnsFor = (width) => (width >= 768 ? 6 : width >= 575 ? 3 : 2);
+const columnsFor = (width) => (width >= 768 ? 6 : width >= 420 ? 3 : 2);
 
 // Fisher-Yates shuffle (returns a new array)
 const shuffled = (list) => {
@@ -184,7 +184,7 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
         </div>
 
         {/* masonry: the browser fills the columns, every image is shown on every screen size */}
-        <div ref={gridRef} className="relative columns-2 xxs:columns-3 md:columns-6 gap-2 xxs:gap-2 lg:gap-4">
+        <div ref={gridRef} className="relative columns-2 sd:columns-3 md:columns-6 gap-2 sd:gap-2 lg:gap-4">
           {tiles.map((post, i) => (
             <a
               key={`${post.label}-${i}`}
