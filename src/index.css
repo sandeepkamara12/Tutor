@@ -63,7 +63,8 @@
   }
 
   body * {
-    scroll-margin-top: 88px;
+    @apply scroll-mt-16 lg:scroll-mt-22;
+    /* scroll-margin-top: 88px; */
   }
 
   .screen {

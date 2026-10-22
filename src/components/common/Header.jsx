@@ -1,87 +1,21 @@
-
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../ui/Button";
-import { useLocation } from "react-router-dom";
-
-const menuItems = [
-  { name: "Discover", href: "#discover" },
-  { name: "Learning Path", href: "#learning-path" },
-  { name: "Lessons", href: "#featured-lessons" },
-  { name: "Achievements", href: "#progress_achievements" },
-  { name: "About", href: "#about" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "Contact", href: "#contact" },
-];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeId, setActiveId] = useState(""); // id of the section that is at the top, e.g. "about"
+  const clickLock = useRef(null); // while a clicked link is smooth-scrolling, the scroll spy waits
 
-  const [activeHash, setActiveHash] = useState(
-    window.location.hash || "#discover"
-  );
-
-  // Detect the active section while scrolling
-  useEffect(() => {
-    let animationFrameId;
-
-    const updateActiveSection = () => {
-      cancelAnimationFrame(animationFrameId);
-
-      animationFrameId = requestAnimationFrame(() => {
-        const header = document.querySelector("#site-header .inner-header");
-        // console.log(header?.offsetHeight, 'ji')
-        const headerHeight = header?.offsetHeight ?? 0;
-        console.log(headerHeight, 'hi')
-
-        // Adjust this value if you want the active item to change earlier.
-        const scrollPosition = window.scrollY + headerHeight;
-        console.log(scrollPosition, 'bi', window.scrollY, headerHeight)
-
-        let currentHash = "#discover";
-
-        menuItems.forEach(({ href }) => {
-          const section = document.querySelector(href);
-
-          if (section && section.offsetTop <= scrollPosition) {
-            currentHash = href;
-          }
-        });
-
-        // At the bottom of the page, activate the last section.
-        const isAtBottom =
-          window.innerHeight + window.scrollY >=
-          document.documentElement.scrollHeight - 2;
-
-        if (isAtBottom) {
-          const lastExistingItem = [...menuItems]
-            .reverse()
-            .find(({ href }) => document.querySelector(href));
-
-          if (lastExistingItem) {
-            currentHash = lastExistingItem.href;
-          }
-        }
-
-        setActiveHash(currentHash);
-      });
-    };
-
-    updateActiveSection();
-
-    window.addEventListener("scroll", updateActiveSection, {
-      passive: true,
-    });
-
-    window.addEventListener("resize", updateActiveSection);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener("scroll", updateActiveSection);
-      window.removeEventListener("resize", updateActiveSection);
-    };
-  }, []);
-
+  const menuItems = [
+    { name: "Discover", href: "#discover" },
+    { name: "Learning Path", href: "#learning-path" },
+    { name: "Lessons", href: "#featured-lessons" },
+    { name: "Achievements", href: "#progress_achievements" },
+    { name: "About", href: "#about" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   // Handle header scroll effect
   useEffect(() => {
@@ -100,6 +34,53 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", toggleHeaderClass);
     };
+  }, []);
+
+   // Active menu item: the section that has reached the top (just below the fixed header)
+  useEffect(() => {
+    const ids = menuItems.map((item) => item.href.slice(1));
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      if (clickLock.current) return; // a menu link was just clicked, it already set the active item
+
+      const header = document.getElementById("site-header");
+      const line = (header ? header.offsetHeight : 0) + 2; // line just below the header
+
+      // the last section whose top has passed the line, and which is still on screen
+      let current = "";
+      let currentTop = -Infinity;
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= line && rect.bottom > line && rect.top > currentTop) {
+          current = id;
+          currentTop = rect.top;
+        }
+      });
+
+      // bottom of the page: a short last section (Contact) may never reach the top
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom) current = ids[ids.length - 1];
+
+      setActiveId(current);
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Handle Escape key and desktop breakpoint
@@ -127,8 +108,16 @@ const Header = () => {
     };
   }, []);
 
-  const handleMenuClick = () => {
+  const handleMenuClick = (href) => {
     setIsOpen(false);
+    setActiveId(href.slice(1)); // active straight away on click
+
+    // keep it active while the page scrolls there (the scroll spy would pass other sections)
+    clearTimeout(clickLock.current);
+    clickLock.current = setTimeout(() => {
+      clickLock.current = null;
+      window.dispatchEvent(new Event("scroll")); // let the scroll spy check once more
+    }, 900);
   };
 
   return (
@@ -216,14 +205,11 @@ const Header = () => {
               {menuItems.map((item) => (
                 <a
                   key={item.href}
+                  className="menu-item active:text-russian-red data-[active=true]:text-russian-red!"
+                  data-active={activeId === item.href.slice(1)}
+                  aria-current={activeId === item.href.slice(1) ? "location" : undefined}
                   href={item.href}
-                  className={`menu-item ${activeHash === item.href ? "active" : ""
-                    }`}
-                  aria-current={activeHash === item.href ? "location" : undefined}
-                  onClick={() => {
-                    setActiveHash(item.href);
-                    setIsOpen(false);
-                  }}
+                  onClick={() => handleMenuClick(item.href)}
                 >
                   {item.name}
                 </a>

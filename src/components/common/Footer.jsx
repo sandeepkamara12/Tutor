@@ -1,4 +1,21 @@
+import { useEffect, useState } from "react";
+
 const Footer = () => {
+      const [showTop, setShowTop] = useState(false);
+
+    // show the scroll-to-top button only after scrolling down a bit
+    useEffect(() => {
+        const SHOW_AFTER = 300; // px
+        const onScroll = () => setShowTop(window.scrollY > SHOW_AFTER);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    const scrollToTop = (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
     return (
         <footer
             id="site-footer"
@@ -109,7 +126,7 @@ const Footer = () => {
 
                     <div className="flex flex-col gap-4">
                         <p className="text-base font-bold text-russian-dark-blue">Get in touch</p>
-                        <div className="flex flex-col gap-6 max-w-2xl mx-auto">
+                        <div className="flex flex-col gap-6 max-w-2xl md:max-w-none mx-auto sm:mx-0">
                             <div className="flex flex-wrap flex-col gap-2 text-start">
                                 <a
                                     href="mailto:hello@example.com"
@@ -135,7 +152,7 @@ const Footer = () => {
                                         className="size-6 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 text-xs"><i
                                             className="fa-solid fa-clock"
                                         ></i></span>
-                                    <p className="text-gray-600">Online classes <span class="block text-sm font-medium">Mon–Fri, 10AM – 7PM IST</span></p>
+                                    <p className="text-gray-600">Online classes <span className="block text-sm font-medium">Mon–Fri, 10AM – 7PM IST</span></p>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +174,12 @@ const Footer = () => {
                     </ul>
                     <a
                         href="#"
-                        className="fixed md:relative right-4 md:right-auto bottom-4 md:bottom-auto size-8 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 text-xs hover:bg-russian-red hover:text-white transition-all"
+                        onClick={scrollToTop}
+                        aria-label="Back to top"
+                        tabIndex={showTop ? 0 : -1}
+                        className={`fixed right-4 bottom-4 z-50 size-8 bg-russian-dark-blue flex items-center justify-center rounded-full text-white text-xs hover:bg-russian-red hover:text-white transition-all duration-300 ${
+                            showTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+                        }`}
                     ><i className="fa-solid fa-arrow-up"></i></a>
                 </div>
             </div>

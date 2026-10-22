@@ -94,6 +94,7 @@ export default function Testimonials() {
           autoplay={true}
           autoplayDelay={2000}
           className="mb-4"
+          classNames={{ arrow: 'max-md:hidden' }}
         />
 
         {/* buttons */}

@@ -18,21 +18,21 @@ const About = () => {
                 className="block mx-auto h-125 lg:h-150"
               />
 
-              <div className="absolute bottom-50 xxs:bottom-[52%] left-0 xxs:left-6 bg-white shadow py-2 px-3 border-x-2 border-russian-red">
+              <div className="absolute bottom-50 xxs:bottom-[52%] left-0 xxs:left-6 bg-white shadow py-2 px-3 border-s-2 border-russian-red">
                 <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
                     className="text-russian-red font-bold"
                   >Free</span> First Lesson</p>
               </div>
 
               <div
-                className="absolute bottom-40 xxs:bottom-24 left-0 xxs:-left-6 bg-white shadow py-2 px-3 border-x-2 border-russian-red">
+                className="absolute bottom-40 xxs:bottom-24 left-0 xxs:-left-6 bg-white shadow py-2 px-3 border-s-2 border-russian-red">
                 <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
                     className="text-russian-red font-bold"
                   >Hindi</span> to Russian</p>
               </div>
 
               <div
-                className="absolute bottom-30 xxs:bottom-auto xxs:top-[20%] left-0 xxs:-left-28 bg-white shadow py-2 px-3 border-x-2 border-russian-red"
+                className="absolute bottom-30 xxs:bottom-auto xxs:top-[20%] left-0 xxs:-left-28 bg-white shadow py-2 px-3 border-s-2 border-russian-red"
               >
                 <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
                     className="text-russian-red font-bold"
