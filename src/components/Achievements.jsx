@@ -46,8 +46,8 @@ const Achievements = () => {
     const progressItems = [
         { id: 1, title: "Alphabet", progress: 100, color: "bg-russian-dark-blue" },
         { id: 2, title: "Pronunciation", progress: 60, color: "bg-russian-dark-blue" },
-        { id: 3, title: "Vocabulary", progress: 25, color: "bg-russian-red" },
-        { id: 4, title: "Grammar", progress: 40, color: "bg-russian-red" },
+        { id: 3, title: "Vocabulary", progress: 25, color: "bg-russian-dark-blue" },
+        { id: 4, title: "Grammar", progress: 40, color: "bg-russian-dark-blue" },
     ];
 
     return (
@@ -134,14 +134,14 @@ const Achievements = () => {
                         <span className="text-sm font-bold text-green-700">Level 1</span>
                     </div>
 
-                    <div className="grid xxs:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="grid xxs:grid-cols-2 lg:grid-cols-4 gap-2">
                         {progressItems.map((item) => (
                             <div key={item.id}>
-                                <div className="flex justify-between lg:text-sm font-semibold text-russian-dark-blue mb-1.5">
+                                <div className="flex justify-between items-center lg:text-sm font-semibold text-russian-dark-blue">
                                     <span>
-                                        {item.id}. {item.title}
+                                        {item.title}
                                     </span>
-                                    <span>{item.progress}%</span>
+                                    <span className="text-sm font-medium text-gray-600">{item.progress}%</span>
                                 </div>
 
                                 <div className="h-1.5 rounded-full bg-gray-200 overflow-hidden">
