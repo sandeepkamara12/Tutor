@@ -155,7 +155,7 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
   }, []);
 
   return (
-    <section id="instagram" className="z-40 relative py-16 lg:py-20 overflow-hidden bg-gray-50">
+    <section id="instagram" className="z-40 relative py-12 lg:py-20 overflow-hidden bg-gray-50">
       <div className="custom-container relative z-40">
         <div className="flex flex-col items-center lg:w-1/2 mx-auto gap-6 text-center mb-10">
           <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">

@@ -78,7 +78,7 @@ const Discover = () => {
     ];
     return (
         <section
-            className="z-40 relative py-16 lg:py-20 flex xl:justify-center flex-col"
+            className="z-40 relative py-12 lg:py-20 flex xl:justify-center flex-col"
             id="discover"
         >
             <div
