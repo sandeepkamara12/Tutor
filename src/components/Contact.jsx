@@ -36,7 +36,6 @@ const empty = {
     message: '',
     consent: false,
     newsletter: false,
-    website: '', // honeypot: hidden from people, bots fill it in
 };
 
 const inputClass =
@@ -234,14 +233,6 @@ export default function ContactForm() {
                         <Field label="Message" error={errors.message}>
                             <textarea name="message" rows={5} value={form.message} onChange={change} placeholder="Tell me about your goals..." className={inputClass} />
                         </Field>
-
-                        {/* honeypot: people never see it */}
-                        <div className="absolute left-[-9999px]" aria-hidden="true">
-                            <label>
-                                Website
-                                <input name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={change} />
-                            </label>
-                        </div>
 
                         <label className="flex items-start gap-2 text-sm text-gray-600">
                             <input type="checkbox" name="consent" checked={form.consent} onChange={change} className="mt-1" />
