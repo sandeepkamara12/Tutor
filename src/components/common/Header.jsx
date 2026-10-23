@@ -14,10 +14,10 @@ const Header = () => {
     { name: "Lessons", href: "#featured-lessons" },
     { name: "Achievements", href: "#progress_achievements" },
     { name: "About", href: "#about" },
-    { name: "Video", href: "#video" },
+    // { name: "Video", href: "#video" },
     { name: "Testimonials", href: "#testimonials" },
-    { name: "Instagram", href: "#instagram" },
-    { name: "Contact", href: "#contact" },
+    // { name: "Instagram", href: "#instagram" },
+    { name: "Enquiry", href: "#enquiry" },
   ];
 
   // Handle header scroll effect

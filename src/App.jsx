@@ -4,7 +4,7 @@ import Achievements from './components/Achievements'
 import Banner from './components/Banner'
 import Footer from './components/common/Footer'
 import Header from './components/common/Header'
-import Contact from './components/Contact'
+import Enquiry from './components/Enquiry'
 import Discover from './components/Discover'
 import Instagram from './components/Instagram'
 import LearningPath from './components/LearningPath'
@@ -28,7 +28,7 @@ function App() {
       <Youtube />
       <Testimonials />
       <Instagram />
-      <Contact />
+      <Enquiry />
       <Newsletter />
       <Footer />
     </>

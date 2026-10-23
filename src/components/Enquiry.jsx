@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import Select from 'react-select';
 
 const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
 ]
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
@@ -55,7 +56,7 @@ function Field({ label, error, optional, children }) {
     );
 }
 
-export default function ContactForm() {
+export default function Enquiry() {
     const [form, setForm] = useState(empty);
     const [errors, setErrors] = useState({});
     const [status, setStatus] = useState('idle'); // idle | sending | success | error
@@ -112,14 +113,14 @@ export default function ContactForm() {
 
     return (
         <section
-            id="contact"
+            id="enquiry"
             className="z-40 relative py-12 lg:py-20 flex items-center flex-wrap"
         >
             <div className="custom-container relative z-40">
 
                 <div className="grid gap-6 w-full lg:w-4/5 mx-auto">
                     <div className="flex flex-wrap flex-col justify-between gap-6 w-full">
-                        
+
                         <div className="flex flex-col items-center lg:w-1/2 lg:mx-auto gap-6 text-center">
                             <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Contact me</p>
                             <h1 className="heading">We’d love to <span className="text-russian-red">hear from you</span></h1>
@@ -211,23 +212,56 @@ export default function ContactForm() {
                                 <input name="phone" type="tel" value={form.phone} onChange={change} placeholder="+xx-xxxx-xxx-xxx" autoComplete="tel" className={inputClass} />
                             </Field>
                             <Field label="Russian level" optional error={errors.level}>
-                                {/* <Select options={options} /> */}
-                                <select name="level" value={form.level} onChange={change} className={inputClass}>
+                                <Select
+                                    name="level"
+                                    options={LEVELS}
+                                    value={LEVELS.find((o) => o.value === form.level) || null}
+                                    onChange={(selectedOption) =>
+                                        change({
+                                            target: {
+                                                name: "level",
+                                                value: selectedOption?.value || "",
+                                            },
+                                        })
+                                    }
+                                    placeholder="Choose level"
+                                    className={inputClass}
+                                    classNamePrefix="react-select"
+                                    isClearable
+                                />
+                                {/* <select name="level" value={form.level} onChange={change} className={inputClass}>
                                     <option value="">Choose level</option>
                                     {LEVELS.map((o) => (
                                         <option key={o.value} value={o.value}>{o.label}</option>
                                     ))}
-                                </select>
+                                </select> */}
                             </Field>
                         </div>
 
                         <Field label="I want to learn" optional error={errors.interest}>
-                            <select name="interest" value={form.interest} onChange={change} className={inputClass}>
+                            <Select
+                                name="interest"
+                                options={INTERESTS}
+                                value={INTERESTS.find((o) => o.value === form.interest) || null}
+                                onChange={(selectedOption) =>
+                                    change({
+                                        target: {
+                                            name: "interest",
+                                            value: selectedOption?.value || "",
+                                        },
+                                    })
+                                }
+                                placeholder="Choose interest"
+                                className={inputClass}
+                                classNamePrefix="react-select"
+                                isClearable
+                            />
+                            {/* <select name="interest" value={form.interest} onChange={change} className={inputClass}>
                                 <option value="">Choose interest</option>
                                 {INTERESTS.map((o) => (
                                     <option key={o.value} value={o.value}>{o.label}</option>
                                 ))}
-                            </select>
+                            </select> */}
                         </Field>
 
                         <Field label="Message" error={errors.message}>
