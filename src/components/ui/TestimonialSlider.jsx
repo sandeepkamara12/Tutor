@@ -7,8 +7,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
  * See README.md for the full props list.
  */
 
-export const MAX_SLIDES_PER_VIEW = 9;
-const DEFAULT_SLIDES = { desktop: 5, tablet: 5, mobileLg: 2, mobile: 1 };
+export const MAX_SLIDES_PER_VIEW = 7;
+const DEFAULT_SLIDES = { desktop: 7, tablet: 5, mobileLg: 2, mobile: 1 };
 const DEFAULT_BREAKPOINTS = { mobileLg: 575, tablet: 768, desktop: 1024 }; // min-width in px
 const EASE = 'cubic-bezier(0.4, 0, 0.2, 1)';
 
@@ -342,8 +342,8 @@ export default function TestimonialSlider({
                 }}
                 {...cardProps}
               >
-                <div className={cx('mb-3 h-72 md:h-auto rounded relative overflow-hidden z-50', classNames.image)}>
-                  <img src={t.img} alt={t.name} className="w-full h-full object-contain md:object-cover" />
+                <div className={cx('h-44 aspect-square mx-auto md:mx-0 md:aspect-auto md:h-72 md:h-auto rounded relative overflow-hidden z-50', classNames.image)}>
+                  <img src={t.img} alt={t.name} className="w-full h-full object-cover object-center" />
                 </div>
 
                 <div
@@ -385,18 +385,13 @@ export default function TestimonialSlider({
 
       {/* arrows + dots */}
       {showControls && (
-        <div className={cx('flex items-center justify-center gap-4 mb-10', classNames.controls)}>
-          {navigation && (
-            <button type="button" onClick={goPrev} disabled={prevTarget === null} aria-label={prevLabel} className={arrowClass}>
-              {prevIcon}
-            </button>
-          )}
-
+        <div className={cx('flex items-center justify-center md:justify-between gap-4', classNames.controls)}>
+<div>
           {pagination && paginationType === 'dots' && (
             <div className="flex items-center gap-2">
               {positions.map((p, i) => (
                 <button
-                  key={p}
+                key={p}
                   type="button"
                   onClick={() => changeStart(offset + p)}
                   aria-label={`Go to page ${i + 1}`}
@@ -415,12 +410,20 @@ export default function TestimonialSlider({
               {pageIndex + 1} / {positions.length}
             </p>
           )}
+</div>
+<div className="flex items-center gap-2">
+          {navigation && (
+            <button type="button" onClick={goPrev} disabled={prevTarget === null} aria-label={prevLabel} className={arrowClass}>
+              {prevIcon}
+            </button>
+          )}
 
           {navigation && (
             <button type="button" onClick={goNext} disabled={nextTarget === null} aria-label={nextLabel} className={arrowClass}>
               {nextIcon}
             </button>
           )}
+        </div>
         </div>
       )}
     </div>

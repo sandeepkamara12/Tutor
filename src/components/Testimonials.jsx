@@ -94,7 +94,7 @@ export default function Testimonials() {
 
         <TestimonialSlider
           items={testimonials}
-          slidesPerView={{ desktop: 9, tablet: 5, mobileLg: 2, mobile: 1 }}
+          slidesPerView={{ desktop: 7, tablet: 5, mobileLg: 2, mobile: 1 }}
           // expandContent={false}
           effect="slide"
           speed={450}
@@ -103,8 +103,8 @@ export default function Testimonials() {
           paginationType="dots"
           autoplay={true}
           autoplayDelay={2000}
-          className="mb-4"
-          classNames={{ arrow: 'max-md:hidden' }}
+          className=""
+          classNames={{ arrow: 'max-md:hidden flex flex-wrap items-center justify-center' }}
         />
 
       </div>
