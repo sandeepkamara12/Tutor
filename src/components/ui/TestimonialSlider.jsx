@@ -342,7 +342,7 @@ export default function TestimonialSlider({
                 }}
                 {...cardProps}
               >
-                <div className={cx('max-h-64 h-64 md:max-h-auto mx-auto md:mx-0 md:aspect-auto md:h-auto rounded relative overflow-hidden z-50', classNames.image)}>
+                <div className={cx('max-h-64 h-64 aspect-square md:max-h-auto mx-auto md:mx-0 md:aspect-auto md:h-auto rounded relative overflow-hidden z-50', classNames.image)}>
                   <img src={t.img} alt={t.name} className="w-full h-full object-cover object-center" />
                 </div>
 
