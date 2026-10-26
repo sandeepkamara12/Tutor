@@ -4,7 +4,7 @@ const Newsletter = () => {
   return (
      <section
       id="newsletter"
-      className="z-40 relative py-12 lg:py-20 overflow-hidden bg-gray-50"
+      className="z-40 relative py-12 lg:py-20 overflow-hidden"
     >
       <div className="custom-container">
         <div className="relative flex flex-col lg:w-1/2 mx-auto gap-6 text-center items-center">

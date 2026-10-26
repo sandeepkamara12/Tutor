@@ -81,7 +81,7 @@ const Footer = () => {
     return (
         <footer
             id="site-footer"
-            className="z-40 relative border-t-4 border-russian-red bg-gray-50"
+            className="z-40 relative border-t-4 border-russian-red"
         >
             <div className="custom-container relative z-40 py-10">
                 <div className="grid sd:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">

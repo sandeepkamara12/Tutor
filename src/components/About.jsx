@@ -5,7 +5,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="z-40 relative py-12 lg:py-20 flex items-center"
+      className="z-40 relative py-12 lg:py-20 flex items-center bg-gray-50"
     >
       <div className="custom-container relative z-40">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center lg:w-4/5 lg:mx-auto">

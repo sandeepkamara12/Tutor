@@ -13,6 +13,7 @@ import Newsletter from './components/Newsletter'
 import Testimonials from './components/Testimonials'
 import Why from './components/Why'
 import Youtube from './components/Youtube'
+import Faq from './components/Faq'
 
 function App() {
   return (
@@ -24,11 +25,12 @@ function App() {
       <LearningPath />
       <Lessons />
       <Achievements />
+      <Testimonials />
+      <Faq />
+      <Enquiry />
       <About />
       <Youtube />
-      <Testimonials />
       <Instagram />
-      <Enquiry />
       <Newsletter />
       <Footer />
     </>

@@ -13,11 +13,11 @@ const Header = () => {
     { name: "Learning Path", href: "#learning-path" },
     { name: "Lessons", href: "#featured-lessons" },
     { name: "Achievements", href: "#progress_achievements" },
-    { name: "About", href: "#about" },
-    // { name: "Video", href: "#video" },
     { name: "Testimonials", href: "#testimonials" },
-    // { name: "Instagram", href: "#instagram" },
+    { name: "Faq", href: "#faq" },
     { name: "Enquiry", href: "#enquiry" },
+    { name: "About", href: "#about" },
+    // { name: "Instagram", href: "#instagram" },
   ];
 
   // Handle header scroll effect
