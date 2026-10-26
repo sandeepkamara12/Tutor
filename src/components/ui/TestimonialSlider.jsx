@@ -363,7 +363,7 @@ export default function TestimonialSlider({
                     >
                       {t.text}
                     </p>
-                    <p className='flex items-center gap-0.5 mt-2 mb-3'>
+                    <p className='flex items-center gap-0.5 mt-2 mb-3 justify-center md:justify-start'>
                       {
                         Array.from({length:5}).map((_, index)=>(
                           <span className='inline-block size-3.5 fill-yellow-500' key={index}>
