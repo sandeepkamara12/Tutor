@@ -1,9 +1,30 @@
 import React from 'react'
 import Button from './ui/Button'
+import { motion } from "motion/react";
 
 const Banner = () => {
+  const animationTop = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.2 },
+    transition: {
+      duration: 0.6,
+      delay: 0.3,
+      ease: "easeOut",
+    }  
+  };
+  const buttonAnimation = {
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.2 },
+  transition: {
+    duration: 0.6,
+    delay: 0.3,
+    ease: "easeOut",
+  },
+};
   return (
-     <section className="banner relative w-full lg:h-screen overflow-hidden" id="banner">
+    <section className="banner relative w-full lg:h-screen overflow-hidden" id="banner">
       <div className="tl-b bubble bg-russian-red/70"></div>
       <div className="br-b bubble bg-russian-red/70"></div>
       <div className="tr-b bubble bg-russian-blue/70"></div>
@@ -13,20 +34,68 @@ const Banner = () => {
         <div
           className="w-full md:w-[calc(100%-350px)] lg:w-1/2 flex flex-col gap-6 order-2 md:order-1 text-center md:text-left pt-10 md:pt-0 items-center md:items-start"
         >
-          <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">
+          <motion.p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.6,
+              delay: 0,
+              ease: "easeOut",
+            }}
+          >
             Beginner-friendly
-            Russian course</p>
-          <h1 className="heading"><span className="text-russian-red">Russian</span>, start learning <br /> in hindi for free
-          </h1>
-          <p>Explore free Russian lessons designed for learners of all levels, from complete beginners to advanced
+            Russian course</motion.p>
+          <motion.h1 className="heading"
+          initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.1,
+              ease: "easeOut",
+            }}
+          ><span className="text-russian-red">Russian</span>, start learning <br /> in hindi for free
+          </motion.h1>
+          <motion.p
+          initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.2,
+              ease: "easeOut",
+            }}
+          >Explore free Russian lessons designed for learners of all levels, from complete beginners to advanced
             students. Learn vocabulary and grammar, practice reading and listening with audio, improve your
             understanding through exercises and activities, and discover useful Russian words and expressions along the
-            way.</p>
-          <p>Before your start Russian journey, I want you to explore why do you need to learn Russian in below four
-            cards. And if you find it useful, don’t forget to share it with your friends!</p>
-          <div className="mt-4 flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
-            <Button color="blue" label="Why choose me?" href="#why" />
-            <Button color="red" label="Start Learning now" href="#featured-lessons" />
+            way.</motion.p>
+          <motion.p
+          initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.2,
+              ease: "easeOut",
+            }}
+          >Before your start Russian journey, I want you to explore why do you need to learn Russian in below four
+            cards. And if you find it useful, don’t forget to share it with your friends!</motion.p>
+          <div className="mt-4 flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center"
+          initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.3,
+              ease: "easeOut",
+            }}
+          >
+            <Button color="blue" label="Why choose me?" href="#why"  animation={buttonAnimation} />
+            <Button color="red" label="Start Learning now" href="#featured-lessons" animation={{
+      ...buttonAnimation,
+      transition: { ...buttonAnimation.transition, delay: 0.6 },
+    }} />
           </div>
         </div>
         <div className="w-87.5 mx-auto lg:w-1/2 relative order-1 md:order-2">
