@@ -204,7 +204,7 @@ const Header = () => {
   max-lg:transition-transform max-lg:duration-300
   lg:relative lg:overflow-visible
   lg:flex lg:grow lg:justify-between lg:items-center">
-            <div className="flex flex-col gap-6 pt-5 pb-4 lg:flex-row lg:items-center lg:py-0 lg:ps-10">
+            <div className="flex flex-col gap-8 xl:gap-10 pt-5 pb-4 lg:flex-row lg:items-center lg:py-0 lg:ps-10">
               {menuItems.map((item) => (
                 <a
                   key={item.href}
