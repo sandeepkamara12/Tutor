@@ -66,7 +66,7 @@ const Achievements = () => {
                         results.</p>
                     <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
                         <Button color="blue" label="Create a free account" href="#" />
-                        <Button color="red" label="See the learning path" href="#" />
+                        <Button color="red" label="What students say?" href="#testimonials" />
                     </div>
                 </div>
 

@@ -239,15 +239,20 @@ export default function Enquiry() {
                                         placeholder: (base) => ({
                                             ...base,
                                             color: "#99a1af",
-                                            fontSize: '14px',
-                                            fontWeight: 500,
                                         }),
                                         control: (base) => ({
                                             ...base,
                                             minHeight: "auto",
                                             height: "auto",
                                             border: '1px solid #ebe6e7',
-                                            padding: '3px 3px 3px 12px'
+                                            padding: '3px 3px 3px 12px',
+                                            "&:hover": {
+                                                border: "1px solid #ebe6e7",
+                                            },
+                                        }),
+                                        singleValue: (base) => ({
+                                            ...base,
+                                            color: '#4a5565',
                                         }),
                                         valueContainer: (base) => ({
                                             ...base,
@@ -292,15 +297,20 @@ export default function Enquiry() {
                                     placeholder: (base) => ({
                                         ...base,
                                         color: "#99a1af",
-                                        fontSize: '14px',
-                                        fontWeight: 500,
                                     }),
                                     control: (base) => ({
                                         ...base,
                                         minHeight: "auto",
                                         height: "auto",
                                         border: '1px solid #ebe6e7',
-                                        padding: '3px 3px 3px 12px'
+                                        padding: '3px 3px 3px 12px',
+                                        "&:hover": {
+                                            border: "1px solid #ebe6e7",
+                                        },
+                                    }),
+                                    singleValue: (base) => ({
+                                        ...base,
+                                        color: '#4a5565',
                                     }),
                                     valueContainer: (base) => ({
                                         ...base,

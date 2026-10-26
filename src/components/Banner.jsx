@@ -25,8 +25,8 @@ const Banner = () => {
           <p>Before your start Russian journey, I want you to explore why do you need to learn Russian in below four
             cards. And if you find it useful, don’t forget to share it with your friends!</p>
           <div className="mt-4 flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
-            <Button color="blue" label="See the Learning Path" href="#" />
-            <Button color="red" label="Start Learning Free" href="#" />
+            <Button color="blue" label="Why choose me?" href="#why" />
+            <Button color="red" label="Start Learning now" href="#featured-lessons" />
           </div>
         </div>
         <div className="w-87.5 mx-auto lg:w-1/2 relative order-1 md:order-2">

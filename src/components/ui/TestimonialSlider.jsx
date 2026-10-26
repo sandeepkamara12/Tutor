@@ -349,7 +349,7 @@ export default function TestimonialSlider({
                 <div
                   className={
                     expandable
-                      ? cx('z-40 transition-[opacity,transform] duration-500 absolute top-0', right ? 'left-full' : 'right-full')
+                      ? cx('z-40 transition-[opacity,transform] duration-300 ease-in-out absolute top-0', right ? 'left-full' : 'right-full')
                       : 'z-40'
                   }
                   style={contentStyle}
@@ -357,22 +357,33 @@ export default function TestimonialSlider({
                   <div className={cx('pt-2', expandable ? (right ? 'pl-2' : 'pr-2 text-right') : 'text-center', classNames.text)}>
                     <p
                       className={cx(
-                        'mb-2',
-                        expandable && (right ? 'border-l-2 border-red-400 pl-2' : 'border-r-2 border-red-400 pr-2')
+                        'leading-5',
+                        expandable && (right ? '' : '')
                       )}
                     >
                       {t.text}
                     </p>
+                    <p className='flex items-center gap-0.5 mt-2 mb-3'>
+                      {
+                        Array.from({length:5}).map((_, index)=>(
+                          <span className='inline-block size-3.5 fill-yellow-500' key={index}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                              <path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/>
+                            </svg>
+                          </span>
+                        ))
+                      }
+                    </p>
                     <p
                       className={cx(
-                        'font-bold text-base text-russian-dark-blue',
-                        expandable && (right ? 'pl-3' : 'pr-3'),
+                        'font-bold text-base text-russian-dark-blue leading-none',
+                        expandable && (right ? '' : ''),
                         classNames.name
                       )}
                     >
                       {t.name}
                     </p>
-                    <p className={cx('text-sm font-medium', expandable && (right ? 'pl-3' : 'pr-3'), classNames.role)}>
+                    <p className={cx('text-sm font-medium', expandable && (right ? '' : ''), classNames.role)}>
                       {t.role}
                     </p>
                   </div>

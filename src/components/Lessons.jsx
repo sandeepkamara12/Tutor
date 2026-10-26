@@ -131,7 +131,7 @@ const Lessons = () => {
                             <p>Pick a short lesson that fits your level, then check what you remember with a quick quiz. Every lesson
                                 takes only 10 to 15 minutes.</p>
                             <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
-                                <Button color="blue" label="Start Learning Free" href="#" />
+                                <Button color="blue" label="Track your progress" href="#progress_achievements" />
                                 <Button color="red" label="Browse all lessons" href="#" />
                             </div>
                         </div>

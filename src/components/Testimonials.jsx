@@ -1,5 +1,5 @@
 import TestimonialSlider from './ui/TestimonialSlider';
-
+import Button from '../components/ui/Button';
 // Put the images in  public/assets/img/  (or import them and use the imported value as `img`)
 const testimonials = [
   {
@@ -80,6 +80,11 @@ export default function Testimonials() {
             Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch
             without subtitles & conversations.
           </p>
+          {/* buttons */}
+          <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
+            <Button color="blue" label="Still have a question?" href="#faq" />
+            <Button color="red" label="Conact Me" href="#enquiry" />
+          </div>
         </div>
 
 
@@ -93,19 +98,10 @@ export default function Testimonials() {
           pagination
           paginationType="dots"
           autoplay={true}
-          autoplayDelay={2000}
+          autoplayDelay={200000}
           className=""
           classNames={{ arrow: 'max-md:hidden flex flex-wrap items-center justify-center' }}
         />
-{/* buttons */}
-        <div className="flex flex-wrap flex-col sd:flex-row sd:items-center justify-center gap-2 sd:gap-4 w-full sd:w-auto mt-10">
-          <button className="button button-russian-blue">
-            <span>Start Learning Free</span>
-          </button>
-          <button className="button button-russian-red">
-            <span>See the Learning Path</span>
-          </button>
-        </div>
       </div>
     </section>
   );

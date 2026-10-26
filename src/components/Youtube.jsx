@@ -26,10 +26,10 @@ const Youtube = () => {
                     <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
                         <Button
                             color="blue"
-                            label="Watch video"
-                            href="#video"
-                            onClick={play}
-                            icon={<i className="fa-solid fa-play ms-1"></i>}
+                            label="Follow on Instagram"
+                            href="#instagram"
+                            // onClick={play}
+                            icon={<i className="fa-brands fa-instagram ms-1"></i>}
                         />
                         <Button
                             color="red"

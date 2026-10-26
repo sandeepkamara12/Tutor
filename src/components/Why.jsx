@@ -89,15 +89,15 @@ const Why = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:w-3/4 mx-auto gap-x-4 gap-y-10 text-center my-10">
             {reasons.map((item) => (
               <div className="group flex flex-col items-center gap-3" key={item.id}>
-                <span className="block h-12 overflow-hidden text-7xl leading-none font-black text-gray-300 group-hover:text-russian-blue transition-all select-none" aria-hidden="true">0{item.id}</span>
+                <span className="block h-12 overflow-hidden text-7xl leading-none font-black text-gray-300 select-none" aria-hidden="true">0{item.id}</span>
                 <p className="font-bold text-russian-dark-blue">{item.title}</p>
                 <p className="">{item.description}</p>
               </div>
             ))}
           </div>
           <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
-            <Button color="blue" label="Start Learning Free" href="#" />
-            <Button color="red" label="See the Learning Path" href="#" />
+            <Button color="blue" label="What you will discover?" href="#discover" />
+            <Button color="red" label="Start Learning now" href="#featured-lessons" />
           </div>
         </div>
       </section>

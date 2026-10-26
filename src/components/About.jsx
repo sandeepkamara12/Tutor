@@ -91,8 +91,8 @@ const About = () => {
             </div>
 
             <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto mt-4">
-                <Button color="blue" label="Start Learning Free" href="#featured-lessons" />
-                <Button color="red" label="Contact me" href="#contact" />
+                <Button color="blue" label="Visit youtube channel" href="#video" />
+                <Button color="red" label="Contact me" href="#enquiry" />
             </div>
           </div>
         </div>
