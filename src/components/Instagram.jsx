@@ -9,8 +9,8 @@ const posts = [
   { img: './student-4.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 4' },
   { img: './student-5.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 5' },
   { img: './student-1.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 6' },
-  { img: './student-2.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 7' },
-  { img: './student-3.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 8' },
+  // { img: './student-2.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 7' },
+  // { img: './student-3.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 8' },
   // { img: './student-4.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 9' },
   // { img: './student-5.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 10' },
   // { img: './student-1.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 11' },
@@ -25,7 +25,7 @@ const RATIOS = ['aspect-square'];
 const TINTS = ['bg-russian-blue/20', 'bg-russian-red/20', 'bg-russian-dark-blue/20'];
 
 // how many masonry columns there are at a given width (the same breakpoints as the classes below)
-const columnsFor = (width) => (width >= 768 ? 8 : 3);
+const columnsFor = (width) => (width >= 768 ? 6 : 3);
 
 // Fisher-Yates shuffle (returns a new array)
 const shuffled = (list) => {
@@ -184,7 +184,7 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
         </div>
 
         {/* masonry: the browser fills the columns, every image is shown on every screen size */}
-        <div ref={gridRef} className="relative columns-2 sd:columns-4 xl:columns-8 gap-2">
+        <div ref={gridRef} className="relative columns-3 md:columns-6 gap-2">
           {tiles.map((post, i) => (
             <a
               key={`${post.label}-${i}`}
