@@ -134,7 +134,7 @@ const Faq = () => {
 
                                     {/* Toggle icon */}
                                     <span className="size-8 shrink-0 flex items-center justify-center rounded-full bg-russian-dark-blue text-white text-xs transition-all duration-300 group-hover:bg-russian-red group-data-[open=true]:bg-white group-data-[open=true]:text-russian-dark-blue group-data-[open=true]:border group-data-[open=true]:border-russian-dark-blue">
-                                        <i className="fa-solid fa-plus group-data-[open=true]:rotate-45 group-data-[open=true]:-translate-x-px" aria-hidden="true"></i>
+                                        <i className="fa-solid fa-plus group-data-[open=true]:rotate-45" aria-hidden="true"></i>
                                     </span>
                                 </button>
 
