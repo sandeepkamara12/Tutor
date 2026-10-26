@@ -146,7 +146,7 @@ const Faq = () => {
                                     aria-hidden={!isOpen}
                                 >
                                     <div className="overflow-hidden">
-                                        <div className="pe-4 ps-6 pb-3 flex flex-col">
+                                        <div className="px-4 pb-3 flex flex-col">
                                             {faq.answers.map((answer, answerIndex) => (
                                                 <p
                                                     key={answerIndex}
