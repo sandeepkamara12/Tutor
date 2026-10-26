@@ -83,7 +83,7 @@ const Why = () => {
           <div className="flex flex-col items-center xl:w-1/2 mx-auto gap-6 text-center">
             <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Why me</p>
             <h1 className="heading">Why <span className="text-russian-red">choose me?</span></h1>
-            <p>Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles, and conversations you never thought you'd have. This is where that journey begins.</p>
+            <p>Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles & conversations.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:w-3/4 mx-auto gap-x-4 gap-y-10 text-center my-10">
