@@ -95,11 +95,11 @@ const Why = () => {
               </div>
             ))}
           </div>
-        </div>
           <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
             <Button color="blue" label="Start Learning Free" href="#" />
             <Button color="red" label="See the Learning Path" href="#" />
           </div>
+        </div>
       </section>
 
 
