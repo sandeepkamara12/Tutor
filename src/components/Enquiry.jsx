@@ -225,16 +225,42 @@ export default function Enquiry() {
                                         })
                                     }
                                     placeholder="Choose level"
-                                    className={inputClass}
                                     classNamePrefix="react-select"
                                     isClearable
+                                    styles={{
+                                        dropdownIndicator: (base) => ({
+                                            ...base,
+                                            color: "#99a1af"
+                                        }),
+                                        indicatorSeparator: (base) => ({
+                                            ...base,
+                                            display: "none",
+                                        }),
+                                        placeholder: (base) => ({
+                                            ...base,
+                                            color: "#99a1af",
+                                            fontSize: '14px',
+                                            fontWeight: 500,
+                                        }),
+                                        control: (base) => ({
+                                            ...base,
+                                            minHeight: "auto",
+                                            height: "auto",
+                                            border: '1px solid #ebe6e7',
+                                            padding: '3px 3px 3px 12px'
+                                        }),
+                                        valueContainer: (base) => ({
+                                            ...base,
+                                            padding: 0,
+                                            display: "flex",
+                                            alignItems: "center",
+                                        }),
+                                        menu: (provided) => ({
+                                            ...provided,
+                                            zIndex: 50,
+                                        }),
+                                    }}
                                 />
-                                {/* <select name="level" value={form.level} onChange={change} className={inputClass}>
-                                    <option value="">Choose level</option>
-                                    {LEVELS.map((o) => (
-                                        <option key={o.value} value={o.value}>{o.label}</option>
-                                    ))}
-                                </select> */}
                             </Field>
                         </div>
 
@@ -252,16 +278,42 @@ export default function Enquiry() {
                                     })
                                 }
                                 placeholder="Choose interest"
-                                className={inputClass}
                                 classNamePrefix="react-select"
                                 isClearable
+                                styles={{
+                                    dropdownIndicator: (base) => ({
+                                        ...base,
+                                        color: "#99a1af"
+                                    }),
+                                    indicatorSeparator: (base) => ({
+                                        ...base,
+                                        display: "none",
+                                    }),
+                                    placeholder: (base) => ({
+                                        ...base,
+                                        color: "#99a1af",
+                                        fontSize: '14px',
+                                        fontWeight: 500,
+                                    }),
+                                    control: (base) => ({
+                                        ...base,
+                                        minHeight: "auto",
+                                        height: "auto",
+                                        border: '1px solid #ebe6e7',
+                                        padding: '3px 3px 3px 12px'
+                                    }),
+                                    valueContainer: (base) => ({
+                                        ...base,
+                                        padding: 0,
+                                        display: "flex",
+                                        alignItems: "center",
+                                    }),
+                                    menu: (provided) => ({
+                                        ...provided,
+                                        zIndex: 50,
+                                    }),
+                                }}
                             />
-                            {/* <select name="interest" value={form.interest} onChange={change} className={inputClass}>
-                                <option value="">Choose interest</option>
-                                {INTERESTS.map((o) => (
-                                    <option key={o.value} value={o.value}>{o.label}</option>
-                                ))}
-                            </select> */}
                         </Field>
 
                         <Field label="Message" error={errors.message}>
