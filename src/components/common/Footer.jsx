@@ -8,49 +8,49 @@ const getTargets = () => [...document.querySelectorAll("section[id], footer[id]"
 
 // the first section that starts below the fixed header
 const getNextTarget = () => {
-  const line = getHeaderHeight() + 8;
-  return getTargets().find((el) => el.getBoundingClientRect().top > line);
+    const line = getHeaderHeight() + 8;
+    return getTargets().find((el) => el.getBoundingClientRect().top > line);
 };
 
 const smooth = () =>
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 
 const Footer = () => {
-      const [showTop, setShowTop] = useState(false);
-      const [atEnd, setAtEnd] = useState(false); // nothing left to scroll to
-  const [scrolling, setScrolling] = useState(false); // page is moving right now
-  const stopTimer = useRef(null);
+    const [showTop, setShowTop] = useState(false);
+    const [atEnd, setAtEnd] = useState(false); // nothing left to scroll to
+    const [scrolling, setScrolling] = useState(false); // page is moving right now
+    const stopTimer = useRef(null);
 
-  useEffect(() => {
-    let frame = 0;
+    useEffect(() => {
+        let frame = 0;
 
-    const update = () => {
-      frame = 0;
-      setShowTop(window.scrollY > SHOW_TOP_AFTER);
+        const update = () => {
+            frame = 0;
+            setShowTop(window.scrollY > SHOW_TOP_AFTER);
 
-      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-      setAtEnd(atBottom || !getNextTarget());
-    };
+            const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+            setAtEnd(atBottom || !getNextTarget());
+        };
 
-    const onScroll = () => {
-      // disabled while the page is scrolling (by the mouse, touch or by our own click)
-      setScrolling(true);
-      clearTimeout(stopTimer.current);
-      stopTimer.current = setTimeout(() => setScrolling(false), 150);
+        const onScroll = () => {
+            // disabled while the page is scrolling (by the mouse, touch or by our own click)
+            setScrolling(true);
+            clearTimeout(stopTimer.current);
+            stopTimer.current = setTimeout(() => setScrolling(false), 150);
 
-      if (!frame) frame = requestAnimationFrame(update);
-    };
+            if (!frame) frame = requestAnimationFrame(update);
+        };
 
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      clearTimeout(stopTimer.current);
-      if (frame) cancelAnimationFrame(frame);
-    };
-  }, []);
+        update();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            window.removeEventListener("resize", onScroll);
+            clearTimeout(stopTimer.current);
+            if (frame) cancelAnimationFrame(frame);
+        };
+    }, []);
 
     // show the scroll-to-top button only after scrolling down a bit
     // useEffect(() => {
@@ -66,16 +66,16 @@ const Footer = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-      const scrollToNext = () => {
-    if (scrolling) return;
-    const next = getNextTarget();
-    if (!next) return;
-    const top = next.getBoundingClientRect().top + window.scrollY - getHeaderHeight();
-    window.scrollTo({ top: Math.max(top, 0), behavior: smooth() });
-  };
+    const scrollToNext = () => {
+        if (scrolling) return;
+        const next = getNextTarget();
+        if (!next) return;
+        const top = next.getBoundingClientRect().top + window.scrollY - getHeaderHeight();
+        window.scrollTo({ top: Math.max(top, 0), behavior: smooth() });
+    };
 
-   const base =
-    "fixed right-4 z-50 size-8 bg-russian-dark-blue flex items-center justify-center rounded-full text-white text-xs hover:bg-russian-red hover:text-white transition-all duration-300";
+    const base =
+        "fixed right-4 z-50 size-8 bg-russian-dark-blue flex items-center justify-center rounded-full text-white text-xs hover:bg-russian-red hover:text-white transition-all duration-300";
 
 
     return (
@@ -235,29 +235,27 @@ const Footer = () => {
                         >Terms of Use</a></li>
                     </ul>
                     <button
-        type="button"
-        onClick={scrollToNext}
-        disabled={atEnd || scrolling}
-        aria-label="Scroll to next section"
-        tabIndex={atEnd ? -1 : 0}
-        className={`${base} ${showTop ? "bottom-14" : "bottom-4"} ${
-          atEnd
-            ? "opacity-0 translate-y-4 pointer-events-none"
-            : scrolling
-              ? "opacity-50 cursor-not-allowed"
-              : "opacity-100 translate-y-0 cursor-pointer"
-        }`}
-      >
-        <i className="fa-solid fa-arrow-down"></i>
-      </button>
+                        type="button"
+                        onClick={scrollToNext}
+                        disabled={atEnd || scrolling}
+                        aria-label="Scroll to next section"
+                        tabIndex={atEnd ? -1 : 0}
+                        className={`${base} ${showTop ? "top-20" : ""} ${atEnd
+                                ? "opacity-0 translate-y-4 pointer-events-none"
+                                : scrolling
+                                    ? "opacity-50 cursor-not-allowed"
+                                    : "opacity-100 translate-y-0 cursor-pointer"
+                            }`}
+                    >
+                        <i className="fa-solid fa-arrow-down"></i>
+                    </button>
                     <a
                         href="#"
                         onClick={scrollToTop}
                         aria-label="Back to top"
                         tabIndex={showTop ? 0 : -1}
-                        className={`fixed right-4 bottom-4 z-50 size-8 bg-russian-dark-blue flex items-center justify-center rounded-full text-white text-xs hover:bg-russian-red hover:text-white transition-all duration-300 ${
-                            showTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
-                        }`}
+                        className={`fixed right-4 bottom-4 z-50 size-8 bg-russian-dark-blue flex items-center justify-center rounded-full text-white text-xs hover:bg-russian-red hover:text-white transition-all duration-300 ${showTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+                            }`}
                     ><i className="fa-solid fa-arrow-up"></i></a>
                 </div>
             </div>
