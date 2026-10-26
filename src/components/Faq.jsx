@@ -125,10 +125,10 @@ const Faq = () => {
                                     aria-expanded={isOpen}
                                     aria-controls={answerId}
                                     onClick={() => handleToggle(index)}
-                                    className="w-full flex items-center gap-3 pe-4 ps-6 py-3 text-left cursor-pointer focus:outline-hidden"
+                                    className="w-full flex items-center gap-3 px-4 py-2 text-left cursor-pointer focus:outline-hidden"
                                 >
                                     {/* Question */}
-                                    <span className="grow font-bold text-russian-dark-blue">
+                                    <span className="grow font-bold text-russian-dark-blue leading-5">
                                         {faq.question}
                                     </span>
 

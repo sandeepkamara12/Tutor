@@ -80,18 +80,18 @@ const Why = () => {
       <section id="why" className="z-40 relative py-12 lg:py-20 flex xl:justify-center flex-col bg-gray-50">
         <div className="custom-container relative z-40">
 
-          <div className="flex flex-col items-center lg:w-1/2 mx-auto gap-6 text-center">
+          <div className="flex flex-col items-center xl:w-1/2 mx-auto gap-6 text-center">
             <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Why me</p>
             <h1 className="heading">Why <span className="text-russian-red">choose me?</span></h1>
             <p>Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles, and conversations you never thought you'd have. This is where that journey begins.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:w-3/4 mx-auto gap-x-4 gap-y-10 text-center my-10">
+          <div className="grid grid-cols-1 sd:grid-cols-2 lg:grid-cols-4 xl:w-3/4 mx-auto gap-x-4 gap-y-10 text-center my-10">
             {reasons.map((item) => (
               <div className="group flex flex-col items-center gap-3" key={item.id}>
-                <span className="block h-12 md:h-16 overflow-hidden text-7xl md:text-8xl leading-none font-black text-gray-300 group-hover:text-russian-blue transition-all select-none" aria-hidden="true">0{item.id}</span>
+                <span className="block h-12 overflow-hidden text-7xl leading-none font-black text-gray-300 group-hover:text-russian-blue transition-all select-none" aria-hidden="true">0{item.id}</span>
                 <p className="font-bold text-russian-dark-blue">{item.title}</p>
-                <p className="text-sm text-gray-600 max-w-52">{item.description}</p>
+                <p className="">{item.description}</p>
               </div>
             ))}
           </div>
