@@ -12,9 +12,9 @@ const Header = () => {
     { name: "Discover", href: "#discover" },
     { name: "Learning Path", href: "#learning-path" },
     { name: "Lessons", href: "#featured-lessons" },
-    { name: "Achievements", href: "#progress_achievements" },
+    // { name: "Achievements", href: "#progress_achievements" },
     { name: "Testimonials", href: "#testimonials" },
-    { name: "Faq", href: "#faq" },
+    // { name: "Faq", href: "#faq" },
     { name: "Enquiry", href: "#enquiry" },
     { name: "About", href: "#about" },
     // { name: "Instagram", href: "#instagram" },
@@ -195,7 +195,7 @@ const Header = () => {
           id="primary-nav"
           className="grid grid-rows-[0fr] group-data-[open=true]:grid-rows-[1fr] transition-all duration-300 basis-full grow lg:flex lg:justify-between"
         >
-          <div className="fixed z-30 left-0 top-16 lg:top-0
+          <div className="fixed z-30 left-0 top-15.5 lg:top-0
   h-screen w-56 lg:w-auto lg:h-auto
   bg-white lg:bg-transparent px-4 lg:px-0
   min-h-0 overflow-hidden

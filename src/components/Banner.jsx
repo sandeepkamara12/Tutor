@@ -9,7 +9,7 @@ const Banner = () => {
       <div className="tr-b bubble bg-russian-blue/70"></div>
       <div className="bl-b bubble bg-russian-blue/70"></div>
       <div className="inner-banner absolute size-full bg-white/50"></div>
-      <div className="custom-container relative z-40 py-32 lg:py-16 h-full flex flex-wrap items-center">
+      <div className="custom-container relative z-40 pt-32 pb-16 lg:pt-16 h-full flex flex-wrap items-center">
         <div
           className="w-full md:w-[calc(100%-350px)] lg:w-1/2 flex flex-col gap-6 order-2 md:order-1 text-center md:text-left pt-10 md:pt-0 items-center md:items-start"
         >
