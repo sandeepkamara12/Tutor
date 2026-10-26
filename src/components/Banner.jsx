@@ -25,13 +25,13 @@ const Banner = () => {
           <p>Before your start Russian journey, I want you to explore why do you need to learn Russian in below four
             cards. And if you find it useful, don’t forget to share it with your friends!</p>
           <div className="mt-4 flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
-            <Button color="blue" label="Start Learning Free" href="#" />
-            <Button color="red" label="See the Learning Path" href="#" />
+            <Button color="blue" label="See the Learning Path" href="#" />
+            <Button color="red" label="Start Learning Free" href="#" />
           </div>
         </div>
-        <div className="w-[350px] mx-auto lg:w-1/2 relative order-1 md:order-2">
+        <div className="w-87.5 mx-auto lg:w-1/2 relative order-1 md:order-2">
           <div
-            className="hero-text-box absolute w-[150px] lg:w-[200px] p-2.5 flex flex-wrap items-center justify-center right-0 xl:right-10"
+            className="hero-text-box absolute w-37.5 lg:w-50 p-2.5 flex flex-wrap items-center justify-center right-0 xl:right-10"
           >
             <img
               src="./clouds.png"
