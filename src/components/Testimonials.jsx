@@ -69,7 +69,7 @@ export default function Testimonials() {
     <section id="testimonials">
       <div className="custom-container relative z-40 py-12 lg:py-20 flex justify-center flex-col">
         {/* heading */}
-        <div className="flex flex-col lg:w-1/2 mx-auto gap-6 items-center text-center mb-10">
+        <div className="flex flex-col lg:w-1/2 mx-auto gap-6 items-center text-center mb-6">
           <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">
             Testimonials
           </p>
@@ -78,7 +78,7 @@ export default function Testimonials() {
           </h1>
           <p>
             Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch
-            without subtitles, and conversations you never thought you'd have. This is where that journey begins.
+            without subtitles & conversations.
           </p>
         </div>
 
