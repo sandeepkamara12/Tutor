@@ -138,12 +138,12 @@ const Discover = () => {
                     <Button color="blue" label="See the Learning Path" href="#learning-path"   {...animationTop}
                         transition={{
                             ...animationTop.transition,
-                            delay: 0.4,
+                            delay: 0.45,
                         }} />
                     <Button color="red" label="Start learning now" href="#featured-lessons"   {...animationTop}
                         transition={{
                             ...animationTop.transition,
-                            delay: 0.45,
+                            delay: 0.5,
                         }} />
                 </div>
             </div>

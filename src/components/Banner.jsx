@@ -16,10 +16,6 @@ const Banner = () => {
         >
           <motion.p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm"
             {...animationTop}
-            transition={{
-              ...animationTop.transition,
-              delay: 0,
-            }}
           >
             Beginner-friendly
             Russian course</motion.p>

@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import ContentArea from "./common/ContentArea"
+import { motion } from "motion/react";
+import { animationTop } from '../constants';
 import Button from "./ui/Button";
 
 const LearningPath = () => {
@@ -143,22 +144,43 @@ const LearningPath = () => {
                     style={{ "--panel-min": `${panelMin}px` }}
                     className="max-sm:min-h-(--panel-min) max-sm:sticky max-sm:top-16 max-sm:z-30 max-sm:bg-gray-50 py-12 sm:py-0 flex flex-col items-center lg:items-start gap-3 lg:gap-6 text-center lg:text-start w-full lg:w-2/5 lg:pe-6 justify-end"
                 >
-                    <p
+                    <motion.p
+                        {...animationTop}
                         id="active-num"
                         className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm"
                     >{activeIndex === 0
                         ? "Learning path"
-                        : `Step ${String(activeIndex).padStart(2, "0")}`}</p>
-                    <h1 id="active-title" className="heading">{activeStep.title}
+                        : `Step ${String(activeIndex).padStart(2, "0")}`}</motion.p>
+                    <motion.h1
+                        {...animationTop}
+                         transition={{
+                            ...animationTop.transition,
+                            delay: 0.05,
+                        }}
+                        id="active-title" className="heading">{activeStep.title}
                         <span className="block text-russian-red">
                             {activeStep.highlight}
-                        </span></h1>
-                    <p id="active-desc" className="">
+                        </span></motion.h1>
+                    <motion.p
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.1,
+                        }}
+                        id="active-desc" className="">
                         {activeStep.desc}
-                    </p>
+                    </motion.p>
                     <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
-                        <Button color="blue" label={'What students say'} href="#testimonials" />
-                        <Button color="red" label={'Start learning now'} href="#featured-lessons" />
+                        <Button color="blue" label={'What students say'} href="#testimonials"  {...animationTop}
+                            transition={{
+                                ...animationTop.transition,
+                                delay: 0.15,
+                            }} />
+                        <Button color="red" label={'Start learning now'} href="#featured-lessons"  {...animationTop}
+                            transition={{
+                                ...animationTop.transition,
+                                delay: 0.2,
+                            }} />
                     </div>
                 </div>
                 <div className="w-full lg:w-3/5 lg:ps-6 pt-10 lg:pt-0" id="timeline-scroll">
@@ -169,10 +191,15 @@ const LearningPath = () => {
                             const stepIndex = index + 1;
                             const isActive = activeIndex === stepIndex;
                             return (
-                                <div
+                                <motion.div
+                                    {...animationTop}
+                                    transition={{
+                                        ...animationTop.transition,
+                                        delay: 0.15 + index * 0.05,
+                                    }}
                                     key={step.tag + stepIndex}
                                     ref={(el) => (mobileSteps.current[index] = el)}
-                                    className="group flex flex-col items-center text-center"
+                                    className={`group flex flex-col items-center text-center ${0.15 + index * 0.05}`}
                                 >
                                     <div className="py-1.5 text-center">
                                         <p className="text-lg font-bold text-russian-red">
@@ -195,7 +222,7 @@ const LearningPath = () => {
                                             <div className="h-12 border-l-2 border-dashed border-russian-red" />
                                         </>
                                     )}
-                                </div>
+                                </motion.div>
                             );
                         })}
                     </div>
@@ -247,17 +274,22 @@ const LearningPath = () => {
                                     className={`step-row group contents ${isActive ? "active" : ""}`}
                                 >
                                     {/* Left side (above the bar below lg) */}
-                                    <button
+                                    <motion.button
+                                        {...animationTop}
+                                        transition={{
+                                            ...animationTop.transition,
+                                            delay: 0.05 + index * 0.05,
+                                        }}
                                         type="button"
                                         onClick={() => setActiveIndex(stepIndex)}
                                         className={`step-content cursor-pointer py-1.5 ${isRight
-                                                ? "lg:invisible lg:order-none hidden lg:flex"
-                                                : `block max-lg:row-start-1 max-lg:self-end ${column} ${width} lg:w-full lg:text-right`
+                                            ? "lg:invisible lg:order-0 hidden lg:flex"
+                                            : `block max-lg:row-start-1 max-lg:self-end ${column} ${width} lg:w-full lg:text-right`
                                             }`}
                                         aria-pressed={isActive}
                                     >
                                         {isRight ? null : content}
-                                    </button>
+                                    </motion.button>
 
                                     {/* Timeline dot */}
                                     <div className={`flex items-center justify-center py-1.5 max-lg:row-start-2 ${column}`}>
@@ -270,25 +302,30 @@ const LearningPath = () => {
                                         >
                                             <span
                                                 className={`size-2 group-hover:bg-russian-red transition-all duration-500 rounded-full ${isActive
-                                                        ? "bg-russian-red"
-                                                        : "bg-white"
+                                                    ? "bg-russian-red"
+                                                    : "bg-white"
                                                     }`}
                                             />
                                         </button>
                                     </div>
 
                                     {/* Right side (below the bar below lg) */}
-                                    <button
+                                    <motion.button
+                                        {...animationTop}
+                                        transition={{
+                                            ...animationTop.transition,
+                                            delay: 0.05 + index * 0.05,
+                                        }}
                                         type="button"
                                         onClick={() => setActiveIndex(stepIndex)}
                                         className={`step-content cursor-pointer py-1.5 lg:order-none ${!isRight
-                                                ? "lg:invisible hidden lg:flex"
-                                                : `block max-lg:row-start-3 max-lg:self-start ${column} ${width} lg:w-full lg:text-left`
+                                            ? "lg:invisible hidden lg:flex"
+                                            : `block max-lg:row-start-3 max-lg:self-start ${column} ${width} lg:w-full lg:text-left`
                                             }`}
                                         aria-pressed={isActive}
                                     >
                                         {isRight ? content : null}
-                                    </button>
+                                    </motion.button>
                                 </div>
                             );
                         })}
