@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
+import { animationTop } from '../../constants';
 
 const SHOW_TOP_AFTER = 300; // px scrolled before the "back to top" arrow appears
 const getHeaderHeight = () => document.getElementById("site-header")?.offsetHeight ?? 0;
@@ -86,7 +88,9 @@ const Footer = () => {
             <div className="custom-container relative z-40 py-10">
                 <div className="grid sd:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
 
-                    <div className="col-span-2 sm:col-span-3 lg:col-span-1 flex flex-col gap-4">
+                    <motion.div
+                     {...animationTop}
+                     className="col-span-2 sm:col-span-3 lg:col-span-1 flex flex-col gap-4">
                         <a href="#">
                             <img
                                 className="w-16 h-auto"
@@ -124,9 +128,15 @@ const Footer = () => {
                                 className="text-gray-600 hover:text-russian-red"
                             ><i className="fa-brands fa-pinterest-p"></i></a>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="flex flex-col gap-4">
+                    <motion.div
+                     {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.05,
+                                }}
+                     className="flex flex-col gap-4">
                         <p className="text-base font-bold text-russian-dark-blue">Quick links</p>
                         <ul className="flex flex-col gap-2">
                             <li><a
@@ -154,9 +164,15 @@ const Footer = () => {
                                 className="text-gray-600 hover:text-russian-red transition-all"
                             >Contact me</a></li>
                         </ul>
-                    </div>
+                    </motion.div>
 
-                    <div className="flex flex-col gap-4">
+                    <motion.div
+                     {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.1,
+                                }}
+                     className="flex flex-col gap-4">
                         <p className="text-base font-bold text-russian-dark-blue">Start learning</p>
                         <ul className="flex flex-col gap-2">
                             <li><a
@@ -184,9 +200,15 @@ const Footer = () => {
                                 className="text-gray-600 hover:text-russian-red transition-all"
                             >Free material</a></li>
                         </ul>
-                    </div>
+                    </motion.div>
 
-                    <div className="col-span-2 sm:col-span-1 flex flex-col gap-4">
+                    <motion.div
+                     {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.15,
+                                }}
+                     className="col-span-2 sm:col-span-1 flex flex-col gap-4">
                         <p className="text-base font-bold text-russian-dark-blue">Get in touch</p>
                         <div className="flex flex-col gap-6">
                             <div className="flex flex-wrap flex-col gap-2 text-start">
@@ -218,13 +240,25 @@ const Footer = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
             <div className="py-6 border-t border-gray-300 text-center">
                 <div className="custom-container flex flex-col md:flex-row items-center justify-between gap-2">
-                    <p className="text-gray-600">© 2026 Russian in Hindi. All rights reserved.</p>
-                    <ul className="flex flex-wrap justify-center gap-6 text-sm">
+                    <motion.p 
+                     {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.05,
+                                }}
+                    className="text-gray-600">© 2026 Russian in Hindi. All rights reserved.</motion.p>
+                    <motion.ul
+                     {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.1,
+                                }}
+                     className="flex flex-wrap justify-center gap-6 text-sm">
                         <li><a
                             href="#"
                             className="text-gray-600 hover:text-russian-red transition-all"
@@ -233,7 +267,7 @@ const Footer = () => {
                             href="#"
                             className="text-gray-600 hover:text-russian-red transition-all"
                         >Terms of Use</a></li>
-                    </ul>
+                    </motion.ul>
                     <button
                         type="button"
                         onClick={scrollToNext}
