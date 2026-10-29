@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { motion } from "motion/react";
+import { animationTop } from '../constants';
 import Button from './ui/Button'
 
 const Lessons = () => {
@@ -125,14 +127,36 @@ const Lessons = () => {
                 <div className="grid lg:grid-cols-[1fr_360px] gap-6 items-end">
                     <div>
                         <div className="flex flex-col items-center lg:items-start gap-6 text-center lg:text-start xl:w-2/3">
-                            <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Featured
-                                Lessons & Quizzes</p>
-                            <h1 className="heading">Learn, test and <span className="text-russian-red">remember it.</span></h1>
-                            <p>Pick a short lesson that fits your level, then check what you remember with a quick quiz. Every lesson
-                                takes only 10 to 15 minutes.</p>
+                            <motion.p
+                                {...animationTop}
+                                className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Featured
+                                Lessons & Quizzes</motion.p>
+                            <motion.h1
+                                {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.05,
+                                }}
+                                className="heading">Learn, test and <span className="text-russian-red">remember it.</span></motion.h1>
+                            <motion.p
+                                {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.1,
+                                }}
+                            >Pick a short lesson that fits your level, then check what you remember with a quick quiz. Every lesson
+                                takes only 10 to 15 minutes.</motion.p>
                             <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
-                                <Button color="blue" label="Track your progress" href="#progress_achievements" />
-                                <Button color="red" label="Browse all lessons" href="#" />
+                                <Button color="blue" label="Track your progress" href="#progress_achievements" {...animationTop}
+                                    transition={{
+                                        ...animationTop.transition,
+                                        delay: 0.15,
+                                    }} />
+                                <Button color="red" label="Browse all lessons" href="#" {...animationTop}
+                                    transition={{
+                                        ...animationTop.transition,
+                                        delay: 0.2,
+                                    }} />
                             </div>
                         </div>
 
@@ -141,10 +165,15 @@ const Lessons = () => {
                             className="grid sm:grid-cols-2 gap-6 mt-10"
                         >
 
-                            {lessons.map((lesson) => (
-                                <article
+                            {lessons.map((lesson, index) => (
+                                <motion.article
+                                    {...animationTop}
+                                    transition={{
+                                        ...animationTop.transition,
+                                        delay: 0.2 + index * 0.05,
+                                    }}
                                     key={lesson.id}
-                                    className="bg-white border border-gray-200 rounded-md flex flex-col overflow-hidden group"
+                                    className={`bg-white border border-gray-200 rounded-md flex flex-col overflow-hidden group ${ 0.2 + index * 0.05}`}
                                 >
                                     {/* Preview */}
                                     <div className="relative h-56 flex items-center justify-center font-bold text-4xl text-white bg-russian-dark-blue">
@@ -209,12 +238,18 @@ const Lessons = () => {
                                             classes="py-2"
                                         />
                                     </div>
-                                </article>
+                                </motion.article>
                             ))}
 
                         </div>
                     </div>
-                    <aside className="rounded bg-white border border-gray-200 overflow-hidden transition-all p-6">
+                    <motion.aside
+                    {...animationTop}
+                                    transition={{
+                                        ...animationTop.transition,
+                                        delay: 0.3,
+                                    }}
+                     className="rounded bg-white border border-gray-200 overflow-hidden transition-all p-6">
                         {/* Header */}
                         <div className="flex items-center justify-between mb-4">
                             <span className="text-xs font-bold tracking-widest uppercase text-russian-red">
@@ -314,10 +349,10 @@ const Lessons = () => {
                         <p
                             aria-live="polite"
                             className={`text-xs mt-5 mb-2 font-semibold min-h-4 ${!finished && answered
-                                    ? selected === current.a
-                                        ? "text-green-700"
-                                        : "text-russian-red"
-                                    : ""
+                                ? selected === current.a
+                                    ? "text-green-700"
+                                    : "text-russian-red"
+                                : ""
                                 }`}
                         >
                             {!finished && answered
@@ -352,7 +387,7 @@ const Lessons = () => {
                         >
                             More quizzes →
                         </a>
-                    </aside>
+                    </motion.aside>
                 </div>
             </div>
         </section>
