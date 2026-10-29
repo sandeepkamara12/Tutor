@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { motion } from "motion/react";
+import { animationTop } from '../constants';
 
 // Put the images in  public/  (or import them and use the imported value as `img`).
 // `ratio` is optional: it only sets the height of the tile, which is what makes the masonry look.
@@ -158,18 +160,36 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
     <section id="instagram" className="z-40 relative py-12 lg:py-20 overflow-hidden bg-gray-50">
       <div className="custom-container relative z-40">
         <div className="flex flex-col items-center lg:w-1/2 mx-auto gap-6 text-center mb-10">
-          <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">
+          <motion.p
+            {...animationTop}
+            className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">
             Instagram
-          </p>
-          <h1 className="heading">
+          </motion.p>
+          <motion.h1
+            {...animationTop}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.05,
+            }}
+            className="heading">
             Learn with us on <span className="text-russian-red">Instagram</span>
-          </h1>
-          <p>
+          </motion.h1>
+          <motion.p  {...animationTop}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.1,
+            }}>
             New words, phrases and little grammar tips every day. Follow{' '}
             <span className="font-bold text-russian-dark-blue">@russianinhindi</span> and learn Russian in just a few
             minutes of scrolling.
-          </p>
-          <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
+          </motion.p>
+          <motion.div
+            {...animationTop}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.15,
+            }}
+            className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
             <a
               href="https://www.instagram.com/"
               target="_blank"
@@ -180,7 +200,7 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
                 Follow on Instagram <i className="fa-brands fa-instagram ms-1"></i>
               </span>
             </a>
-          </div>
+          </motion.div>
         </div>
 
         {/* masonry: the browser fills the columns, every image is shown on every screen size */}
@@ -194,9 +214,8 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
               rel="noopener"
               aria-label={post.label}
               style={{ transitionDelay: show ? `${delays[i] ?? 0}ms` : '0ms' }}
-              className={`group relative block w-full ${post.ratio} ${post.tint} mb-2 md:mb-3 lg:mb-4 break-inside-avoid overflow-hidden rounded transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none ${
-                show ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
-              }`}
+              className={`group relative block w-full ${post.ratio} ${post.tint} mb-2 md:mb-3 lg:mb-4 break-inside-avoid overflow-hidden rounded transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none ${show ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
+                }`}
             >
               <i className="fa-brands fa-instagram absolute inset-0 flex items-center justify-center text-2xl text-russian-dark-blue/30"></i>
               <img
