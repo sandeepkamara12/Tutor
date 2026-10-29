@@ -84,11 +84,11 @@
   .button {
     @apply py-3 px-4 inline-block gap-x-2 border-none text-sm font-medium rounded text-white overflow-hidden focus:outline-hidden lowercase first-letter:capitalize relative z-50 cursor-pointer shadow-[7px_7px_14px_-7px_#1b356b];
   }
-
+  
   .button-russian-blue {
-    @apply bg-russian-dark-blue hover:bg-russian-red focus:bg-russian-red;
-    @apply before:content-[''] before:h-full before:absolute before:left-0 before:top-0 before:z-10 before:w-0 before:transition-all before:duration-300 before:ease-in-out hover:before:w-full before:bg-russian-red;
-  }
+  @apply bg-russian-dark-blue;
+  @apply before:content-[''] before:h-full before:absolute before:left-0 before:top-0 before:z-10 before:w-0 before:transition-all before:duration-300 before:ease-in-out hover:before:w-full focus:before:w-full before:bg-russian-red;
+}
 
   .button-russian-red {
     @apply bg-russian-red;
