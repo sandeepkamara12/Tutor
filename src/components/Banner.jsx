@@ -25,45 +25,45 @@ const Banner = () => {
             Russian course</motion.p>
           <motion.h1 className="heading"
             {...animationTop}
-            // transition={{
-            //   ...animationTop.transition,
-            //   delay: 0.1,
-            // }}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.05,
+            }}
           ><span className="text-russian-red">Russian</span>, start learning <br /> in hindi for free
           </motion.h1>
           <motion.p
              {...animationTop}
-            // transition={{
-            //   ...animationTop.transition,
-            //   delay: 0.2,
-            // }}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.1,
+            }}
           >Explore free Russian lessons designed for learners of all levels, from complete beginners to advanced
             students. Learn vocabulary and grammar, practice reading and listening with audio, improve your
             understanding through exercises and activities, and discover useful Russian words and expressions along the
             way.</motion.p>
           <motion.p
             {...animationTop}
-            // transition={{
-            //   ...animationTop.transition,
-            //   delay: 0.3,
-            // }}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.15,
+            }}
           >Before your start Russian journey, I want you to explore why do you need to learn Russian in below four
             cards. And if you find it useful, don’t forget to share it with your friends!</motion.p>
             
           <div className="mt-4 flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
             <Button color="blue" label="Why choose me?" href="#why"
              {...animationTop}
-            // transition={{
-            //   ...animationTop.transition,
-            //   delay: 0.4,
-            // }}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.2,
+            }}
             />
             <Button color="red" label="Start Learning now" href="#featured-lessons"
               {...animationTop}
-              // transition={{
-              //   ...animationTop.transition,
-              //   delay: 0.5,
-              // }}
+              transition={{
+                ...animationTop.transition,
+                delay: 0.25,
+              }}
             />
           </div>
         </div>

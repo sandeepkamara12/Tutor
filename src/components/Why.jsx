@@ -84,24 +84,23 @@ const Why = () => {
           <div className="flex flex-col items-center xl:w-1/2 mx-auto gap-6 text-center">
             <motion.p
               {...animationTop}
-              // transition={{
-              //   ...animationTop.transition,
-              //   delay: 0,
-              // }}
+              transition={{
+                ...animationTop.transition,
+                delay: 0,
+              }}
               className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Why me</motion.p>
             <motion.h1
               {...animationTop}
-              // transition={{
-              //   ...animationTop.transition,
-              //   delay: 0.1,
-              // }}
+              transition={{
+                ...animationTop.transition,
+                delay: 0.05,
+              }}
               className="heading">Why <span className="text-russian-red">choose me?</span></motion.h1>
             <motion.p   {...animationTop}
-              // transition={{
-              //   ...animationTop.transition,
-              //   delay: 0.2,
-              // }}
-              >Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles & conversations.</motion.p>
+              transition={{
+                ...animationTop.transition,
+                delay: 0.1,
+              }}>Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles & conversations.</motion.p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:w-3/4 mx-auto gap-x-4 gap-y-10 text-center my-10">
@@ -110,9 +109,9 @@ const Why = () => {
                 {...animationTop}
                 transition={{
                   ...animationTop.transition,
-                  delay: 0.1 + index * 0.1,
+                  delay: 0.1 + index * 0.05,
                 }}
-                className={`group flex flex-col items-center gap-3 ${0.1 + index * 0.1}`} key={item.id}>
+                className={`group flex flex-col items-center gap-3 ${0.1 + index * 0.05}`} key={item.id}>
                 <span className="block h-12 overflow-hidden text-7xl leading-none font-black text-gray-200 select-none" aria-hidden="true">0{item.id}</span>
                 <p className="font-bold text-russian-dark-blue">{item.title}</p>
                 <p className="">{item.description}</p>
@@ -121,17 +120,15 @@ const Why = () => {
           </div>
           <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
             <Button color="blue" label="What you will discover?" href="#discover"  {...animationTop}
-              // transition={{
-              //   ...animationTop.transition,
-              //   delay: 0.7,
-              // }}
-               />
+              transition={{
+                ...animationTop.transition,
+                delay: 0.3,
+              }} />
             <Button color="red" label="Start Learning now" href="#featured-lessons"  {...animationTop}
-              // transition={{
-              //   ...animationTop.transition,
-              //   delay: 0.8,
-              // }}
-               />
+              transition={{
+                ...animationTop.transition,
+                delay: 0.35,
+              }} />
           </div>
         </div>
       </section>
