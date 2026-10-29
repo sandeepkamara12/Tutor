@@ -169,7 +169,6 @@ html {
 }
 
 .hero-text-box {
-  top: -60px;
   animation: 1s linear 0s infinite alternate-reverse none running about-anim;
 }
 

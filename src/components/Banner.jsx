@@ -1,4 +1,4 @@
-import { animationTop } from '../constants';
+import { animationImg, animationTop } from '../constants';
 import Button from './ui/Button'
 import { motion } from "motion/react";
 
@@ -28,7 +28,7 @@ const Banner = () => {
           ><span className="text-russian-red">Russian</span>, start learning <br /> in hindi for free
           </motion.h1>
           <motion.p
-             {...animationTop}
+            {...animationTop}
             transition={{
               ...animationTop.transition,
               delay: 0.1,
@@ -45,7 +45,7 @@ const Banner = () => {
             }}
           >Before your start Russian journey, I want you to explore why do you need to learn Russian in below four
             cards. And if you find it useful, don’t forget to share it with your friends!</motion.p>
-            
+
           <div className="mt-4 flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
             <Button color="blue" label="Why choose me?" href="#why"
               animation={animationTop} delay={0.2}
@@ -55,26 +55,25 @@ const Banner = () => {
           </div>
         </div>
         <div className="w-87.5 mx-auto lg:w-1/2 relative order-1 md:order-2">
-          <div
-            className="hero-text-box absolute w-37.5 lg:w-50 p-2.5 flex flex-wrap items-center justify-center right-0 xl:right-10"
+          <motion.div
+            {...animationImg}
+            className="absolute -top-15 right-0 xl:right-10 w-37.5 lg:w-50"
           >
-            <img
-              src="./clouds.png"
-              alt="quote"
-              className=""
-            />
-            <div className="flex flex-col gap-2 absolute pt-3 lg:pt-5 text-white">
-              <span className="text-lg lg:text-3xl font-semibold leading-none">Привет!</span>
+            <div className="hero-text-box p-2.5 flex flex-wrap items-center justify-center">
+              <img src="./clouds.png" alt="quote" className="" />
+              <div className="flex flex-col gap-2 absolute pt-3 lg:pt-5 text-white">
+                <span className="text-lg lg:text-3xl font-semibold leading-none">Привет!</span>
+              </div>
             </div>
-          </div>
+          </motion.div>
 
-          <figure>
+          <motion.figure {...animationImg}>
             <img
               src="./teacher.png"
               alt="Teacher"
               className="w-1/2 mx-auto block"
             />
-          </figure>
+          </motion.figure>
         </div>
       </div>
     </section>

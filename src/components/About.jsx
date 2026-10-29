@@ -11,41 +11,6 @@ const About = () => {
     >
       <div className="custom-container relative z-40">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center lg:w-4/5 lg:mx-auto">
-          {/* 
-          <div className="lg:col-span-2">
-            <div className="relative w-80 mx-auto">
-              <motion.img
-                {...animationImg}
-                src="./owner.png"
-                alt="Your Russian teacher"
-                className="block mx-auto h-125 lg:h-150"
-              />
-
-              <motion.div
-              {...animationWidth}
-               className="absolute bottom-50 xxs:bottom-[52%] left-0 xxs:left-6 bg-white shadow py-2 px-3 border-s-2 border-russian-red">
-                <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
-                  className="text-russian-red font-bold"
-                >Free</span> First Lesson</p>
-              </motion.div>
-
-              <div
-                className="absolute bottom-40 xxs:bottom-24 left-0 xxs:-left-6 bg-white shadow py-2 px-3 border-s-2 border-russian-red">
-                <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
-                  className="text-russian-red font-bold"
-                >Hindi</span> to Russian</p>
-              </div>
-
-              <div
-                className="absolute bottom-30 xxs:bottom-auto xxs:top-[20%] left-0 xxs:-left-28 bg-white shadow py-2 px-3 border-s-2 border-russian-red"
-              >
-                <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
-                  className="text-russian-red font-bold"
-                >1.2k+</span> Happy Learners</p>
-              </div>
-            </div>
-          </div> */}
-
           <div className="lg:col-span-2">
             <motion.div
               initial="hidden"

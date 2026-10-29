@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Button from './ui/Button'
 import { motion } from "motion/react";
-import { animationTop } from '../constants';
+import { animationImg, animationTop } from '../constants';
 
 const VIDEO_ID = 'MyEem1zDqnY'
 
@@ -61,7 +61,7 @@ const Youtube = () => {
                 </div>
 
                 <motion.div
-                {...animationTop}
+                 {...animationImg}
                  className="relative w-full lg:w-1/2 xl:w-3/5 mt-10 lg:mt-0">
                     <div className="relative aspect-video overflow-hidden rounded bg-russian-dark-blue shadow-lg">
                         {playing ? (
