@@ -1,6 +1,6 @@
+import { animationTop } from '../constants';
 import Button from './ui/Button'
 import { motion } from "motion/react";
-import { animationTop } from '../constants';
 
 const Banner = () => {
   return (
@@ -48,18 +48,9 @@ const Banner = () => {
             
           <div className="mt-4 flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
             <Button color="blue" label="Why choose me?" href="#why"
-             {...animationTop}
-            transition={{
-              ...animationTop.transition,
-              delay: 0.2,
-            }}
+              animation={animationTop} delay={0.2}
             />
-            <Button color="red" label="Start Learning now" href="#featured-lessons"
-              {...animationTop}
-              transition={{
-                ...animationTop.transition,
-                delay: 0.25,
-              }}
+            <Button color="red" label="Start Learning now" href="#featured-lessons" animation={animationTop} delay={0.25}
             />
           </div>
         </div>
