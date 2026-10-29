@@ -183,7 +183,7 @@ const LearningPath = () => {
                             }} />
                     </div>
                 </div>
-                <div className="w-full lg:w-3/5 lg:ps-6 pt-10 lg:pt-0" id="timeline-scroll">
+                <div className="w-full lg:w-3/5 lg:ps-6 pb-10 lg:pb-0" id="timeline-scroll">
                     {/* below sm (640px): everything centred, each content followed by a circle and a vertical bar.
                     No click here: the sticky panel above changes while you scroll */}
                     <div className="flex flex-col items-center sm:hidden">
