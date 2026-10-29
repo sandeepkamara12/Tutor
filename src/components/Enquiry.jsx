@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Select from 'react-select';
+import { motion } from "motion/react";
+import { animationTop } from '../constants';
 
 const options = [
     { value: 'chocolate', label: 'Chocolate' },
@@ -122,14 +124,33 @@ export default function Enquiry() {
                     <div className="flex flex-wrap flex-col justify-between gap-6 w-full">
 
                         <div className="flex flex-col items-center lg:w-1/2 lg:mx-auto gap-6 text-center">
-                            <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Contact me</p>
-                            <h1 className="heading">We’d love to <span className="text-russian-red">hear from you</span></h1>
-                            <p>Have a question about a course, or not sure where to start? Send me a message and I will reply within 24 hours.</p>
+                            <motion.p
+                                {...animationTop}
+                                className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Contact me</motion.p>
+                            <motion.h1
+                                {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.05,
+                                }}
+                                className="heading">We’d love to <span className="text-russian-red">hear from you</span></motion.h1>
+                            <motion.p
+                                {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.1,
+                                }}
+                            >Have a question about a course, or not sure where to start? Send me a message and I will reply within 24 hours.</motion.p>
                         </div>
 
                         <div className="flex flex-col gap-6">
                             <div className="flex flex-wrap gap-6 items-center justify-center">
-                                <a
+                                <motion.a
+                                    {...animationTop}
+                                    transition={{
+                                        ...animationTop.transition,
+                                        delay: 0.15,
+                                    }}
                                     href="mailto:hello@example.com"
                                     className="flex items-center gap-2 group"
                                 >
@@ -137,9 +158,14 @@ export default function Enquiry() {
                                         className="size-6 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 group-hover:bg-russian-red group-hover:text-white text-xs transition-all"
                                     ><i className="fa-solid fa-envelope"></i></span>
                                     <p className="group-hover:text-russian-red transition-all">hello@example.com</p>
-                                </a>
+                                </motion.a>
 
-                                <a
+                                <motion.a
+                                    {...animationTop}
+                                    transition={{
+                                        ...animationTop.transition,
+                                        delay: 0.2,
+                                    }}
                                     href="https://wa.me/910000000000"
                                     className="flex items-center gap-2 group"
                                 >
@@ -147,18 +173,30 @@ export default function Enquiry() {
                                         className="size-6 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 group-hover:bg-russian-red group-hover:text-white text-xs transition-all"
                                     ><i className="fa-brands fa-whatsapp"></i></span>
                                     <p className="group-hover:text-russian-red transition-all">+91 xxxx xxx xxx</p>
-                                </a>
-                                <div className="flex items-center gap-2">
+                                </motion.a>
+                                <motion.div
+                                    {...animationTop}
+                                    transition={{
+                                        ...animationTop.transition,
+                                        delay: 0.25,
+                                    }}
+                                    className="flex items-center gap-2">
                                     <span
                                         className="size-6 bg-gray-300 flex items-center justify-center rounded-full text-gray-600 text-xs"><i
                                             className="fa-solid fa-location-dot"
                                         ></i></span>
                                     <p>123 Tech Avenue, San Francisco, USA</p>
-                                </div>
+                                </motion.div>
 
                             </div>
 
-                            <div className="flex flex-col items-center gap-2">
+                            <motion.div
+                                {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.3,
+                                }}
+                                className="flex flex-col items-center gap-2">
                                 <p className="font-bold text-russian-dark-blue leading-none">Follow me <span
                                     className="text-gray-600 font-normal"
                                 >to get daily words &amp; video lessons</span></p>
@@ -189,11 +227,16 @@ export default function Enquiry() {
                                         className="text-gray-600 hover:text-russian-red"
                                     ><i className="fa-brands fa-pinterest-p"></i></a>
                                 </div>
-                            </div>
+                            </motion.div>
 
                         </div>
                     </div>
-                    <form
+                    <motion.form
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.35,
+                        }}
                         onSubmit={submit}
                         noValidate
                         className="bg-white p-6 md:p-8 rounded flex flex-col gap-3 border-t-4 border-russian-dark-blue shadow-lg w-full mx-auto max-w-2xl"
@@ -352,7 +395,7 @@ export default function Enquiry() {
                                 {serverMessage}
                             </p>
                         )}
-                    </form>
+                    </motion.form>
                 </div>
             </div>
         </section>
