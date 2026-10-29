@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Button from './ui/Button'
+import { motion } from "motion/react";
+import { animationTop } from '../constants';
 
 const VIDEO_ID = 'MyEem1zDqnY'
 
@@ -19,10 +21,24 @@ const Youtube = () => {
             <div className="custom-container relative z-40 flex flex-col lg:flex-row items-center lg:gap-16 xl:gap-24">
 
                 <div className="flex flex-col w-full lg:w-1/2 xl:w-2/5 gap-6 text-center items-center lg:items-start lg:text-start">
-                    <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">YouTube</p>
-                    <h1 className="heading"><span className="text-russian-red block">Russian video lessons,</span> wherever you are</h1>
-                    <p>Short, friendly video lessons in Hindi. Start with this one, then visit the channel for new lessons every
-                        week.</p>
+                    <motion.p
+                        {...animationTop}
+                        className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">YouTube</motion.p>
+                    <motion.h1
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.05,
+                        }}
+                        className="heading"><span className="text-russian-red block">Russian video lessons,</span> wherever you are</motion.h1>
+                    <motion.p
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.1,
+                        }}
+                    >Short, friendly video lessons in Hindi. Start with this one, then visit the channel for new lessons every
+                        week.</motion.p>
                     <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
                         <Button
                             color="blue"
@@ -30,6 +46,11 @@ const Youtube = () => {
                             href="#instagram"
                             // onClick={play}
                             icon={<i className="fa-brands fa-instagram ms-1"></i>}
+                            {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.15,
+                                }}
                         />
                         <Button
                             color="red"
@@ -38,11 +59,18 @@ const Youtube = () => {
                             target="_blank"
                             rel="noopener"
                             icon={<i className="fa-brands fa-youtube ms-1"></i>}
+                            {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.2,
+                                }}
                         />
                     </div>
                 </div>
 
-                <div className="relative w-full lg:w-1/2 xl:w-3/5 mt-10 lg:mt-0">
+                <motion.div
+                {...animationTop}
+                 className="relative w-full lg:w-1/2 xl:w-3/5 mt-10 lg:mt-0">
                     <div className="relative aspect-video overflow-hidden rounded bg-russian-dark-blue shadow-lg">
                         {playing ? (
                             <iframe
@@ -74,7 +102,7 @@ const Youtube = () => {
                             </>
                         )}
                     </div>
-                </div>
+                </motion.div>
 
             </div>
         </section>
