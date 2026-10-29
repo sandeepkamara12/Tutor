@@ -1,4 +1,6 @@
 import Button from "./ui/Button"
+import { motion } from "motion/react";
+import { animationTop } from '../constants';
 
 const Achievements = () => {
     const achievements = [
@@ -58,24 +60,52 @@ const Achievements = () => {
             <div className="custom-container relative z-40 py-12 lg:py-20">
 
                 <div className="flex flex-col items-center lg:items-start xl:w-2/5 gap-6 text-center lg:text-start">
-                    <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Progress &
+                    <motion.p
+                        {...animationTop}
+                        className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Progress &
                         Achievements
-                    </p>
-                    <h1 className="heading">See how far <span className="text-russian-red">you've come</span></h1>
-                    <p>Track your progress, build a daily habit, and celebrate every milestone. Small steps every day lead to big
-                        results.</p>
+                    </motion.p>
+                    <motion.h1
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.05,
+                        }}
+                        className="heading">See how far <span className="text-russian-red">you've come</span></motion.h1>
+                    <motion.p
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.1,
+                        }}
+                    >Track your progress, build a daily habit, and celebrate every milestone. Small steps every day lead to big
+                        results.</motion.p>
                     <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
-                        <Button color="blue" label="Create a free account" href="#" />
-                        <Button color="red" label="What students say?" href="#testimonials" />
+                        <Button color="blue" label="Create a free account" href="#"   {...animationTop}
+                            transition={{
+                                ...animationTop.transition,
+                                delay: 0.15,
+                            }} />
+                        <Button color="red" label="What students say?" href="#testimonials"   {...animationTop}
+                            transition={{
+                                ...animationTop.transition,
+                                delay: 0.2,
+                            }} />
                     </div>
                 </div>
 
                 <div className="flex flex-col gap-6 mt-10">
                     <div className="flex flex-col gap-6">
-                        <div className="flex items-center sm:gap-3 justify-center sm:justify-start flex-col sm:flex-row">
+                        <motion.div
+                            {...animationTop}
+                            transition={{
+                                ...animationTop.transition,
+                                delay: 0.25,
+                            }}
+                            className="flex items-center sm:gap-3 justify-center sm:justify-start flex-col sm:flex-row">
                             <p className="font-bold text-lg text-russian-dark-blue">Achievement Badges</p>
                             <span className="text-sm font-bold text-green-700">6 of 6 earned</span>
-                        </div>
+                        </motion.div>
 
                         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center sm:text-start max-sm:[&>*:nth-child(odd)]:text-end max-sm:[&>*:nth-child(even)]:text-start">
                             {achievements.map((item, index) => {
@@ -83,7 +113,12 @@ const Achievements = () => {
                                 const lastInRow = (columns) => (index + 1) % columns === 0 || index === total - 1;
 
                                 return (
-                                    <div
+                                    <motion.div
+                                        {...animationTop}
+                                        transition={{
+                                            ...animationTop.transition,
+                                            delay: 0.25 + index * 0.05,
+                                        }}
                                         key={item.id}
                                         className={`flex flex-col border-r border-dashed border-gray-300 pr-4 ${lastInRow(2) ? "max-sm:border-r-0" : ""
                                             } ${lastInRow(3) ? "sm:max-lg:border-r-0" : ""} ${lastInRow(6) ? "lg:border-r-0" : ""}`}
@@ -91,7 +126,7 @@ const Achievements = () => {
                                         <p className="font-bold text-russian-dark-blue">{item.title}</p>
 
                                         <p className="lg:text-sm leading-5">{item.description}</p>
-                                    </div>
+                                    </motion.div>
                                 );
                             })}
                         </div>
@@ -101,42 +136,65 @@ const Achievements = () => {
 
                 <div className="flex flex-col gap-6 mt-10">
                     <div className="flex flex-col gap-6">
-                        <div className="flex items-center sm:gap-3 justify-center sm:justify-start flex-col sm:flex-row">
+                        <motion.div
+                            {...animationTop}
+                            transition={{
+                                ...animationTop.transition,
+                                delay: 0.25,
+                            }}
+                            className="flex items-center sm:gap-3 justify-center sm:justify-start flex-col sm:flex-row">
                             <p className="font-bold text-lg text-russian-dark-blue">Your Activities</p>
                             <span className="text-sm font-bold text-green-700">Last 30 days</span>
-                        </div>
+                        </motion.div>
 
                         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center sm:text-start max-sm:[&>*:nth-child(odd)]:text-end max-sm:[&>*:nth-child(even)]:text-start">
                             {stats.map((item, index) => {
                                 const total = stats.length;
                                 const lastInRow = (columns) => (index + 1) % columns === 0 || index === total - 1;
-                                 return (
-                                 <div
-                                    key={item.id}
-                                    className={`flex flex-col border-r border-dashed border-gray-300 pr-4 ${lastInRow(2) ? "max-sm:border-r-0" : ""
+                                return (
+                                    <motion.div
+                                        {...animationTop}
+                                        transition={{
+                                            ...animationTop.transition,
+                                            delay: 0.25 + index * 0.05,
+                                        }}
+                                        key={item.id}
+                                        className={`flex flex-col border-r border-dashed border-gray-300 pr-4 ${lastInRow(2) ? "max-sm:border-r-0" : ""
                                             } ${lastInRow(3) ? "sm:max-lg:border-r-0" : ""} ${lastInRow(6) ? "lg:border-r-0" : ""}`}
-                                >
-                                    <p className="font-bold text-russian-dark-blue">
-                                        {item.value}
-                                    </p>
+                                    >
+                                        <p className="font-bold text-russian-dark-blue">
+                                            {item.value}
+                                        </p>
 
-                                    <p className="lg:text-sm">{item.label}</p>
-                                </div>
-                                 );
+                                        <p className="lg:text-sm">{item.label}</p>
+                                    </motion.div>
+                                );
                             })}
                         </div>
                     </div>
                 </div>
 
                 <div className="flex flex-col gap-4 mt-10">
-                    <div className="flex items-center sm:gap-3 justify-center sm:justify-start flex-col sm:flex-row">
+                    <motion.div
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.25,
+                        }}
+                        className="flex items-center sm:gap-3 justify-center sm:justify-start flex-col sm:flex-row">
                         <p className="font-bold text-lg text-russian-dark-blue">Your Progress</p>
                         <span className="text-sm font-bold text-green-700">Level 1</span>
-                    </div>
+                    </motion.div>
 
                     <div className="grid xxs:grid-cols-2 lg:grid-cols-4 gap-2">
-                        {progressItems.map((item) => (
-                            <div key={item.id}>
+                        {progressItems.map((item, index) => (
+                            <motion.div
+                                {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.25 + index * 0.05,
+                                }}
+                                key={item.id}>
                                 <div className="flex justify-between items-center lg:text-sm font-semibold text-russian-dark-blue">
                                     <span>
                                         {item.title}
@@ -150,7 +208,7 @@ const Achievements = () => {
                                         style={{ width: `${item.progress}%` }}
                                     />
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
