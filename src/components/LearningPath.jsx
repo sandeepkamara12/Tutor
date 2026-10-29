@@ -171,16 +171,8 @@ const LearningPath = () => {
                         {activeStep.desc}
                     </motion.p>
                     <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
-                        <Button color="blue" label={'What students say'} href="#testimonials"  {...animationTop}
-                            transition={{
-                                ...animationTop.transition,
-                                delay: 0.15,
-                            }} />
-                        <Button color="red" label={'Start learning now'} href="#featured-lessons"  {...animationTop}
-                            transition={{
-                                ...animationTop.transition,
-                                delay: 0.2,
-                            }} />
+                        <Button color="blue" label={'What students say'} href="#testimonials" animation={animationTop} delay={0.15} />
+                        <Button color="red" label={'Start learning now'} href="#featured-lessons" animation={animationTop} delay={0.2} />
                     </div>
                 </div>
                 <div className="w-full lg:w-3/5 lg:ps-6 pb-10 lg:pb-0" id="timeline-scroll">

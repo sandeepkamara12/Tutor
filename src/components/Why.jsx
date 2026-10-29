@@ -119,16 +119,8 @@ const Why = () => {
             ))}
           </div>
           <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
-            <Button color="blue" label="What you will discover?" href="#discover"  {...animationTop}
-              transition={{
-                ...animationTop.transition,
-                delay: 0.3,
-              }} />
-            <Button color="red" label="Start Learning now" href="#featured-lessons"  {...animationTop}
-              transition={{
-                ...animationTop.transition,
-                delay: 0.35,
-              }} />
+            <Button color="blue" label="What you will discover?" href="#discover"  animation={animationTop} delay={0.3} />
+            <Button color="red" label="Start Learning now" href="#featured-lessons" animation={animationTop} delay={0.35} />
           </div>
         </div>
       </section>

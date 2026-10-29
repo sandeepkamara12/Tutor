@@ -135,16 +135,8 @@ const Discover = () => {
                     ))}
                 </div>
                 <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
-                    <Button color="blue" label="See the Learning Path" href="#learning-path"   {...animationTop}
-                        transition={{
-                            ...animationTop.transition,
-                            delay: 0.45,
-                        }} />
-                    <Button color="red" label="Start learning now" href="#featured-lessons"   {...animationTop}
-                        transition={{
-                            ...animationTop.transition,
-                            delay: 0.5,
-                        }} />
+                    <Button color="blue" label="See the Learning Path" href="#learning-path" animation={animationTop} delay={0.45} />
+                    <Button color="red" label="Start learning now" href="#featured-lessons" animation={animationTop} delay={0.5} />
                 </div>
             </div>
         </section>

@@ -147,16 +147,8 @@ const Lessons = () => {
                             >Pick a short lesson that fits your level, then check what you remember with a quick quiz. Every lesson
                                 takes only 10 to 15 minutes.</motion.p>
                             <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
-                                <Button color="blue" label="Track your progress" href="#progress_achievements" {...animationTop}
-                                    transition={{
-                                        ...animationTop.transition,
-                                        delay: 0.15,
-                                    }} />
-                                <Button color="red" label="Browse all lessons" href="#" {...animationTop}
-                                    transition={{
-                                        ...animationTop.transition,
-                                        delay: 0.2,
-                                    }} />
+                                <Button color="blue" label="Track your progress" href="#progress_achievements" animation={animationTop} delay={0.15} />
+                                <Button color="red" label="Browse all lessons" href="#"  animation={animationTop} delay={0.2} />
                             </div>
                         </div>
 

@@ -46,11 +46,7 @@ const Youtube = () => {
                             href="#instagram"
                             // onClick={play}
                             icon={<i className="fa-brands fa-instagram ms-1"></i>}
-                            {...animationTop}
-                                transition={{
-                                    ...animationTop.transition,
-                                    delay: 0.15,
-                                }}
+                            animation={animationTop} delay={0.15}
                         />
                         <Button
                             color="red"
@@ -59,11 +55,7 @@ const Youtube = () => {
                             target="_blank"
                             rel="noopener"
                             icon={<i className="fa-brands fa-youtube ms-1"></i>}
-                            {...animationTop}
-                                transition={{
-                                    ...animationTop.transition,
-                                    delay: 0.2,
-                                }}
+                           animation={animationTop} delay={0.2}
                         />
                     </div>
                 </div>

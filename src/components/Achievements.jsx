@@ -81,16 +81,8 @@ const Achievements = () => {
                     >Track your progress, build a daily habit, and celebrate every milestone. Small steps every day lead to big
                         results.</motion.p>
                     <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto">
-                        <Button color="blue" label="Create a free account" href="#"   {...animationTop}
-                            transition={{
-                                ...animationTop.transition,
-                                delay: 0.15,
-                            }} />
-                        <Button color="red" label="What students say?" href="#testimonials"   {...animationTop}
-                            transition={{
-                                ...animationTop.transition,
-                                delay: 0.2,
-                            }} />
+                        <Button color="blue" label="Create a free account" href="#"  animation={animationTop} delay={0.15} />
+                        <Button color="red" label="What students say?" href="#testimonials"  animation={animationTop} delay={0.2} />
                     </div>
                 </div>
 

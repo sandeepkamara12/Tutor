@@ -98,16 +98,8 @@ export default function Testimonials() {
           </motion.p>
           {/* buttons */}
           <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
-            <Button color="blue" label="Still have a question?" href="#faq"  {...animationTop}
-            transition={{
-              ...animationTop.transition,
-              delay: 0.15,
-            }} />
-            <Button color="red" label="Conact Me" href="#enquiry"  {...animationTop}
-            transition={{
-              ...animationTop.transition,
-              delay: 0.2,
-            }} />
+            <Button color="blue" label="Still have a question?" href="#faq" animation={animationTop} delay={0.15} />
+            <Button color="red" label="Conact Me" href="#enquiry"  animation={animationTop} delay={0.2} />
           </div>
         </div>
 
