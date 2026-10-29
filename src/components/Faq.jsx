@@ -140,7 +140,7 @@ const Faq = () => {
                                 }}
                                 key={faq.question}
                                 data-open={isOpen}
-                                className={`${0.15 + index * 0.05} group rounded border border-transparent bg-gray-200/70 transition-all duration-300 data-[open=true]:bg-white data-[open=true]:border data-[open=true]:border-gray-200/70`}
+                                className={`${0.15 + index * 0.05} group rounded border border-transparent bg-gray-200/70 data-[open=true]:bg-white data-[open=true]:border data-[open=true]:border-gray-200/70`}
                             >
                                 <button
                                     type="button"
