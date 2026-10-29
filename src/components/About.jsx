@@ -62,7 +62,7 @@ const About = () => {
 
               <motion.div
                 variants={badgeVariants}
-                custom={0}
+                custom={0.05}
                 className="absolute bottom-50 xxs:bottom-[52%] left-0 xxs:left-6 bg-white shadow border-s-2 border-russian-red overflow-hidden"
               >
                 <p className="py-2 px-3 whitespace-nowrap text-sm text-russian-dark-blue leading-tight font-medium">
@@ -72,7 +72,7 @@ const About = () => {
 
               <motion.div
                 variants={badgeVariants}
-                custom={0.3}
+                custom={0.1}
                 className="absolute bottom-40 xxs:bottom-24 left-0 xxs:-left-6 bg-white shadow border-s-2 border-russian-red overflow-hidden"
               >
                 <p className="py-2 px-3 whitespace-nowrap text-sm text-russian-dark-blue leading-tight font-medium">
@@ -82,7 +82,7 @@ const About = () => {
 
               <motion.div
                 variants={badgeVariants}
-                custom={0.6}
+                custom={0.15}
                 className="absolute bottom-30 xxs:bottom-auto xxs:top-[20%] left-0 xxs:-left-28 bg-white shadow border-s-2 border-russian-red overflow-hidden"
               >
                 <p className="py-2 px-3 whitespace-nowrap text-sm text-russian-dark-blue leading-tight font-medium">
