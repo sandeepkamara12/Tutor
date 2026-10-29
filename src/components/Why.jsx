@@ -1,4 +1,5 @@
-import React from 'react'
+import { motion } from "motion/react";
+import { animationTop } from '../constants';
 import Button from './ui/Button';
 
 const Why = () => {
@@ -81,23 +82,53 @@ const Why = () => {
         <div className="custom-container relative z-40">
 
           <div className="flex flex-col items-center xl:w-1/2 mx-auto gap-6 text-center">
-            <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Why me</p>
-            <h1 className="heading">Why <span className="text-russian-red">choose me?</span></h1>
-            <p>Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles & conversations.</p>
+            <motion.p
+              {...animationTop}
+              transition={{
+                ...animationTop.transition,
+                delay: 0,
+              }}
+              className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Why me</motion.p>
+            <motion.h1
+              {...animationTop}
+              transition={{
+                ...animationTop.transition,
+                delay: 0.1,
+              }}
+              className="heading">Why <span className="text-russian-red">choose me?</span></motion.h1>
+            <motion.p   {...animationTop}
+              transition={{
+                ...animationTop.transition,
+                delay: 0.2,
+              }}>Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles & conversations.</motion.p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:w-3/4 mx-auto gap-x-4 gap-y-10 text-center my-10">
-            {reasons.map((item) => (
-              <div className="group flex flex-col items-center gap-3" key={item.id}>
+            {reasons.map((item, index) => (
+              <motion.div
+                {...animationTop}
+                transition={{
+                  ...animationTop.transition,
+                  delay: 0.3 + index * 0.1,
+                }}
+                className={`group flex flex-col items-center gap-3 ${0.3 + index * 0.1}`} key={item.id}>
                 <span className="block h-12 overflow-hidden text-7xl leading-none font-black text-gray-200 select-none" aria-hidden="true">0{item.id}</span>
                 <p className="font-bold text-russian-dark-blue">{item.title}</p>
                 <p className="">{item.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
           <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
-            <Button color="blue" label="What you will discover?" href="#discover" />
-            <Button color="red" label="Start Learning now" href="#featured-lessons" />
+            <Button color="blue" label="What you will discover?" href="#discover"  {...animationTop}
+              transition={{
+                ...animationTop.transition,
+                delay: 0.7,
+              }} />
+            <Button color="red" label="Start Learning now" href="#featured-lessons"  {...animationTop}
+              transition={{
+                ...animationTop.transition,
+                delay: 0.8,
+              }} />
           </div>
         </div>
       </section>

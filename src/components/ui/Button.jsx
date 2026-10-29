@@ -8,13 +8,19 @@ const Button = ({
     rel = "",
     icon = "",
     classes = "",
-    animation = {},
+    initial,
+  whileInView,
+  viewport,
+  transition,
 }) => {
     const colorClass = color === "red" ? "button-russian-red" : "button-russian-blue";
     const className = `button text-center ${colorClass} ${classes}`;
     return (
         <motion.a id={id} className={className} href={href} target={target} rel={rel}
-            {...animation}
+             initial={initial}
+      whileInView={whileInView}
+      viewport={viewport}
+      transition={transition}
             // whileHover={{ y: -5 }}
         >
             <span>{label} {icon}</span>

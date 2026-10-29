@@ -1,6 +1,6 @@
-import React from 'react'
 import Button from './ui/Button'
-import ContentArea from './common/ContentArea';
+import { motion } from "motion/react";
+import { animationTop } from '../constants';
 
 const Discover = () => {
     const reasons = [
@@ -86,19 +86,42 @@ const Discover = () => {
                 id="discover"
             >
                 <div className="flex flex-col items-center xl:w-1/2 mx-auto gap-6 text-center">
-                    <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Your Russian journey</p>
-                    <h1 className="heading">What you will <span className="text-russian-red">discover?</span></h1>
-                    <p>Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles & conversations.</p>
+                    <motion.p
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0,
+                        }}
+                        className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">Your Russian journey</motion.p>
+                    <motion.h1
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.1,
+                        }}
+                        className="heading">What you will <span className="text-russian-red">discover?</span></motion.h1>
+                    <motion.p
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.2,
+                        }}
+                    >Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles & conversations.</motion.p>
                     {/* <ContentArea subTitle="Your Russian journey" title="What you will discover?" description="Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch without subtitles, and conversations you never thought you'd have. This is where that journey begins." /> */}
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 my-10 xl:w-3/4 mx-auto">
-                    {reasons.map((item) => (
-                        <div
+                    {reasons.map((item, index) => (
+                        <motion.div
+                            {...animationTop}
+                            transition={{
+                                ...animationTop.transition,
+                                delay: 0.3 + index * 0.1,
+                            }}
                             key={item.id}
-                            className={`card bg-white p-6 rounded flex flex-col relative items-center md:items-start text-center md:text-start gap-1 border-t-4 ${item.borderColor} shadow-lg`}
+                            className={`${0.3 + index * 0.1} card bg-white p-6 rounded flex flex-col relative items-center md:items-start text-center md:text-start gap-1 border-t-4 ${item.borderColor} shadow-lg`}
                         >
                             <span
-                                className={`${item.badgeColor} size-8 absolute -top-4 rounded-full text-15 leading-[18px] font-medium text-white flex items-center justify-center shadow-2xl`}
+                                className={`${item.badgeColor} size-8 absolute -top-4 rounded-full text-15 leading-4.5 font-medium text-white flex items-center justify-center shadow-2xl`}
                             >
                                 {item.id}
                             </span>
@@ -108,12 +131,20 @@ const Discover = () => {
                             </p>
 
                             <p>{item.description}</p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
                 <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
-                    <Button color="blue" label="See the Learning Path" href="#learning-path" />
-                    <Button color="red" label="Start learning now" href="#featured-lessons" />
+                    <Button color="blue" label="See the Learning Path" href="#learning-path"   {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 1.1,
+                        }} />
+                    <Button color="red" label="Start learning now" href="#featured-lessons"   {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 1.4,
+                        }} />
                 </div>
             </div>
         </section>
