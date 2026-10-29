@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from './ui/Button'
 import { motion } from "motion/react";
-import { animationTop } from '../constants';
+import { animationImg, animationTop, animationWidth, badgeVariants } from '../constants';
 
 const About = () => {
   return (
@@ -11,20 +11,23 @@ const About = () => {
     >
       <div className="custom-container relative z-40">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center lg:w-4/5 lg:mx-auto">
-
+          {/* 
           <div className="lg:col-span-2">
             <div className="relative w-80 mx-auto">
-              <img
+              <motion.img
+                {...animationImg}
                 src="./owner.png"
                 alt="Your Russian teacher"
                 className="block mx-auto h-125 lg:h-150"
               />
 
-              <div className="absolute bottom-50 xxs:bottom-[52%] left-0 xxs:left-6 bg-white shadow py-2 px-3 border-s-2 border-russian-red">
+              <motion.div
+              {...animationWidth}
+               className="absolute bottom-50 xxs:bottom-[52%] left-0 xxs:left-6 bg-white shadow py-2 px-3 border-s-2 border-russian-red">
                 <p className="text-sm text-russian-dark-blue leading-tight font-medium"><span
                   className="text-russian-red font-bold"
                 >Free</span> First Lesson</p>
-              </div>
+              </motion.div>
 
               <div
                 className="absolute bottom-40 xxs:bottom-24 left-0 xxs:-left-6 bg-white shadow py-2 px-3 border-s-2 border-russian-red">
@@ -41,6 +44,52 @@ const About = () => {
                 >1.2k+</span> Happy Learners</p>
               </div>
             </div>
+          </div> */}
+
+          <div className="lg:col-span-2">
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              className="relative w-80 mx-auto"
+            >
+              <motion.img
+                {...animationImg}
+                src="./owner.png"
+                alt="Your Russian teacher"
+                className="block mx-auto h-125 lg:h-150"
+              />
+
+              <motion.div
+                variants={badgeVariants}
+                custom={0}
+                className="absolute bottom-50 xxs:bottom-[52%] left-0 xxs:left-6 bg-white shadow border-s-2 border-russian-red overflow-hidden"
+              >
+                <p className="py-2 px-3 whitespace-nowrap text-sm text-russian-dark-blue leading-tight font-medium">
+                  <span className="text-russian-red font-bold">Free</span> First Lesson
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={badgeVariants}
+                custom={0.3}
+                className="absolute bottom-40 xxs:bottom-24 left-0 xxs:-left-6 bg-white shadow border-s-2 border-russian-red overflow-hidden"
+              >
+                <p className="py-2 px-3 whitespace-nowrap text-sm text-russian-dark-blue leading-tight font-medium">
+                  <span className="text-russian-red font-bold">Hindi</span> to Russian
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={badgeVariants}
+                custom={0.6}
+                className="absolute bottom-30 xxs:bottom-auto xxs:top-[20%] left-0 xxs:-left-28 bg-white shadow border-s-2 border-russian-red overflow-hidden"
+              >
+                <p className="py-2 px-3 whitespace-nowrap text-sm text-russian-dark-blue leading-tight font-medium">
+                  <span className="text-russian-red font-bold">1.2k+</span> Happy Learners
+                </p>
+              </motion.div>
+            </motion.div>
           </div>
 
           <div className="flex flex-col items-center lg:items-start gap-6 text-center lg:text-start lg:col-span-3">
@@ -129,7 +178,7 @@ const About = () => {
 
             <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto mt-4">
               <Button color="blue" label="Visit youtube channel" href="#video" animation={animationTop} delay={0.3} />
-              <Button color="red" label="Contact me" href="#enquiry"  animation={animationTop} delay={0.35} />
+              <Button color="red" label="Contact me" href="#enquiry" animation={animationTop} delay={0.35} />
             </div>
           </div>
         </div>
