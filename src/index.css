@@ -82,7 +82,7 @@
 
 @layer components {
   .button {
-    @apply py-3 px-4 inline-block gap-x-2 border-none text-sm font-medium rounded text-white overflow-hidden focus:outline-hidden lowercase first-letter:capitalize relative z-50 cursor-pointer transition-all duration-300 ease-in-out shadow-[7px_7px_14px_-7px_#1b356b];
+    @apply py-3 px-4 inline-block gap-x-2 border-none text-sm font-medium rounded text-white overflow-hidden focus:outline-hidden lowercase first-letter:capitalize relative z-50 cursor-pointer shadow-[7px_7px_14px_-7px_#1b356b];
   }
 
   .button-russian-blue {
