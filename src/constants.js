@@ -4,7 +4,7 @@ export const animationTop = {
   viewport: { once: true, amount: 0.2 },
   transition: {
     duration: 0.6,
-    delay: 0.3,
+    delay: 0.1,
     ease: "easeOut",
   }  
 };
