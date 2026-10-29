@@ -1,5 +1,7 @@
 import TestimonialSlider from './ui/TestimonialSlider';
 import Button from '../components/ui/Button';
+import { motion } from "motion/react";
+import { animationTop } from '../constants';
 // Put the images in  public/assets/img/  (or import them and use the imported value as `img`)
 const testimonials = [
   {
@@ -70,20 +72,42 @@ export default function Testimonials() {
       <div className="custom-container relative z-40 py-12 lg:py-20 flex justify-center flex-col">
         {/* heading */}
         <div className="flex flex-col lg:w-1/2 mx-auto gap-6 items-center text-center mb-6">
-          <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">
+          <motion.p
+            {...animationTop}
+            className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">
             Testimonials
-          </p>
-          <h1 className="heading">
+          </motion.p>
+          <motion.h1
+            {...animationTop}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.05,
+            }}
+            className="heading">
             What <span className="text-russian-red">students</span> say?
-          </h1>
-          <p>
+          </motion.h1>
+          <motion.p
+            {...animationTop}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.1,
+            }}
+          >
             Learning Russian opens more than a textbook. It opens songs you'll finally understand, films you'll watch
             without subtitles & conversations.
-          </p>
+          </motion.p>
           {/* buttons */}
           <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
-            <Button color="blue" label="Still have a question?" href="#faq" />
-            <Button color="red" label="Conact Me" href="#enquiry" />
+            <Button color="blue" label="Still have a question?" href="#faq"  {...animationTop}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.15,
+            }} />
+            <Button color="red" label="Conact Me" href="#enquiry"  {...animationTop}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.2,
+            }} />
           </div>
         </div>
 

@@ -1,6 +1,8 @@
 
 import { useState } from "react";
 import Button from "./ui/Button";
+import { motion } from "motion/react";
+import { animationTop } from '../constants';
 
 const faqData = [
     {
@@ -90,20 +92,34 @@ const Faq = () => {
 
                 {/* Section heading */}
                 <div className="flex flex-col lg:w-1/2 mx-auto gap-6 items-center text-center mb-10">
-                    <p className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">
+                    <motion.p
+                      {...animationTop}
+                     className="uppercase font-bold text-russian-dark-blue border-l-2 border-russian-red pl-2 text-sm">
                         FAQS
-                    </p>
+                    </motion.p>
 
-                    <h1 className="heading">
+                    <motion.h1 
+                      {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.05,
+                                }}
+                    className="heading">
                         Questions{" "}
                         <span className="text-russian-red">students</span> ask
-                    </h1>
+                    </motion.h1>
 
-                    <p>
+                    <motion.p
+                      {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.1,
+                                }}
+                    >
                         Quick answers about learning Russian in Hindi. If you
                         can’t find yours here, write to me and I will reply
                         personally.
-                    </p>
+                    </motion.p>
                 </div>
 
                 {/* FAQ list */}
@@ -116,10 +132,15 @@ const Faq = () => {
                         const answerId = `faq-${index + 1}`;
 
                         return (
-                            <div
+                            <motion.div
+                              {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.15 + index * 0.05,
+                                }}
                                 key={faq.question}
                                 data-open={isOpen}
-                                className="group rounded border border-transparent bg-gray-200/70 transition-all duration-300 data-[open=true]:bg-white data-[open=true]:border data-[open=true]:border-gray-200/70"
+                                className={`${0.15 + index * 0.05} group rounded border border-transparent bg-gray-200/70 transition-all duration-300 data-[open=true]:bg-white data-[open=true]:border data-[open=true]:border-gray-200/70`}
                             >
                                 <button
                                     type="button"
@@ -159,16 +180,22 @@ const Faq = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         );
                     })}
                 </div>
 
                 {/* Contact link */}
-                <div className="flex flex-col items-center gap-3 mt-10 text-center">
+                <motion.div
+                  {...animationTop}
+                                transition={{
+                                    ...animationTop.transition,
+                                    delay: 0.4,
+                                }}
+                 className="flex flex-col items-center gap-3 mt-10 text-center">
                     <p>Have any other questions?</p>
                     <Button color="blue" label="Conact Me" href="#enquiry" />
-                </div>
+                </motion.div>
 
             </div>
         </section>
