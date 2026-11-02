@@ -1,6 +1,7 @@
 import Button from "./ui/Button"
 import { motion } from "motion/react";
 import { animationTop } from '../constants';
+import ProgressItem from './common/ProgressItem';
 
 const Achievements = () => {
     const achievements = [
@@ -186,20 +187,14 @@ const Achievements = () => {
                                     ...animationTop.transition,
                                     delay: 0.25 + index * 0.05,
                                 }}
-                                key={item.id}>
-                                <div className="flex justify-between items-center lg:text-sm font-semibold text-russian-dark-blue">
-                                    <span>
-                                        {item.title}
-                                    </span>
-                                    <span className="text-sm font-medium text-gray-600">{item.progress}%</span>
-                                </div>
-
-                                <div className="h-1.5 rounded-full bg-gray-200 overflow-hidden">
-                                    <div
-                                        className={`h-full rounded-full ${item.color} transition-all duration-500`}
-                                        style={{ width: `${item.progress}%` }}
-                                    />
-                                </div>
+                                key={item.id}
+                            >
+                            <ProgressItem
+                                title={item.title}
+                                progress={item.progress}
+                                color={item.color}
+                                delay={0.25 + index * 0.05}
+                            />
                             </motion.div>
                         ))}
                     </div>

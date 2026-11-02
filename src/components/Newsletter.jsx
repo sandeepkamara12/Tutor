@@ -262,3 +262,50 @@ export default Newsletter;
 // }
 
 // export default Newsletter
+
+
+// import { useState } from "react";
+
+// const API_URL = import.meta.env.VITE_API_URL; // e.g. https://your-service.onrender.com
+
+// export default function NewsletterForm() {
+//   const [email, setEmail] = useState("");
+//   const [consent, setConsent] = useState(false);
+//   const [status, setStatus] = useState({ type: "", text: "" });
+//   const [loading, setLoading] = useState(false);
+
+//   async function handleSubmit(e) {
+//     e.preventDefault();
+//     setLoading(true);
+//     setStatus({ type: "", text: "" });
+//     try {
+//       const res = await fetch(`${API_URL}/api/newsletter/subscribe`, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ email, consent }),
+//       });
+//       const data = await res.json();
+//       setStatus({ type: data.success ? "ok" : "error", text: data.message });
+//       if (data.success) { setEmail(""); setConsent(false); }
+//     } catch {
+//       setStatus({ type: "error", text: "Network error. Please try again." });
+//     } finally {
+//       setLoading(false);
+//     }
+//   }
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <input
+//         type="email" required placeholder="Your email"
+//         value={email} onChange={(e) => setEmail(e.target.value)}
+//       />
+//       <label>
+//         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
+//         I agree to receive weekly newsletter emails.
+//       </label>
+//       <button disabled={loading || !consent}>{loading ? "Sending..." : "Subscribe"}</button>
+//       {status.text && <p style={{ color: status.type === "ok" ? "green" : "red" }}>{status.text}</p>}
+//     </form>
+//   );
+// }
