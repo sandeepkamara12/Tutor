@@ -9,7 +9,7 @@ const options = [
     { value: 'vanilla', label: 'Vanilla' }
 ]
 
-const API_URL = import.meta.env.API_LIVE_URL;
+const API_URL = import.meta.env.VITE_API_LIVE_URL;
 
 const INTERESTS = [
     { value: 'alphabet', label: 'Cyrillic alphabet' },
