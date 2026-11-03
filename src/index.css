@@ -44,7 +44,7 @@
   }
 
   .heading {
-    @apply text-3xl leading-12! md:text-[40px] md:leading-none;
+    @apply text-3xl leading-10 md:text-[40px] md:leading-12!;
   }
 
   p {

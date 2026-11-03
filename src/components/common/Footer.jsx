@@ -160,9 +160,9 @@ const Footer = () => {
                                 className="text-gray-600 hover:text-russian-red transition-all"
                             >About me</a></li>
                             <li><a
-                                href="#contact"
+                                href="#enquiry"
                                 className="text-gray-600 hover:text-russian-red transition-all"
-                            >Contact me</a></li>
+                            >Enquiry</a></li>
                         </ul>
                     </motion.div>
 
