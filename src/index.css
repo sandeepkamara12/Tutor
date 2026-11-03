@@ -173,7 +173,7 @@ html {
 }
 
 .testimonial-wrapper {
-  @apply md:min-h-testimonial max-w-full mx-auto;
+  @apply md:min-h-[50vh] xl:min-h-testimonial max-w-full mx-auto;
 }
 
 @keyframes about-anim {
