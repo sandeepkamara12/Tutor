@@ -105,8 +105,8 @@ const Faq = () => {
                                     delay: 0.05,
                                 }}
                     className="heading">
-                        Questions{" "}
-                        <span className="text-russian-red">students</span> ask
+                        Let's answer
+                        <span className="text-russian-red"> your questions</span>
                     </motion.h1>
 
                     <motion.p

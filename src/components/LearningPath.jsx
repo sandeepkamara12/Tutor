@@ -108,16 +108,28 @@ const LearningPath = () => {
         let frame = 0;
 
         const update = () => {
-            frame = 0;
-            if (!mobile.matches || !panelRef.current) return;
-            // the line just below the sticky panel (header 64px + panel height)
-            const line = panelRef.current.getBoundingClientRect().bottom;
-            let current = 0; // 0 = intro text, before the first step reaches the line
-            mobileSteps.current.forEach((el, i) => {
-                if (el && el.getBoundingClientRect().top <= line + 1) current = i + 1;
-            });
-            setActiveIndex(current);
-        };
+    frame = 0;
+    const panel = panelRef.current;
+    if (!mobile.matches || !panel) return;
+
+    const rect = panel.getBoundingClientRect();
+    // sticky offset from the CSS (top-16 = 64px)
+    const stickTop = parseFloat(getComputedStyle(panel).top) || 0;
+
+    // panel is still in its normal place, so the steps haven't reached it: show the default intro
+    if (rect.top > stickTop + 1) {
+        setActiveIndex(0);
+        return;
+    }
+
+    // the line just below the sticky panel
+    const line = rect.bottom;
+    let current = 0;
+    mobileSteps.current.forEach((el, i) => {
+        if (el && el.getBoundingClientRect().top <= line + 1) current = i + 1;
+    });
+    setActiveIndex(current);
+};
         const onScroll = () => {
             if (!frame) frame = requestAnimationFrame(update);
         };

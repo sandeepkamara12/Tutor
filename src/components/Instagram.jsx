@@ -172,7 +172,7 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
               delay: 0.05,
             }}
             className="heading">
-            Learn with us on <span className="text-russian-red">Instagram</span>
+            Learn with me on <span className="text-russian-red">Instagram</span>
           </motion.h1>
           <motion.p  {...animationTop}
             transition={{
