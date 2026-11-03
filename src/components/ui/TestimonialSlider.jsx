@@ -238,17 +238,17 @@ export default function TestimonialSlider({
   /* ---------- touch swipe ---------- */
   const touchProps = swipe
     ? {
-        onTouchStart: (e) => {
-          touchX.current = e.touches[0].clientX;
-        },
-        onTouchEnd: (e) => {
-          if (touchX.current === null) return;
-          const diff = e.changedTouches[0].clientX - touchX.current;
-          touchX.current = null;
-          if (Math.abs(diff) < 50) return;
-          diff < 0 ? goNext() : goPrev();
-        },
-      }
+      onTouchStart: (e) => {
+        touchX.current = e.touches[0].clientX;
+      },
+      onTouchEnd: (e) => {
+        if (touchX.current === null) return;
+        const diff = e.changedTouches[0].clientX - touchX.current;
+        touchX.current = null;
+        if (Math.abs(diff) < 50) return;
+        diff < 0 ? goNext() : goPrev();
+      },
+    }
     : {};
 
   /* ---------- entrance animation (motion) ---------- */
@@ -260,12 +260,12 @@ export default function TestimonialSlider({
     () =>
       animated
         ? {
-            hidden: animation.initial,
-            show: (extra = 0) => ({
-              ...animation.whileInView,
-              transition: { ...animation.transition, delay: (animation.transition?.delay ?? 0) + extra },
-            }),
-          }
+          hidden: animation.initial,
+          show: (extra = 0) => ({
+            ...animation.whileInView,
+            transition: { ...animation.transition, delay: (animation.transition?.delay ?? 0) + extra },
+          }),
+        }
         : undefined,
     [animated, animation]
   );
@@ -291,13 +291,13 @@ export default function TestimonialSlider({
   const cardMotion = (rel, inView) =>
     animated
       ? {
-          variants: cardVariants,
-          custom: animationDelay + (inView ? rel : 0) * animationStagger,
-          onAnimationComplete: () => {
-            loadedCards.current += 1;
-            if (loadedCards.current >= track.length) setEntered(true);
-          },
-        }
+        variants: cardVariants,
+        custom: animationDelay + (inView ? rel : 0) * animationStagger,
+        onAnimationComplete: () => {
+          loadedCards.current += 1;
+          if (loadedCards.current >= track.length) setEntered(true);
+        },
+      }
       : {};
 
   // dots, then arrows: the next two slots after the last visible card, same rhythm (animationStagger)
@@ -321,25 +321,25 @@ export default function TestimonialSlider({
     >
       {/* cards */}
       <Reveal {...revealProps}>
-      <div
-        className={cx('mb-6 overflow-x-clip', classNames.cards)}
-        style={{
-          opacity: fade,
-          transition: effect === 'fade' && !instant && speed > 0 ? `opacity ${speed / 2}ms ease` : undefined,
-        }}
-        {...touchProps}
-      >
-        <div className={cx('testimonial-wrapper flex', expandable ? 'items-end' : 'items-start')} style={trackStyle}>
-          {track.map((t, i) => {
-            const rel = i - safeStart;
-            const inView = rel >= 0 && rel < perView;
-            const isActive = expandable && i === absActive;
-            const right = popsRight(rel);
-            // the open card's text waits until every card has finished its entrance animation
-            const showText = isActive && readyKey === currentKey && (!animated || entered);
+        <div
+          className={cx('mb-6 overflow-x-clip', classNames.cards)}
+          style={{
+            opacity: fade,
+            transition: effect === 'fade' && !instant && speed > 0 ? `opacity ${speed / 2}ms ease` : undefined,
+          }}
+          {...touchProps}
+        >
+          <div className={cx('testimonial-wrapper flex', expandable ? 'items-end' : 'items-start')} style={trackStyle}>
+            {track.map((t, i) => {
+              const rel = i - safeStart;
+              const inView = rel >= 0 && rel < perView;
+              const isActive = expandable && i === absActive;
+              const right = popsRight(rel);
+              // the open card's text waits until every card has finished its entrance animation
+              const showText = isActive && readyKey === currentKey && (!animated || entered);
 
-            const cardProps = expandable
-              ? {
+              const cardProps = expandable
+                ? {
                   role: 'button',
                   tabIndex: inView ? 0 : -1,
                   'aria-pressed': isActive,
@@ -351,130 +351,130 @@ export default function TestimonialSlider({
                     }
                   },
                 }
-              : {};
+                : {};
 
-            const contentStyle = expandable
-              ? {
+              const contentStyle = expandable
+                ? {
                   width: contentWidth ? `${contentWidth}px` : undefined,
                   opacity: showText ? 1 : 0,
                   transform: showText ? 'translateX(0)' : `translateX(${right ? '-20px' : '20px'})`,
                   pointerEvents: showText ? 'auto' : 'none',
                 }
-              : undefined;
+                : undefined;
 
-            return (
-              <Card
-                key={i}
-                ref={(el) => (cardRefs.current[i] = el)}
-                {...cardMotion(rel, inView)}
-                aria-hidden={!inView}
-                className={cx(
-                  'relative flex-none focus:outline-hidden',
-                  expandable && 'cursor-pointer',
-                  expandable && !isActive && 'overflow-hidden',
-                  classNames.card
-                )}
-                style={{
-                  width: isActive ? `calc(2 * ${unit})` : `calc(${unit})`,
-                  transition: cardTransition,
-                }}
-                {...cardProps}
-              >
-                <div className={cx('w-full aspect-square mx-auto md:mx-0 md:aspect-auto md:h-auto rounded relative overflow-hidden z-50', classNames.image)}>
-                  <img src={t.img} alt={t.name} className="w-full h-full object-cover object-center" />
-                </div>
-
-                <div
-                  className={
-                    expandable
-                      ? cx('z-40 transition-[opacity,transform] duration-300 ease-in-out absolute top-0', right ? 'left-full' : 'right-full')
-                      : 'z-40'
-                  }
-                  style={contentStyle}
+              return (
+                <Card
+                  key={i}
+                  ref={(el) => (cardRefs.current[i] = el)}
+                  {...cardMotion(rel, inView)}
+                  aria-hidden={!inView}
+                  className={cx(
+                    'relative flex-none focus:outline-hidden',
+                    expandable && 'cursor-pointer',
+                    expandable && !isActive && 'overflow-hidden',
+                    classNames.card
+                  )}
+                  style={{
+                    width: isActive ? `calc(2 * ${unit})` : `calc(${unit})`,
+                    transition: cardTransition,
+                  }}
+                  {...cardProps}
                 >
-                  <div className={cx('pt-3 flex flex-col gap-2', expandable ? (right ? 'pl-2' : 'pr-2 text-right') : 'text-center xxs:text-start px-3', classNames.text)}>
-                        <p className={`flex items-center gap-0.5 justify-center xxs:justify-start ${ expandable ? (right ? 'md:justify-start' : 'md:justify-end') : ''}`}>
+                  <div className={cx('w-full aspect-square mx-auto md:mx-0 md:aspect-auto md:h-auto rounded relative overflow-hidden z-50', classNames.image)}>
+                    <img src={t.img} alt={t.name} className="w-full h-full object-cover object-center" />
+                  </div>
+
+                  <div
+                    className={
+                      expandable
+                        ? cx('z-40 transition-[opacity,transform] duration-300 ease-in-out absolute top-0', right ? 'left-full' : 'right-full')
+                        : 'z-40'
+                    }
+                    style={contentStyle}
+                  >
+                    <div className={cx('pt-3 flex flex-col gap-2', expandable ? (right ? 'pl-2' : 'pr-2 text-right') : 'text-center xxs:text-start px-3', classNames.text)}>
+                      <p className={`flex items-center gap-0.5 justify-center xxs:justify-start ${expandable ? (right ? 'md:justify-start' : 'md:justify-end') : ''}`}>
                         {
-                          Array.from({length:5}).map((_, index)=>(
+                          Array.from({ length: 5 }).map((_, index) => (
                             <span className='inline-block size-3 fill-yellow-500' key={index}>
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-                                <path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/>
+                                <path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z" />
                               </svg>
                             </span>
                           ))
                         }
                       </p>
-                    <p
-                      className={cx(
-                        'font-bold text-base text-russian-dark-blue leading-none',
-                        expandable && (right ? '' : ''),
-                        classNames.name
-                      )}
-                    >
-                      {t.name}
-                    </p>
-                    <p className={cx('text-[13px] mb-1 font-medium leading-none', expandable && (right ? '' : ''), classNames.role)}>
-                      {t.role}
-                    </p>
-                    <p
-                      className={cx(
-                        'xxs:text-15 xxs:leading-5',
-                        expandable && (right ? '' : '')
-                      )}
-                    >
-                      {t.text}
-                    </p>
+                      <p
+                        className={cx(
+                          'font-bold text-base text-russian-dark-blue leading-none',
+                          expandable && (right ? '' : ''),
+                          classNames.name
+                        )}
+                      >
+                        {t.name}
+                      </p>
+                      <p className={cx('text-[13px] mb-1 font-medium leading-none', expandable && (right ? '' : ''), classNames.role)}>
+                        {t.role}
+                      </p>
+                      <p
+                        className={cx(
+                          'xxs:text-15 xxs:leading-5',
+                          expandable && (right ? '' : '')
+                        )}
+                      >
+                        {t.text}
+                      </p>
+                    </div>
                   </div>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* arrows + dots */}
+        {showControls && (
+          <div className={cx('flex items-center justify-center md:justify-between gap-4', classNames.controls)}>
+            <Group {...groupMotion(0)}>
+              {pagination && paginationType === 'dots' && (
+                <div className="flex items-center gap-2">
+                  {positions.map((p, i) => (
+                    <button
+                      key={p}
+                      type="button"
+                      onClick={() => changeStart(offset + p)}
+                      aria-label={`Go to page ${i + 1}`}
+                      aria-current={i === pageIndex}
+                      className={cx(
+                        'size-2.5 rounded-full cursor-pointer transition-all',
+                        i === pageIndex ? cx('bg-russian-red', classNames.dotActive) : cx('bg-gray-300', classNames.dot)
+                      )}
+                    />
+                  ))}
                 </div>
-              </Card>
-            );
-          })}
-        </div>
-      </div>
+              )}
 
-      {/* arrows + dots */}
-      {showControls && (
-        <div className={cx('flex items-center justify-center md:justify-between gap-4', classNames.controls)}>
-<Group {...groupMotion(0)}>
-          {pagination && paginationType === 'dots' && (
-            <div className="flex items-center gap-2">
-              {positions.map((p, i) => (
-                <button
-                key={p}
-                  type="button"
-                  onClick={() => changeStart(offset + p)}
-                  aria-label={`Go to page ${i + 1}`}
-                  aria-current={i === pageIndex}
-                  className={cx(
-                    'size-2.5 rounded-full cursor-pointer transition-all',
-                    i === pageIndex ? cx('bg-russian-red', classNames.dotActive) : cx('bg-gray-300', classNames.dot)
-                  )}
-                />
-              ))}
-            </div>
-          )}
+              {pagination && paginationType === 'fraction' && (
+                <p className={cx('font-bold text-russian-dark-blue min-w-12 text-center', classNames.counter)}>
+                  {pageIndex + 1} / {positions.length}
+                </p>
+              )}
+            </Group>
+            <Group className="flex items-center gap-2" {...groupMotion(1)}>
+              {navigation && (
+                <button type="button" onClick={goPrev} disabled={prevTarget === null} aria-label={prevLabel} className={arrowClass}>
+                  {prevIcon}
+                </button>
+              )}
 
-          {pagination && paginationType === 'fraction' && (
-            <p className={cx('font-bold text-russian-dark-blue min-w-12 text-center', classNames.counter)}>
-              {pageIndex + 1} / {positions.length}
-            </p>
-          )}
-</Group>
-<Group className="flex items-center gap-2" {...groupMotion(1)}>
-          {navigation && (
-            <button type="button" onClick={goPrev} disabled={prevTarget === null} aria-label={prevLabel} className={arrowClass}>
-              {prevIcon}
-            </button>
-          )}
-
-          {navigation && (
-            <button type="button" onClick={goNext} disabled={nextTarget === null} aria-label={nextLabel} className={arrowClass}>
-              {nextIcon}
-            </button>
-          )}
-        </Group>
-        </div>
-      )}
+              {navigation && (
+                <button type="button" onClick={goNext} disabled={nextTarget === null} aria-label={nextLabel} className={arrowClass}>
+                  {nextIcon}
+                </button>
+              )}
+            </Group>
+          </div>
+        )}
       </Reveal>
     </div>
   );
