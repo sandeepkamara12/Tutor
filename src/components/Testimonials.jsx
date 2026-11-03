@@ -104,6 +104,9 @@ export default function Testimonials() {
           items={testimonials}
           slidesPerView={{ desktop: 7, tablet: 5, mobileLg: 2, mobile: 1 }}
           // expandContent={false}
+          animation={animationTop}
+  animationDelay={0.05}
+  animationStagger={0.08}
           effect="slide"
           speed={450}
           navigation
