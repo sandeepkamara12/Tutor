@@ -300,6 +300,11 @@ export default function TestimonialSlider({
         }
       : {};
 
+  // dots, then arrows: the next two slots after the last visible card, same rhythm (animationStagger)
+  const Group = animated ? motion.div : 'div';
+  const groupMotion = (slot) =>
+    animated ? { variants: cardVariants, custom: animationDelay + (perView + slot) * animationStagger } : {};
+
   const showControls = (looping || maxStart > 0) && (navigation || pagination);
   const arrowClass = cx(
     'size-8 rounded-full bg-russian-dark-blue text-white hover:bg-russian-red transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-russian-dark-blue',
@@ -426,12 +431,11 @@ export default function TestimonialSlider({
           })}
         </div>
       </div>
-      </Reveal>
 
       {/* arrows + dots */}
       {showControls && (
         <div className={cx('flex items-center justify-center md:justify-between gap-4', classNames.controls)}>
-<div>
+<Group {...groupMotion(0)}>
           {pagination && paginationType === 'dots' && (
             <div className="flex items-center gap-2">
               {positions.map((p, i) => (
@@ -455,8 +459,8 @@ export default function TestimonialSlider({
               {pageIndex + 1} / {positions.length}
             </p>
           )}
-</div>
-<div className="flex items-center gap-2">
+</Group>
+<Group className="flex items-center gap-2" {...groupMotion(1)}>
           {navigation && (
             <button type="button" onClick={goPrev} disabled={prevTarget === null} aria-label={prevLabel} className={arrowClass}>
               {prevIcon}
@@ -468,9 +472,10 @@ export default function TestimonialSlider({
               {nextIcon}
             </button>
           )}
-        </div>
+        </Group>
         </div>
       )}
+      </Reveal>
     </div>
   );
 }
