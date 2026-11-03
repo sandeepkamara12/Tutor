@@ -97,10 +97,6 @@ export default function Testimonials() {
             without subtitles & conversations.
           </motion.p>
           {/* buttons */}
-          <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center">
-            <Button color="blue" label="Still have a question?" href="#faq" animation={animationTop} delay={0.15} />
-            <Button color="red" label="Conact Me" href="#enquiry"  animation={animationTop} delay={0.2} />
-          </div>
         </div>
 
 
@@ -118,6 +114,10 @@ export default function Testimonials() {
           className=""
           classNames={{ arrow: 'max-md:hidden flex flex-wrap items-center justify-center' }}
         />
+          <div className="flex flex-wrap flex-col sd:flex-row gap-2 sd:gap-4 w-full sd:w-auto justify-center mt-10">
+            <Button color="blue" label="Still have a question?" href="#faq" animation={animationTop} delay={0.15} />
+            <Button color="red" label="Conact Me" href="#enquiry"  animation={animationTop} delay={0.2} />
+          </div>
       </div>
     </section>
   );
