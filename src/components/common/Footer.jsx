@@ -6,7 +6,29 @@ const SHOW_TOP_AFTER = 300; // px scrolled before the "back to top" arrow appear
 const getHeaderHeight = () => document.getElementById("site-header")?.offsetHeight ?? 0;
 
 // every block the "down" arrow can jump to, in page order
-const getTargets = () => [...document.querySelectorAll("section[id], footer[id]")];
+// const getTargets = () => [...document.querySelectorAll("section[id], footer[id]")];
+// console.log(getTargets(), 'getTargets');
+
+const SECTION_IDS = [
+    "why",
+    "discover",
+    "learning-path",
+    "featured-lessons",
+    "progress_achievements",
+    "testimonials",
+    "faq",
+    "enquiry",
+    "about",
+    "video",
+    "instagram",
+    "newsletter",
+    "site-footer",
+];
+
+const getTargets = () =>
+    SECTION_IDS.map((id) => document.getElementById(id))
+        .filter(Boolean)
+        .sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top);
 
 // the first section that starts below the fixed header
 const getNextTarget = () => {
@@ -54,26 +76,55 @@ const Footer = () => {
         };
     }, []);
 
-    // show the scroll-to-top button only after scrolling down a bit
-    // useEffect(() => {
-    //     const SHOW_AFTER = 300; // px
-    //     const onScroll = () => setShowTop(window.scrollY > SHOW_AFTER);
-    //     onScroll();
-    //     window.addEventListener("scroll", onScroll, { passive: true });
-    //     return () => window.removeEventListener("scroll", onScroll);
-    // }, []);
-
     const scrollToTop = (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
+const scrollToElement = (el) => {
+    const target = () =>
+        Math.max(el.getBoundingClientRect().top + window.scrollY - getHeaderHeight(), 0);
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        window.scrollTo({ top: target(), behavior: "instant" });
+        return;
+    }
+
+    const W = 7; // speed of the movement: higher = faster
+    let pos = window.scrollY;
+    let vel = 0;
+    let last = performance.now();
+    let raf = 0;
+
+    const stop = () => {
+        cancelAnimationFrame(raf);
+        ["wheel", "touchstart", "keydown"].forEach((e) => window.removeEventListener(e, stop));
+    };
+    // if the visitor scrolls or presses a key, they take over
+    ["wheel", "touchstart", "keydown"].forEach((e) => window.addEventListener(e, stop, { passive: true }));
+
+    const step = (now) => {
+        const dt = Math.min((now - last) / 1000, 0.05);
+        last = now;
+        const end = target(); // read again every frame, so layout changes while scrolling are followed
+        // eases in, speeds up, eases out, and never overshoots
+        vel += (W * W * (end - pos) - 2 * W * vel) * dt;
+        pos += vel * dt;
+
+        if (Math.abs(end - pos) < 0.5 && Math.abs(vel) < 8) {
+            window.scrollTo({ top: end, behavior: "instant" });
+            return stop();
+        }
+        window.scrollTo({ top: pos, behavior: "instant" });
+        raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+};
+
     const scrollToNext = () => {
         if (scrolling) return;
         const next = getNextTarget();
-        if (!next) return;
-        const top = next.getBoundingClientRect().top + window.scrollY - getHeaderHeight();
-        window.scrollTo({ top: Math.max(top, 0), behavior: smooth() });
+        if (next) scrollToElement(next);
     };
 
     const base =
@@ -89,8 +140,8 @@ const Footer = () => {
                 <div className="grid sd:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
 
                     <motion.div
-                     {...animationTop}
-                     className="col-span-2 sm:col-span-3 lg:col-span-1 flex flex-col gap-4">
+                        {...animationTop}
+                        className="col-span-2 sm:col-span-3 lg:col-span-1 flex flex-col gap-4">
                         <a href="#">
                             <img
                                 className="w-16 h-auto"
@@ -131,12 +182,12 @@ const Footer = () => {
                     </motion.div>
 
                     <motion.div
-                     {...animationTop}
-                                transition={{
-                                    ...animationTop.transition,
-                                    delay: 0.05,
-                                }}
-                     className="flex flex-col gap-4">
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.05,
+                        }}
+                        className="flex flex-col gap-4">
                         <p className="text-base font-bold text-russian-dark-blue">Quick links</p>
                         <ul className="flex flex-col gap-2">
                             <li><a
@@ -167,12 +218,12 @@ const Footer = () => {
                     </motion.div>
 
                     <motion.div
-                     {...animationTop}
-                                transition={{
-                                    ...animationTop.transition,
-                                    delay: 0.1,
-                                }}
-                     className="flex flex-col gap-4">
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.1,
+                        }}
+                        className="flex flex-col gap-4">
                         <p className="text-base font-bold text-russian-dark-blue">Start learning</p>
                         <ul className="flex flex-col gap-2">
                             <li><a
@@ -203,12 +254,12 @@ const Footer = () => {
                     </motion.div>
 
                     <motion.div
-                     {...animationTop}
-                                transition={{
-                                    ...animationTop.transition,
-                                    delay: 0.15,
-                                }}
-                     className="col-span-2 sm:col-span-1 flex flex-col gap-4">
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.15,
+                        }}
+                        className="col-span-2 sm:col-span-1 flex flex-col gap-4">
                         <p className="text-base font-bold text-russian-dark-blue">Get in touch</p>
                         <div className="flex flex-col gap-6">
                             <div className="flex flex-wrap flex-col gap-2 text-start">
@@ -245,20 +296,20 @@ const Footer = () => {
             </div>
             <div className="py-6 border-t border-gray-300 text-center">
                 <div className="custom-container flex flex-col md:flex-row items-center justify-between gap-2">
-                    <motion.p 
-                     {...animationTop}
-                                transition={{
-                                    ...animationTop.transition,
-                                    delay: 0.05,
-                                }}
-                    className="text-gray-600">© 2026 Russian in Hindi. All rights reserved.</motion.p>
+                    <motion.p
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.05,
+                        }}
+                        className="text-gray-600">© 2026 Russian in Hindi. All rights reserved.</motion.p>
                     <motion.ul
-                     {...animationTop}
-                                transition={{
-                                    ...animationTop.transition,
-                                    delay: 0.1,
-                                }}
-                     className="flex flex-wrap justify-center gap-6 text-sm">
+                        {...animationTop}
+                        transition={{
+                            ...animationTop.transition,
+                            delay: 0.1,
+                        }}
+                        className="flex flex-wrap justify-center gap-6 text-sm">
                         <li><a
                             href="#"
                             className="text-gray-600 hover:text-russian-red transition-all"
@@ -275,10 +326,10 @@ const Footer = () => {
                         aria-label="Scroll to next section"
                         tabIndex={atEnd ? -1 : 0}
                         className={`${base} ${showTop ? "top-20" : ""} ${atEnd
-                                ? "opacity-0 translate-y-4 pointer-events-none"
-                                : scrolling
-                                    ? "opacity-50 cursor-not-allowed"
-                                    : "opacity-100 translate-y-0 cursor-pointer"
+                            ? "opacity-0 translate-y-4 pointer-events-none"
+                            : scrolling
+                                ? "opacity-50 cursor-not-allowed"
+                                : "opacity-100 translate-y-0 cursor-pointer"
                             }`}
                     >
                         <i className="fa-solid fa-arrow-down"></i>
