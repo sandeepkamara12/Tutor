@@ -343,7 +343,7 @@ export default function TestimonialSlider({
                   }
                   style={contentStyle}
                 >
-                  <div className={cx('pt-3 flex flex-col gap-1', expandable ? (right ? 'pl-2' : 'pr-2 text-right') : 'text-center xxs:text-start px-3', classNames.text)}>
+                  <div className={cx('pt-3 flex flex-col gap-2', expandable ? (right ? 'pl-2' : 'pr-2 text-right') : 'text-center xxs:text-start px-3', classNames.text)}>
                         <p className={`flex items-center gap-0.5 justify-center xxs:justify-start ${ expandable ? (right ? 'md:justify-start' : 'md:justify-end') : ''}`}>
                         {
                           Array.from({length:5}).map((_, index)=>(
@@ -364,12 +364,12 @@ export default function TestimonialSlider({
                     >
                       {t.name}
                     </p>
-                    <p className={cx('text-[13px] mb-2 font-medium leading-none', expandable && (right ? '' : ''), classNames.role)}>
+                    <p className={cx('text-[13px] mb-1 font-medium leading-none', expandable && (right ? '' : ''), classNames.role)}>
                       {t.role}
                     </p>
                     <p
                       className={cx(
-                        'text-15 leading-5',
+                        'xxs:text-15 xxs:leading-5',
                         expandable && (right ? '' : '')
                       )}
                     >
