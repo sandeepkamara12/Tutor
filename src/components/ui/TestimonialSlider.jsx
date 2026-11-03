@@ -54,8 +54,6 @@ export default function TestimonialSlider({
   autoplay = false,
   autoplayDelay = 5000,
   pauseOnHover = true,
-  dimOnHover = true, // while the mouse is over the slider, every card except the open one gets dimmed
-  dimOpacity = 0.5, // opacity of the dimmed cards (0 - 1)
   swipe = true,
   prevIcon = <i className="fa-solid fa-chevron-left" />,
   nextIcon = <i className="fa-solid fa-chevron-right" />,
@@ -100,7 +98,6 @@ export default function TestimonialSlider({
   const [fade, setFade] = useState(1);
   const [instant, setInstant] = useState(false); // no transitions while cards are swapped under the fade / wrap
   const [paused, setPaused] = useState(false);
-  const [hovered, setHovered] = useState(false); // real mouse over the slider (not touch)
 
   const cardRefs = useRef([]);
   const touchX = useRef(null);
@@ -260,8 +257,7 @@ export default function TestimonialSlider({
     transform: `translateX(calc(${-safeStart} * (${unit} + var(--ts-gap))))`,
     transition: instant || effect === 'fade' || speed <= 0 ? 'none' : `transform ${speed}ms ${EASE}`,
   };
-  const cardTransition = `${instant || speed <= 0 ? 'width 0ms' : `width ${speed}ms ${EASE}`}, opacity 300ms ease`;
-  const dimOthers = dimOnHover && hovered && expandable; // only the open card stays fully visible
+  const cardTransition = instant || speed <= 0 ? 'width 0ms' : `width ${speed}ms ${EASE}`;
 
   const showControls = (looping || maxStart > 0) && (navigation || pagination);
   const arrowClass = cx(
@@ -272,14 +268,8 @@ export default function TestimonialSlider({
   return (
     <div
       className={className}
-      onMouseEnter={() => {
-        setPaused(true);
-        setHovered(window.matchMedia('(hover: hover)').matches);
-      }}
-      onMouseLeave={() => {
-        setPaused(false);
-        setHovered(false);
-      }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
@@ -337,7 +327,6 @@ export default function TestimonialSlider({
                 )}
                 style={{
                   width: isActive ? `calc(2 * ${unit})` : `calc(${unit})`,
-                  opacity: dimOthers && !isActive ? dimOpacity : 1,
                   transition: cardTransition,
                 }}
                 {...cardProps}
