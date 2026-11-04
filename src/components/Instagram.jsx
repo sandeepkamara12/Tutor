@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { animationTop } from '../constants';
 
 // Put the images in  public/  (or import them and use the imported value as `img`).
@@ -11,14 +11,6 @@ const posts = [
   { img: './student-4.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 4' },
   { img: './student-5.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 5' },
   { img: './student-1.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 6' },
-  // { img: './student-2.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 7' },
-  // { img: './student-3.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 8' },
-  // { img: './student-4.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 9' },
-  // { img: './student-5.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 10' },
-  // { img: './student-1.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 11' },
-  // { img: './student-2.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 12' },
-  // { img: './student-3.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 13' },
-  // { img: './student-4.jpg', href: 'https://www.instagram.com/', label: 'Instagram post 14' },
 ];
 
 // tile shapes (full class names, so Tailwind can see them)
@@ -28,6 +20,15 @@ const TINTS = ['bg-russian-blue/20', 'bg-russian-red/20', 'bg-russian-dark-blue/
 
 // how many masonry columns there are at a given width (the same breakpoints as the classes below)
 const columnsFor = (width) => (width >= 768 ? 6 : 3);
+
+// the same animation as the headings (animationTop); `delay` is added on top for every tile
+const tileVariants = {
+  hidden: animationTop.initial,
+  show: (delay = 0) => ({
+    ...animationTop.whileInView,
+    transition: { ...animationTop.transition, delay: (animationTop.transition?.delay ?? 0) + delay },
+  }),
+};
 
 // Fisher-Yates shuffle (returns a new array)
 const shuffled = (list) => {
@@ -39,7 +40,7 @@ const shuffled = (list) => {
   return copy;
 };
 
-export default function Instagram({ items = posts, shuffle = true, limit, stagger = 70 }) {
+export default function Instagram({ items = posts, shuffle = true, limit, stagger = 0.05 }) { // stagger: seconds between two tiles
   // chosen once when the section appears, so it does not change on every re-render.
   // Each tile also gets a random shape (unless the post has its own `ratio`).
   const [tiles] = useState(() => {
@@ -51,28 +52,27 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
     }));
   });
 
+  const reduceMotion = useReducedMotion();
   const gridRef = useRef(null);
   const tileRefs = useRef([]);
   const revealed = useRef(false); // has the grid been shown at least once?
   const columnCount = useRef(typeof window !== 'undefined' ? columnsFor(window.innerWidth) : 5);
   const snapshot = useRef([]); // where every tile was the last time we looked: { left, top, width, height }
   const [show, setShow] = useState(false); // tiles are in (true) or still waiting to fade in (false)
-  const [delays, setDelays] = useState([]); // fade-in delay of every tile (ms)
+  const [delays, setDelays] = useState([]); // entrance delay of every tile (seconds)
 
-  // The browser decides which column a tile lands in, so the delays are worked out from where each tile
-  // really is: the fade-in sweeps from the left to the right, and a little from top to bottom.
+  // The browser decides which column a tile lands in, so the order is worked out from where each tile really is:
+  // row by row, left to right. Every next tile starts `stagger` seconds after the one before it.
   const measureDelays = () => {
-    const grid = gridRef.current;
-    if (!grid) return;
-    const span = Math.min(tiles.length, 10) * stagger;
-    setDelays(
-      tileRefs.current.map((el) => {
-        if (!el) return 0;
-        const x = el.offsetLeft / Math.max(grid.offsetWidth, 1);
-        const y = el.offsetTop / Math.max(grid.offsetHeight, 1);
-        return Math.round((x * 0.7 + y * 0.3) * span);
-      })
-    );
+    const next = [];
+    tileRefs.current
+      .map((el, i) => (el ? { i, top: el.offsetTop, left: el.offsetLeft } : null))
+      .filter(Boolean)
+      .sort((x, y) => (Math.abs(x.top - y.top) > 4 ? x.top - y.top : x.left - y.left))
+      .forEach(({ i }, rank) => {
+        next[i] = rank * stagger;
+      });
+    setDelays(next);
   };
 
   // 1) on load: fade the tiles in when the grid scrolls into view
@@ -206,16 +206,18 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
         {/* masonry: the browser fills the columns, every image is shown on every screen size */}
         <div ref={gridRef} className="relative columns-3 md:columns-6 gap-2">
           {tiles.map((post, i) => (
-            <a
+            <motion.a
               key={`${post.label}-${i}`}
               ref={(el) => (tileRefs.current[i] = el)}
               href={post.href}
               target="_blank"
               rel="noopener"
               aria-label={post.label}
-              style={{ transitionDelay: show ? `${delays[i] ?? 0}ms` : '0ms' }}
-              className={`group relative block w-full ${post.ratio} ${post.tint} mb-2 md:mb-3 lg:mb-4 break-inside-avoid overflow-hidden rounded transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none ${show ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
-                }`}
+              variants={tileVariants}
+              custom={delays[i] ?? 0}
+              initial={reduceMotion ? false : 'hidden'}
+              animate={show || reduceMotion ? 'show' : 'hidden'}
+              className={`group relative block w-full ${post.ratio} ${post.tint} mb-2 md:mb-3 lg:mb-4 break-inside-avoid overflow-hidden rounded`}
             >
               <i className="fa-brands fa-instagram absolute inset-0 flex items-center justify-center text-2xl text-russian-dark-blue/30"></i>
               <img
@@ -227,7 +229,7 @@ export default function Instagram({ items = posts, shuffle = true, limit, stagge
               <span className="absolute inset-0 flex items-center justify-center bg-russian-dark-blue/60 opacity-0 group-hover:opacity-100 transition-all">
                 <i className="fa-brands fa-instagram text-white text-2xl"></i>
               </span>
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>

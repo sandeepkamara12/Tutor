@@ -31,9 +31,8 @@ const Newsletter = () => {
 
     try {
       setLoading(true);
-
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/newsletter/subscribe`,
+        `${import.meta.env.VITE_API_LIVE_URL}/api/newsletter/subscribe`,
         {
           method: "POST",
           headers: {
@@ -48,7 +47,7 @@ const Newsletter = () => {
 
       const data = await response.json();
 
-      if (!response.ok) {
+      if (!response.ok || !data.success) {
         throw new Error(
           data.message || "Something went wrong. Please try again."
         );
