@@ -133,9 +133,16 @@ const Newsletter = () => {
 
             </div>
 
-            <p className="text-xs text-gray-500 text-left">
-              By subscribing you agree to receive our weekly newsletter. You can unsubscribe at any time.
-            </p>
+            <motion.p
+            {...animationTop}
+            transition={{
+              ...animationTop.transition,
+              delay: 0.15,
+            }}
+            className="text-xs"
+          >
+            By subscribing you agree to receive our weekly newsletter. You can unsubscribe at any time.
+          </motion.p>
 
             {message && (
               <p
@@ -152,16 +159,7 @@ const Newsletter = () => {
             )}
           </form>
 
-          <motion.p
-            {...animationTop}
-            transition={{
-              ...animationTop.transition,
-              delay: 0.15,
-            }}
-            className="text-sm"
-          >
-            Join our Russian learning community.
-          </motion.p>
+         
 
         </div>
       </div>

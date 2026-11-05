@@ -54,6 +54,7 @@
   .menu-item {
     @apply font-medium text-15 text-russian-dark-blue hover:text-russian-red focus:text-russian-blue;
   }
+  
   .menu-item.active {
     @apply text-russian-red;
   }
@@ -190,5 +191,5 @@ html {
    5. Testimonial Styles
 ======================================== */
 .testi-content {
-  @apply w-full w-auto md:opacity-0 md:flex md:h-1/2 md:top-0 md:absolute md:z-40 md:translate-x-[-20px] md:transition-[opacity,transform] md:duration-[600ms] md:ease-[ease]
+  @apply w-full md:opacity-0 md:flex md:h-1/2 md:top-0 md:absolute md:z-40 md:-translate-x-5 md:transition-[opacity,transform] md:duration-600 md:ease-[ease]
 }

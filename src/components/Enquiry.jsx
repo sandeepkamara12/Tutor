@@ -38,7 +38,6 @@ const empty = {
     interest: '',
     level: '',
     message: '',
-    consent: false,
     newsletter: false,
 };
 
@@ -77,7 +76,6 @@ export default function Enquiry() {
         if (form.name.trim().length < 2) found.name = 'Please enter your name.';
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) found.email = 'Please enter a valid email.';
         if (form.message.trim().length < 10) found.message = 'Please write at least 10 characters.';
-        if (!form.consent) found.consent = 'Please accept the privacy policy.';
         return found;
     };
 
@@ -117,7 +115,7 @@ export default function Enquiry() {
     return (
         <section
             id="enquiry"
-            className="z-40 relative py-12 lg:py-20 flex items-center flex-wrap"
+            className="py-12 lg:py-20 flex items-center flex-wrap"
         >
             <div className="custom-container relative z-40">
 
@@ -374,18 +372,31 @@ export default function Enquiry() {
                             <textarea name="message" rows={5} value={form.message} onChange={change} placeholder="Tell me about your goals..." className={inputClass} />
                         </Field>
 
-                        <label className="flex items-start gap-2 text-sm text-gray-600">
-                            <input type="checkbox" name="consent" checked={form.consent} onChange={change} className="mt-1" />
-                            <span>
-                                I agree to the <a href="#" className="text-russian-dark-blue hover:text-russian-red">Privacy Policy</a> and that my details are used to reply to me.
-                            </span>
-                        </label>
-                        {errors.consent && <span className="text-sm text-russian-red -mt-2">{errors.consent}</span>}
+                        <div className="flex items-center gap-x-3">
+                            <label
+                                htmlFor="newsletter"
+                                className="relative inline-block w-7 h-4 cursor-pointer"
+                            >
+                                <input
+                                    type="checkbox"
+                                    id="newsletter"
+                                    name="newsletter"
+                                    checked={Boolean(form?.newsletter)}
+                                    onChange={change}
+                                    className="peer sr-only"
+                                />
 
-                        <label className="flex items-start gap-2 text-sm text-gray-600">
+                                <span className="absolute inset-0 border border-russian-dark-blue rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-russian-dark-blue peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
+                                <span className="absolute top-1/2 left-0 translate-x-0.5 -translate-y-1/2 size-3 bg-russian-dark-blue rounded-full shadow-sm transition-transform duration-200 ease-in-out peer-checked:translate-x-3.5 peer-checked:bg-white"></span>
+
+                            </label>
+                            <label htmlFor="newsletter" className="text-sm text-muted-foreground-1 cursor-pointer">Send me free Russian tips and study material by email.</label>
+                        </div>
+
+                        {/* <label className="flex items-start gap-2 text-sm text-gray-600">
                             <input type="checkbox" name="newsletter" checked={form.newsletter} onChange={change} className="mt-1" />
                             <span>Send me free Russian tips and study material by email.</span>
-                        </label>
+                        </label> */}
 
                         <button type="submit" disabled={status === 'sending'} className="button button-russian-blue w-fit disabled:opacity-60">
                             <span>{status === 'sending' ? 'Sending...' : 'Send message'}</span>
